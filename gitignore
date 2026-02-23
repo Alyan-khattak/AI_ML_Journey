@@ -1,0 +1,5 @@
+# Ignore Python virtual environment
+env/
+
+#Ignoring my .Vs Folder
+.vscode/
