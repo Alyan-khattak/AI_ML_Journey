@@ -1,10 +1,4 @@
 # AI & Machine Learning – Learning Journey 🚀
-This repository is a live learning log of my journey into Artificial Intelligence and Machine Learning.
-
-Exploring AI &amp; ML step by step ... notebooks, experiments, and notes capturing everything I learn along the way.
-
-
-# AI & Machine Learning – Learning Journey 🚀
 
 This repository is a **live learning log** of my journey into **Artificial Intelligence and Machine Learning**.
 
