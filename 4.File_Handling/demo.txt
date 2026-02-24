@@ -1,1 +1,1 @@
-I am writing this using 'w' modenow I am appending in the file
+I am using read+write mode nowdenow I am appending in the file
