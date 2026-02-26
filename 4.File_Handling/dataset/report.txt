@@ -1,0 +1,6 @@
+birds: 0 files
+cats: 2 files
+dogs: 1 files
+
+Total Classes: 3
+Total Files: 3
