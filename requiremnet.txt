@@ -1,4 +1,4 @@
 ipykernel
 numpy
-pandad
+pandas
 matplotlib
