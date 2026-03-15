@@ -1,0 +1,1201 @@
+employee_id,name,age,city,department,education,experience_years,salary,performance_score,projects_completed,hours_per_week,last_review_notes
+1000,Bilal,26.0,Islamabad,Data,PhD,7.0,154826.0,77.21,13.0,43.0,model data data feature pipeline training
+1001,Zara,32.0,Peshawar,AI,Bachelors,11.0,154881.0,87.03,,57.0,analysis model model data pipeline analysis
+1002,Ayesha,43.0,Quetta,Data,Masters,,,87.85,0.0,55.0,data analysis training model training pipeline system learning prediction system model
+1003,Usman,41.0,,AI,PhD,6.0,125155.0,80.34,15.0,,system system data model neural learning
+1004,Bilal,30.0,Quetta,Backend,Bachelors,5.0,,58.34,2.0,35.0,model data pipeline training system learning model pipeline feature prediction training
+1005,Fatima,42.0,Karachi,Backend,PhD,4.0,139246.0,89.87,8.0,56.0,system neural training learning system pipeline
+1006,Ahmed,41.0,,Frontend,Masters,9.0,134948.0,,3.0,55.0,pipeline learning feature learning system prediction
+1007,Bilal,26.0,Quetta,Data,Bachelors,7.0,61341.0,54.31,4.0,33.0,
+1008,Ayesha,28.0,Quetta,AI,Bachelors,4.0,137554.0,73.19,10.0,37.0,data neural training pipeline learning learning feature analysis feature neural
+1009,Usman,22.0,Karachi,Backend,Bachelors,8.0,147798.0,58.7,,48.0,system prediction learning neural feature training learning learning pipeline analysis system
+1010,Zara,32.0,Karachi,ML,Masters,8.0,86330.0,66.87,2.0,56.0,analysis prediction training model feature pipeline analysis data pipeline learning neural neural
+1011,Ayesha,33.0,Quetta,Backend,PhD,0.0,127759.0,50.9,5.0,34.0,prediction feature analysis learning pipeline training analysis learning system
+1012,Ayesha,,Lahore,ML,Bachelors,5.0,126807.0,70.02,10.0,42.0,analysis feature analysis model system model prediction
+1013,Ahmed,27.0,,AI,PhD,6.0,73313.0,77.49,8.0,45.0,data data analysis model feature training prediction analysis learning
+1014,Hina,30.0,Quetta,Backend,PhD,2.0,86900.0,80.98,14.0,30.0,prediction learning analysis pipeline prediction prediction feature pipeline feature system pipeline system
+1015,Usman,33.0,,Backend,Masters,6.0,118840.0,83.17,2.0,42.0,learning data system analysis data data model pipeline data prediction training model
+1016,Sara,37.0,Karachi,AI,Bachelors,10.0,,91.81,0.0,51.0,data neural analysis feature training analysis data neural
+1017,Ayesha,,Quetta,Backend,,10.0,136367.0,60.77,19.0,40.0,learning model neural neural neural feature pipeline prediction model neural system
+1018,Hina,34.0,Quetta,ML,Bachelors,6.0,89156.0,56.02,18.0,50.0,
+1019,Sara,22.0,Quetta,Backend,Bachelors,13.0,127453.0,92.58,13.0,37.0,neural training analysis model prediction training
+1020,Usman,42.0,Karachi,Data,,12.0,65938.0,57.83,16.0,54.0,prediction training learning neural data neural
+1021,Ali,31.0,Quetta,Frontend,Bachelors,10.0,,,13.0,,learning model system prediction feature
+1022,Fatima,21.0,Quetta,ML,Bachelors,1.0,100282.0,92.13,16.0,53.0,
+1023,Hina,39.0,Peshawar,Data,PhD,6.0,,75.04,,,
+1024,Omar,41.0,Lahore,AI,Masters,14.0,,99.07,11.0,43.0,model analysis training model model training neural
+1025,Ali,24.0,Islamabad,ML,Bachelors,0.0,174731.0,54.87,15.0,,analysis model model pipeline analysis system data pipeline
+1026,Fatima,39.0,Lahore,Frontend,PhD,4.0,155819.0,,0.0,,data system pipeline data system feature model neural prediction prediction
+1027,Ahmed,41.0,Peshawar,Frontend,Masters,8.0,44763.0,81.91,12.0,33.0,analysis analysis learning system model data
+1028,Bilal,,,AI,Masters,6.0,87588.0,67.5,5.0,56.0,
+1029,Zara,28.0,Quetta,AI,PhD,6.0,51221.0,,,49.0,prediction learning learning learning analysis data
+1030,Omar,,Peshawar,ML,PhD,10.0,53569.0,53.28,11.0,44.0,feature data pipeline data neural prediction training model
+1031,Ahmed,,Quetta,Backend,,,,77.47,18.0,44.0,training model system learning prediction learning neural feature analysis learning prediction
+1032,Usman,37.0,Karachi,AI,PhD,11.0,85337.0,79.54,5.0,59.0,analysis training analysis learning learning system training
+1033,Ahmed,27.0,Peshawar,Backend,PhD,1.0,111695.0,82.64,6.0,56.0,training data data learning feature
+1034,Bilal,,Karachi,Data,Bachelors,7.0,146749.0,,0.0,50.0,prediction feature prediction data learning feature learning neural learning prediction feature
+1035,Usman,23.0,Peshawar,Frontend,,2.0,,68.23,0.0,42.0,training training training data feature learning training training data training neural
+1036,Omar,42.0,Peshawar,Backend,Masters,14.0,,92.18,,38.0,training training data pipeline system data model feature system
+1037,Bilal,22.0,Karachi,Frontend,Bachelors,,45636.0,59.75,,57.0,pipeline training system model training data analysis prediction model analysis system
+1038,Sara,43.0,Islamabad,Backend,Bachelors,2.0,117129.0,91.34,15.0,54.0,neural prediction learning training learning model neural analysis training pipeline
+1039,Zara,35.0,Lahore,Data,Bachelors,,173964.0,78.13,15.0,39.0,system model pipeline system system training feature system
+1040,Omar,44.0,Quetta,AI,PhD,6.0,61672.0,88.11,,58.0,
+1041,Sara,42.0,Peshawar,Data,Masters,1.0,45812.0,,0.0,,neural training system data feature pipeline system neural pipeline
+1042,Fatima,,,AI,Masters,3.0,40654.0,60.38,12.0,,
+1043,Omar,25.0,Karachi,AI,,10.0,94633.0,78.44,19.0,30.0,
+1044,Fatima,44.0,,Frontend,Masters,,,93.39,9.0,43.0,feature system system learning pipeline training training training
+1045,Usman,21.0,,Data,Bachelors,10.0,95934.0,,9.0,43.0,data training pipeline neural analysis prediction learning learning neural analysis analysis
+1046,Sara,24.0,,Backend,Bachelors,8.0,107334.0,98.33,8.0,37.0,prediction training pipeline feature analysis training analysis training feature neural
+1047,Zara,35.0,Lahore,Data,PhD,4.0,143463.0,72.61,12.0,45.0,feature training data feature neural data neural feature data
+1048,Bilal,40.0,Lahore,Frontend,,12.0,,57.14,2.0,43.0,
+1049,Ayesha,39.0,Lahore,AI,Bachelors,8.0,,69.47,17.0,30.0,training system feature prediction model training analysis neural
+1050,Ahmed,23.0,Lahore,Frontend,Bachelors,,48446.0,97.59,,,data system training training analysis feature feature training neural data
+1051,Ali,40.0,Lahore,ML,PhD,4.0,142127.0,65.99,1.0,47.0,model system pipeline neural learning neural learning pipeline model system analysis model
+1052,Zara,31.0,Lahore,ML,PhD,9.0,88867.0,,,36.0,learning neural model system data system feature system feature training data
+1053,Sara,,Karachi,Backend,PhD,,100101.0,94.06,18.0,44.0,neural feature model prediction data model
+1054,Ayesha,33.0,Peshawar,Frontend,Bachelors,12.0,128074.0,67.51,12.0,,feature prediction learning model learning
+1055,Zara,31.0,Quetta,Backend,Bachelors,,158422.0,54.16,,46.0,neural learning prediction neural data system pipeline
+1056,Sara,22.0,,Backend,PhD,0.0,,,0.0,48.0,feature learning system analysis prediction analysis
+1057,Hina,29.0,Karachi,ML,Masters,6.0,160044.0,65.58,1.0,52.0,system feature model pipeline pipeline learning feature training pipeline learning prediction
+1058,Hina,22.0,Karachi,Backend,PhD,3.0,79148.0,89.15,0.0,42.0,system neural system analysis system
+1059,Fatima,41.0,Karachi,ML,PhD,,122928.0,72.13,4.0,38.0,training learning prediction pipeline training feature neural feature prediction data training
+1060,Zara,29.0,Peshawar,AI,PhD,,91660.0,74.26,2.0,53.0,neural training analysis system data prediction data neural feature analysis pipeline system
+1061,Hina,29.0,Quetta,Frontend,PhD,4.0,75450.0,88.9,6.0,53.0,
+1062,Sara,28.0,Peshawar,Backend,Bachelors,11.0,73757.0,69.12,12.0,44.0,analysis data neural feature neural model data neural data pipeline system analysis
+1063,Fatima,37.0,Islamabad,ML,Masters,,,72.16,,54.0,neural feature system feature data data learning learning learning analysis
+1064,Sara,21.0,,Data,PhD,11.0,146750.0,68.81,6.0,55.0,learning feature data analysis feature analysis prediction
+1065,Fatima,31.0,Islamabad,Backend,Masters,8.0,,68.37,0.0,32.0,data system system feature learning model model data
+1066,Zara,28.0,Lahore,AI,Masters,1.0,96116.0,76.3,4.0,53.0,pipeline feature learning model data neural system
+1067,Ayesha,30.0,Lahore,AI,Masters,8.0,72152.0,90.44,,30.0,data training learning model neural
+1068,Bilal,27.0,Peshawar,Data,,9.0,146379.0,68.09,7.0,45.0,
+1069,Omar,23.0,Quetta,ML,,1.0,60836.0,76.21,14.0,37.0,pipeline feature data analysis neural neural training prediction system pipeline pipeline
+1070,Ayesha,23.0,Islamabad,Backend,PhD,8.0,109444.0,83.54,19.0,58.0,prediction data data pipeline learning learning
+1071,Usman,38.0,Quetta,ML,Masters,5.0,133109.0,63.47,3.0,52.0,learning neural pipeline neural model data
+1072,Sara,25.0,,AI,Masters,10.0,175451.0,63.88,1.0,42.0,feature neural pipeline prediction feature pipeline pipeline prediction neural
+1073,Usman,32.0,Lahore,ML,Bachelors,8.0,122018.0,96.67,,37.0,pipeline prediction training model learning system feature analysis
+1074,Ayesha,32.0,Quetta,AI,PhD,12.0,163076.0,86.18,,46.0,neural neural system neural data analysis neural analysis training
+1075,Fatima,39.0,Quetta,ML,Masters,,171949.0,,4.0,51.0,pipeline model data pipeline training analysis model feature training analysis
+1076,Omar,26.0,Lahore,Data,Bachelors,,123788.0,,5.0,,neural pipeline prediction learning analysis pipeline neural
+1077,Omar,22.0,Islamabad,Frontend,Masters,,136870.0,51.46,1.0,43.0,neural neural system learning learning neural
+1078,Ali,32.0,Lahore,Data,Bachelors,10.0,123308.0,,0.0,56.0,data prediction training analysis neural system system prediction neural analysis prediction pipeline
+1079,Omar,39.0,Quetta,Data,,13.0,97913.0,75.48,3.0,,neural learning system feature pipeline feature data analysis prediction neural pipeline learning
+1080,Bilal,25.0,Islamabad,Frontend,,1.0,42637.0,77.29,6.0,59.0,feature system model neural data training learning prediction
+1081,Omar,32.0,Islamabad,Frontend,Masters,7.0,,,,50.0,
+1082,Ayesha,,Lahore,Backend,PhD,2.0,139508.0,,,36.0,
+1083,Ali,37.0,Quetta,Backend,Masters,,122464.0,59.67,7.0,56.0,system feature data model feature training analysis pipeline training neural neural
+1084,Ayesha,30.0,Peshawar,Data,,4.0,68742.0,,19.0,44.0,analysis analysis neural system learning pipeline analysis data feature model
+1085,Ayesha,43.0,Quetta,Data,,,51831.0,70.43,15.0,45.0,
+1086,Ahmed,37.0,,AI,PhD,,153768.0,73.33,12.0,48.0,model prediction model learning training prediction model feature data pipeline system model
+1087,Ali,,Peshawar,AI,Bachelors,7.0,,52.64,17.0,,training training system system feature feature training model model pipeline
+1088,Ayesha,32.0,Islamabad,Backend,Masters,2.0,,51.88,19.0,52.0,prediction feature neural model pipeline training neural pipeline prediction
+1089,Ahmed,36.0,Peshawar,Backend,Masters,1.0,128370.0,85.86,9.0,,
+1090,Ahmed,44.0,Islamabad,AI,Bachelors,0.0,,76.9,11.0,41.0,analysis feature learning model training pipeline data prediction learning neural data
+1091,Ali,39.0,Islamabad,AI,PhD,3.0,144824.0,75.44,0.0,47.0,pipeline training neural data analysis model prediction prediction data
+1092,Usman,28.0,Peshawar,ML,Masters,12.0,128741.0,62.16,,45.0,pipeline neural system prediction training learning system system data pipeline model
+1093,Fatima,41.0,Islamabad,ML,Masters,7.0,58830.0,87.24,8.0,41.0,
+1094,Bilal,37.0,Islamabad,AI,PhD,12.0,95044.0,58.41,2.0,49.0,data learning data feature feature pipeline learning model pipeline model
+1095,Fatima,43.0,Karachi,ML,Bachelors,2.0,113948.0,59.5,,42.0,model system learning prediction system neural data feature training system analysis data
+1096,Omar,25.0,Quetta,Frontend,PhD,13.0,109202.0,73.04,8.0,37.0,data training neural training feature system learning
+1097,Bilal,42.0,Quetta,Backend,PhD,0.0,77045.0,64.31,9.0,56.0,learning prediction training feature prediction prediction
+1098,Omar,36.0,Karachi,Backend,PhD,3.0,147509.0,,18.0,58.0,model system data learning system feature data system pipeline system
+1099,Ayesha,26.0,Peshawar,AI,,8.0,55198.0,82.26,15.0,,
+1100,Sara,,,Data,,12.0,109521.0,82.55,17.0,55.0,pipeline learning model model prediction learning data analysis system
+1101,Ali,38.0,Lahore,AI,,0.0,146471.0,91.23,13.0,51.0,pipeline feature prediction neural feature learning neural model neural neural
+1102,Bilal,32.0,Lahore,ML,,11.0,69475.0,70.89,,30.0,model system neural prediction training model pipeline analysis prediction
+1103,Bilal,35.0,Karachi,Data,Masters,13.0,59403.0,53.65,,55.0,model data prediction prediction training model data pipeline prediction model
+1104,Ayesha,29.0,Karachi,ML,PhD,10.0,43681.0,63.68,0.0,,data learning analysis model feature data data training system learning
+1105,Usman,33.0,Islamabad,Frontend,Masters,1.0,,99.0,17.0,36.0,data prediction prediction analysis feature
+1106,Ahmed,35.0,Lahore,ML,Masters,8.0,158884.0,79.81,8.0,44.0,
+1107,Ayesha,30.0,Peshawar,Frontend,Masters,1.0,133122.0,85.49,12.0,,data learning neural learning model neural system
+1108,Hina,36.0,,Frontend,Masters,12.0,155260.0,50.37,1.0,51.0,neural data pipeline feature prediction pipeline
+1109,Ahmed,27.0,Lahore,ML,Bachelors,2.0,145386.0,75.91,,,neural prediction model neural neural pipeline neural prediction model
+1110,Ali,37.0,Lahore,ML,Masters,6.0,176701.0,,15.0,42.0,
+1111,Ahmed,,Lahore,Frontend,,2.0,133246.0,78.46,18.0,57.0,prediction analysis neural pipeline model feature training pipeline feature feature data
+1112,Usman,41.0,,Data,PhD,8.0,135864.0,96.04,14.0,38.0,training neural training system feature system system data prediction pipeline neural model
+1113,Ahmed,42.0,Karachi,Frontend,,5.0,,98.42,10.0,53.0,model model feature training analysis analysis
+1114,Ali,27.0,Karachi,Backend,Bachelors,2.0,158888.0,77.03,,44.0,
+1115,Usman,34.0,,Frontend,PhD,8.0,,72.91,6.0,33.0,
+1116,Fatima,35.0,Peshawar,Data,Masters,0.0,170908.0,97.25,,42.0,training prediction training pipeline pipeline model prediction training data learning feature
+1117,Bilal,41.0,Peshawar,Backend,PhD,,,83.68,7.0,56.0,prediction system learning learning pipeline model feature prediction model
+1118,Bilal,,,AI,Bachelors,2.0,51332.0,53.24,9.0,41.0,system neural learning system system prediction analysis training
+1119,Omar,,Karachi,AI,,,59177.0,73.29,4.0,34.0,learning pipeline pipeline data pipeline neural neural
+1120,Fatima,39.0,Quetta,Data,PhD,,170560.0,,8.0,36.0,data analysis system learning pipeline analysis analysis system data
+1121,Fatima,36.0,Quetta,Frontend,Bachelors,11.0,97104.0,73.49,0.0,37.0,model system data learning data
+1122,Ahmed,28.0,Peshawar,ML,Bachelors,7.0,124335.0,72.77,1.0,34.0,learning neural neural learning analysis data analysis pipeline system system
+1123,Bilal,38.0,,Data,Masters,6.0,,79.11,18.0,38.0,
+1124,Ali,43.0,Islamabad,Backend,PhD,1.0,120730.0,,,43.0,feature neural learning model system training pipeline training prediction model training
+1125,Zara,38.0,Karachi,Backend,Masters,1.0,176023.0,58.21,19.0,55.0,
+1126,Zara,40.0,Lahore,AI,PhD,8.0,,75.19,9.0,41.0,analysis learning feature system prediction pipeline
+1127,Usman,27.0,Karachi,Backend,PhD,12.0,61673.0,91.51,,33.0,
+1128,Bilal,23.0,Lahore,Data,Masters,12.0,154421.0,83.2,,,
+1129,Bilal,38.0,Lahore,Backend,PhD,5.0,,66.92,5.0,58.0,feature analysis system model neural model system data pipeline
+1130,Zara,30.0,Islamabad,Data,PhD,4.0,167536.0,96.78,16.0,37.0,pipeline analysis neural analysis feature training
+1131,Bilal,27.0,Peshawar,ML,PhD,9.0,,95.61,5.0,46.0,prediction analysis learning pipeline analysis prediction neural training training prediction model pipeline
+1132,Ahmed,37.0,Karachi,AI,Bachelors,5.0,62821.0,60.47,3.0,37.0,data neural neural analysis learning
+1133,Hina,34.0,Lahore,Backend,Masters,8.0,65494.0,51.97,19.0,50.0,
+1134,Sara,44.0,Karachi,Data,Bachelors,10.0,139477.0,,2.0,58.0,
+1135,Fatima,23.0,Peshawar,Frontend,Masters,6.0,166083.0,,,59.0,learning feature model analysis pipeline system learning feature prediction prediction prediction
+1136,Omar,32.0,Peshawar,AI,Masters,14.0,152698.0,,17.0,56.0,pipeline neural system system learning data
+1137,Usman,33.0,Quetta,ML,PhD,9.0,151560.0,94.49,3.0,30.0,learning prediction learning data feature analysis analysis feature analysis pipeline training pipeline
+1138,Hina,22.0,Peshawar,Data,,9.0,171907.0,80.03,7.0,49.0,learning learning pipeline pipeline prediction feature model system feature prediction pipeline
+1139,Zara,23.0,Islamabad,ML,Bachelors,13.0,58646.0,76.5,16.0,31.0,data data prediction feature prediction learning pipeline analysis neural feature feature analysis
+1140,Fatima,25.0,Lahore,ML,,8.0,,51.39,4.0,33.0,prediction training training learning data pipeline training analysis learning training training
+1141,Bilal,,Quetta,Backend,Bachelors,3.0,,62.33,12.0,53.0,
+1142,Omar,28.0,Islamabad,Backend,Masters,1.0,77335.0,72.98,0.0,50.0,neural system system system model
+1143,Bilal,43.0,Karachi,Data,Bachelors,11.0,109351.0,81.43,,30.0,model prediction training pipeline feature learning data training
+1144,Ali,43.0,Lahore,Frontend,Masters,,154934.0,,3.0,36.0,feature neural pipeline prediction model data learning
+1145,Ali,32.0,Peshawar,Data,,3.0,173501.0,87.13,13.0,30.0,learning data system model neural feature neural learning prediction analysis model
+1146,Omar,27.0,,Frontend,,12.0,81950.0,63.99,2.0,,feature data model system analysis learning pipeline analysis
+1147,Omar,35.0,Karachi,ML,Masters,8.0,100654.0,78.25,4.0,32.0,model analysis analysis prediction analysis system neural pipeline prediction data
+1148,Zara,44.0,Quetta,AI,Bachelors,,147422.0,54.41,6.0,41.0,system model data pipeline learning
+1149,Omar,37.0,Quetta,Data,PhD,14.0,149934.0,70.68,0.0,48.0,learning system system pipeline training pipeline prediction neural learning learning
+1150,Ahmed,24.0,Quetta,Data,Masters,3.0,,87.51,11.0,44.0,model data feature training system system system training neural model pipeline data
+1151,Bilal,42.0,,Frontend,Masters,14.0,131186.0,84.67,10.0,51.0,
+1152,Hina,,Islamabad,ML,Masters,7.0,144234.0,99.53,7.0,45.0,training system prediction neural neural prediction analysis training feature model pipeline training
+1153,Ayesha,38.0,Islamabad,ML,PhD,8.0,142326.0,63.89,5.0,39.0,system model pipeline system pipeline neural pipeline system model
+1154,Omar,21.0,Lahore,Frontend,Masters,12.0,117527.0,74.91,1.0,51.0,pipeline neural pipeline feature model pipeline neural analysis feature learning
+1155,Usman,36.0,Peshawar,ML,Bachelors,8.0,126704.0,66.48,18.0,58.0,learning pipeline feature model model
+1156,Ali,33.0,Quetta,Backend,Bachelors,9.0,136952.0,72.03,19.0,56.0,system prediction model learning neural system neural model learning system
+1157,Ahmed,30.0,Quetta,AI,Bachelors,3.0,,92.85,,56.0,pipeline data learning feature neural system analysis data data neural
+1158,Fatima,32.0,Karachi,Data,Masters,0.0,111116.0,84.21,13.0,35.0,pipeline prediction data learning model learning feature prediction training
+1159,Ayesha,22.0,Karachi,AI,,14.0,129626.0,94.12,0.0,58.0,pipeline feature analysis data data learning feature feature learning system
+1160,Hina,43.0,Quetta,Data,Masters,2.0,86015.0,60.18,,46.0,
+1161,Ayesha,23.0,Quetta,Backend,Bachelors,8.0,142877.0,93.67,15.0,50.0,pipeline model system prediction feature analysis feature
+1162,Omar,30.0,Peshawar,ML,PhD,3.0,,,3.0,57.0,learning system model neural analysis learning
+1163,Zara,22.0,Islamabad,Frontend,PhD,4.0,174563.0,94.43,10.0,51.0,feature learning analysis training training analysis system
+1164,Ali,43.0,Karachi,Backend,PhD,6.0,171778.0,66.45,15.0,53.0,system feature system prediction training training data
+1165,Ali,33.0,Islamabad,AI,PhD,4.0,137493.0,65.73,19.0,58.0,learning system analysis analysis learning prediction learning pipeline feature
+1166,Fatima,33.0,Peshawar,Frontend,Masters,,178069.0,75.6,0.0,46.0,training analysis training model model pipeline analysis pipeline feature neural
+1167,Zara,38.0,Quetta,ML,Bachelors,14.0,,97.03,15.0,50.0,neural pipeline data prediction neural
+1168,Bilal,23.0,Islamabad,Backend,PhD,,161648.0,52.39,18.0,48.0,data model model neural neural data pipeline system feature feature training
+1169,Sara,,Quetta,Frontend,,14.0,65163.0,67.61,8.0,,
+1170,Ahmed,,Quetta,Backend,PhD,1.0,127508.0,92.83,8.0,,prediction prediction training prediction feature learning learning prediction
+1171,Ali,40.0,Lahore,Backend,PhD,12.0,79619.0,69.8,8.0,53.0,neural system model prediction analysis prediction data system model neural training pipeline
+1172,Usman,37.0,Islamabad,ML,,12.0,52126.0,59.96,16.0,36.0,data model learning learning data system neural model model analysis system data
+1173,Ali,,Islamabad,Data,Masters,3.0,,71.24,11.0,39.0,
+1174,Ayesha,32.0,Quetta,Frontend,Bachelors,9.0,,69.28,,36.0,learning analysis analysis model learning system neural
+1175,Ali,36.0,Peshawar,ML,Bachelors,12.0,43317.0,95.77,7.0,34.0,learning training learning prediction system system pipeline training analysis analysis analysis neural
+1176,Ali,44.0,Lahore,Backend,PhD,9.0,84980.0,88.1,15.0,41.0,
+1177,Sara,32.0,Quetta,ML,,12.0,84115.0,75.26,17.0,45.0,data pipeline prediction analysis data model neural analysis feature feature system training
+1178,Sara,,Karachi,Data,Bachelors,14.0,83158.0,99.42,,,model prediction learning model system learning pipeline neural
+1179,Hina,30.0,Karachi,Frontend,Bachelors,8.0,145364.0,73.26,,54.0,training feature model learning data system pipeline analysis system learning prediction system
+1180,Bilal,,Lahore,Data,Masters,7.0,,,11.0,,
+1181,Usman,40.0,Peshawar,AI,Bachelors,2.0,77196.0,63.11,,,feature feature pipeline neural neural analysis prediction feature data
+1182,Ali,25.0,Quetta,Frontend,,14.0,,71.8,8.0,32.0,training system system feature learning model prediction model prediction pipeline feature
+1183,Ali,21.0,Islamabad,Data,PhD,13.0,179677.0,57.85,4.0,49.0,data analysis prediction pipeline learning pipeline analysis data
+1184,Ahmed,37.0,Lahore,Backend,Bachelors,8.0,97388.0,97.38,15.0,44.0,pipeline model neural feature learning feature model analysis
+1185,Sara,23.0,Peshawar,Frontend,PhD,13.0,95501.0,88.34,17.0,34.0,neural prediction training neural learning prediction system
+1186,Usman,33.0,Islamabad,Frontend,Bachelors,4.0,67043.0,63.41,16.0,42.0,prediction model analysis analysis feature
+1187,Fatima,34.0,,ML,Masters,10.0,73635.0,79.54,17.0,48.0,
+1188,Hina,44.0,,Backend,Bachelors,2.0,120691.0,86.07,,41.0,feature learning feature training data model data pipeline prediction system neural
+1189,Bilal,38.0,Islamabad,AI,Bachelors,4.0,73132.0,97.06,18.0,,training learning analysis data training system feature pipeline feature model system data
+1190,Zara,24.0,Lahore,Data,Bachelors,12.0,,94.08,7.0,52.0,learning training training training analysis model pipeline learning
+1191,Bilal,38.0,Karachi,ML,PhD,9.0,133944.0,75.76,2.0,,neural prediction model system neural data system
+1192,Ayesha,25.0,Quetta,Data,Masters,12.0,155267.0,88.73,,34.0,
+1193,Ali,36.0,Islamabad,AI,,3.0,79236.0,78.11,,35.0,neural analysis training feature system learning prediction
+1194,Hina,21.0,Islamabad,AI,PhD,,,,18.0,,system data prediction neural neural prediction system feature prediction
+1195,Ayesha,41.0,Karachi,Frontend,Masters,12.0,151369.0,55.74,17.0,55.0,feature pipeline analysis feature analysis analysis system prediction
+1196,Usman,34.0,Lahore,AI,PhD,11.0,,56.31,17.0,39.0,model analysis analysis analysis learning system
+1197,Zara,35.0,Quetta,Data,PhD,4.0,44137.0,76.48,0.0,45.0,learning data analysis model analysis training neural analysis neural model neural training
+1198,Sara,29.0,Lahore,Backend,Masters,9.0,69992.0,63.44,14.0,37.0,system training feature analysis model
+1199,Hina,35.0,Peshawar,Backend,Bachelors,11.0,150540.0,51.05,17.0,38.0,
+1200,Hina,37.0,,Frontend,PhD,7.0,155140.0,86.14,6.0,56.0,system training neural prediction system model prediction training learning training learning
+1201,Ali,44.0,,Data,PhD,8.0,161225.0,,15.0,33.0,analysis feature data model model data pipeline analysis analysis training data
+1202,Omar,24.0,Karachi,Data,,3.0,106917.0,79.76,15.0,50.0,learning learning training feature model pipeline pipeline prediction training data
+1203,Hina,32.0,Karachi,AI,Bachelors,6.0,113690.0,76.96,14.0,50.0,learning model analysis feature model feature
+1204,Ahmed,25.0,Peshawar,Data,Masters,1.0,74235.0,98.44,5.0,37.0,neural analysis feature feature learning prediction data prediction analysis analysis feature
+1205,Zara,25.0,Lahore,ML,Masters,5.0,59122.0,74.21,,54.0,data training prediction analysis neural data analysis analysis feature learning
+1206,Zara,31.0,,AI,,7.0,63956.0,53.18,6.0,36.0,analysis model system pipeline system analysis pipeline neural data learning analysis
+1207,Ahmed,26.0,,ML,,,103879.0,77.58,,44.0,training system feature training prediction analysis prediction analysis
+1208,Fatima,27.0,Quetta,Frontend,PhD,6.0,98560.0,92.05,,50.0,system data system model neural system analysis
+1209,Ahmed,44.0,Lahore,Backend,PhD,6.0,,99.84,15.0,32.0,model system pipeline model model training analysis pipeline
+1210,Ahmed,34.0,Peshawar,Frontend,Masters,7.0,41168.0,71.52,5.0,46.0,neural training system prediction model prediction prediction learning
+1211,Zara,44.0,Islamabad,Backend,Bachelors,6.0,85124.0,66.01,15.0,40.0,prediction pipeline feature system data system data neural pipeline system system training
+1212,Bilal,31.0,Islamabad,Frontend,PhD,4.0,92797.0,95.33,19.0,38.0,model prediction neural training prediction system neural analysis data learning data prediction
+1213,Zara,,Islamabad,Data,Masters,6.0,75294.0,59.56,15.0,34.0,data learning data analysis data analysis prediction system feature neural feature
+1214,Omar,22.0,Quetta,ML,,12.0,43516.0,80.77,11.0,54.0,neural feature system learning analysis learning training prediction prediction analysis training model
+1215,Ali,27.0,Karachi,Backend,PhD,13.0,70373.0,70.29,16.0,39.0,feature neural training data feature
+1216,Ayesha,40.0,Peshawar,AI,Bachelors,9.0,162026.0,52.05,4.0,44.0,data neural model pipeline prediction
+1217,Bilal,24.0,Quetta,ML,,2.0,,67.36,,57.0,pipeline model analysis neural model feature analysis data analysis pipeline neural prediction
+1218,Sara,28.0,Peshawar,AI,PhD,4.0,105184.0,63.26,7.0,58.0,learning model learning learning analysis training data
+1219,Ayesha,40.0,Peshawar,ML,Masters,6.0,77879.0,,4.0,43.0,
+1220,Ali,42.0,Karachi,ML,Bachelors,14.0,89597.0,97.44,,33.0,system analysis model model learning neural neural feature analysis training model
+1221,Omar,41.0,Islamabad,Frontend,PhD,,43626.0,63.4,8.0,50.0,data prediction pipeline analysis data
+1222,Omar,39.0,,Backend,Bachelors,14.0,125936.0,90.57,2.0,49.0,
+1223,Sara,33.0,Quetta,Backend,,,,52.77,,,prediction analysis feature feature system
+1224,Bilal,34.0,,ML,Bachelors,3.0,,76.91,0.0,,data analysis analysis training pipeline analysis
+1225,Fatima,30.0,Quetta,Data,,11.0,,53.53,17.0,30.0,feature learning prediction feature analysis prediction model neural training system feature
+1226,Ahmed,31.0,Karachi,Data,Masters,,44025.0,96.7,11.0,53.0,prediction system pipeline feature neural data analysis system learning analysis system
+1227,Bilal,22.0,Peshawar,AI,Masters,0.0,119380.0,88.32,8.0,49.0,feature feature model learning feature pipeline feature system learning
+1228,Fatima,29.0,Peshawar,AI,Masters,12.0,158910.0,82.9,8.0,34.0,prediction neural feature learning model
+1229,Omar,37.0,,Frontend,Bachelors,1.0,,91.19,17.0,35.0,neural analysis neural model system model analysis system system data system
+1230,Zara,23.0,Quetta,ML,PhD,8.0,166189.0,82.38,17.0,59.0,feature analysis prediction data analysis pipeline
+1231,Ali,44.0,Peshawar,AI,Bachelors,12.0,174515.0,,,53.0,learning system neural model neural neural neural
+1232,Sara,26.0,Lahore,AI,,9.0,61395.0,85.7,3.0,40.0,system prediction feature neural pipeline neural
+1233,Ali,25.0,Peshawar,ML,Masters,6.0,50725.0,96.23,12.0,37.0,system prediction system pipeline training system system
+1234,Usman,25.0,Quetta,Frontend,,11.0,73461.0,75.86,16.0,36.0,system pipeline pipeline neural learning system system
+1235,Usman,42.0,Islamabad,AI,Bachelors,9.0,81115.0,55.85,1.0,33.0,
+1236,Bilal,,Quetta,Frontend,Masters,6.0,150084.0,76.41,13.0,35.0,
+1237,Omar,43.0,Karachi,Backend,PhD,5.0,123732.0,56.34,,45.0,feature model prediction neural neural analysis prediction pipeline analysis feature system
+1238,Omar,,Peshawar,Frontend,Bachelors,2.0,,79.62,4.0,49.0,learning data pipeline learning pipeline analysis
+1239,Ahmed,,Peshawar,Data,Bachelors,9.0,111260.0,74.12,13.0,44.0,prediction system feature learning model data feature analysis pipeline data system
+1240,Ahmed,23.0,,Data,Masters,2.0,41407.0,81.13,2.0,43.0,feature analysis analysis system model learning neural prediction learning prediction learning system
+1241,Ahmed,40.0,Karachi,Frontend,Masters,1.0,,50.5,6.0,52.0,feature analysis system model feature neural model model feature model system learning
+1242,Zara,37.0,,Data,Bachelors,10.0,98560.0,59.74,,41.0,prediction feature analysis analysis system neural neural
+1243,Ayesha,,Peshawar,Backend,Bachelors,5.0,131288.0,74.57,12.0,58.0,pipeline learning pipeline system feature training neural neural model data data
+1244,Hina,23.0,Peshawar,ML,Masters,3.0,159020.0,97.53,9.0,41.0,analysis feature analysis system learning learning
+1245,Ayesha,38.0,Islamabad,Data,,4.0,139301.0,69.18,12.0,45.0,analysis pipeline analysis pipeline analysis system training pipeline training feature data pipeline
+1246,Ali,38.0,Lahore,Data,Masters,2.0,54390.0,71.22,15.0,44.0,pipeline system data learning system learning
+1247,Ayesha,37.0,,Frontend,Bachelors,5.0,67307.0,85.73,8.0,58.0,neural learning system learning pipeline pipeline pipeline prediction analysis neural learning
+1248,Zara,44.0,Quetta,Backend,,10.0,,80.19,1.0,42.0,
+1249,Ali,23.0,Peshawar,ML,PhD,11.0,62486.0,64.95,4.0,40.0,neural training neural model model feature data data analysis learning neural feature
+1250,Ayesha,23.0,Karachi,Frontend,Masters,2.0,,70.54,16.0,59.0,
+1251,Zara,26.0,Quetta,Frontend,Masters,13.0,143920.0,,3.0,46.0,data prediction neural system training neural prediction feature
+1252,Hina,33.0,Peshawar,Backend,PhD,14.0,,98.3,16.0,,data feature pipeline training pipeline neural pipeline feature
+1253,Ayesha,44.0,Islamabad,ML,Bachelors,13.0,102785.0,56.53,,44.0,training analysis analysis analysis learning prediction data analysis
+1254,Zara,35.0,Quetta,Backend,,7.0,,68.59,,43.0,learning feature neural model data pipeline
+1255,Ahmed,29.0,Peshawar,ML,Masters,8.0,,51.29,1.0,39.0,data feature training feature pipeline neural analysis
+1256,Omar,24.0,Lahore,Backend,Bachelors,3.0,,61.09,17.0,41.0,pipeline system model feature feature neural feature pipeline training
+1257,Ahmed,34.0,Lahore,Frontend,PhD,14.0,113606.0,89.02,10.0,45.0,prediction system model feature feature feature neural pipeline system model analysis data
+1258,Omar,25.0,Karachi,Frontend,Bachelors,8.0,81662.0,60.06,12.0,44.0,training neural system data analysis learning training feature training feature model
+1259,Sara,22.0,Peshawar,AI,Bachelors,11.0,,54.0,7.0,39.0,
+1260,Sara,31.0,Lahore,Data,,6.0,55123.0,,0.0,33.0,pipeline data system prediction learning system
+1261,Sara,29.0,,Backend,,2.0,51182.0,50.5,16.0,56.0,feature feature neural model model data model analysis analysis
+1262,Hina,44.0,,AI,PhD,6.0,130369.0,54.24,11.0,52.0,
+1263,Ahmed,23.0,Islamabad,Data,Masters,,66128.0,90.38,3.0,58.0,system training training pipeline pipeline model analysis
+1264,Omar,,Islamabad,Backend,Bachelors,,71556.0,88.57,,,neural feature pipeline learning neural pipeline training
+1265,Zara,23.0,Lahore,ML,Masters,2.0,91962.0,95.76,8.0,50.0,training learning learning feature system neural
+1266,Ali,22.0,Peshawar,Data,Masters,5.0,130054.0,92.73,6.0,49.0,data pipeline data pipeline feature data prediction
+1267,Zara,32.0,Quetta,Frontend,,3.0,64099.0,84.16,4.0,38.0,training pipeline system analysis analysis
+1268,Ali,30.0,,AI,PhD,6.0,93144.0,52.62,4.0,50.0,data model training prediction neural learning neural analysis analysis prediction prediction
+1269,Usman,29.0,Lahore,Data,Bachelors,13.0,47837.0,89.14,,54.0,learning training analysis system pipeline feature prediction feature model model
+1270,Zara,35.0,Peshawar,Data,Masters,,,92.28,8.0,53.0,data prediction prediction system data feature feature neural neural
+1271,Ayesha,28.0,Peshawar,Frontend,Masters,0.0,156680.0,,5.0,49.0,data system analysis data training analysis system
+1272,Ayesha,25.0,Islamabad,Backend,PhD,8.0,,75.42,18.0,40.0,
+1273,Bilal,31.0,Peshawar,ML,Bachelors,14.0,142413.0,61.65,15.0,40.0,neural pipeline system feature feature learning
+1274,Ahmed,22.0,Islamabad,Frontend,Masters,,,92.27,1.0,36.0,
+1275,Ali,44.0,,ML,Masters,7.0,170193.0,86.36,9.0,50.0,feature training feature learning training system neural
+1276,Ali,35.0,Karachi,Backend,Masters,2.0,98123.0,,15.0,,data prediction pipeline neural analysis model
+1277,Ahmed,26.0,Quetta,Data,PhD,7.0,151825.0,57.78,4.0,33.0,system data learning analysis feature data analysis
+1278,Hina,28.0,Lahore,ML,Masters,1.0,48720.0,61.28,14.0,34.0,training model model system prediction
+1279,Bilal,25.0,Peshawar,AI,Masters,11.0,98655.0,60.59,12.0,34.0,prediction training analysis prediction feature neural system
+1280,Hina,36.0,,AI,Bachelors,3.0,133448.0,,12.0,40.0,prediction system training analysis learning pipeline model data analysis model neural
+1281,Hina,38.0,Karachi,Frontend,Bachelors,,160507.0,59.35,12.0,38.0,training feature system model neural system data feature feature data system prediction
+1282,Hina,26.0,Karachi,Backend,,9.0,,53.33,14.0,57.0,feature analysis feature learning prediction model analysis pipeline
+1283,Ahmed,25.0,Islamabad,Frontend,Masters,0.0,89570.0,99.93,13.0,45.0,prediction model pipeline training feature
+1284,Hina,36.0,Quetta,Frontend,Bachelors,14.0,90901.0,51.24,,38.0,data prediction neural prediction prediction learning
+1285,Ayesha,33.0,Islamabad,Frontend,,12.0,100186.0,,,51.0,model prediction training analysis feature system prediction model model
+1286,Sara,25.0,Lahore,AI,PhD,12.0,,68.27,17.0,59.0,pipeline system analysis model pipeline learning data
+1287,Usman,33.0,Quetta,AI,PhD,,168364.0,92.08,3.0,33.0,
+1288,Ali,37.0,Lahore,Frontend,,,,77.73,9.0,31.0,learning neural neural analysis prediction data
+1289,Ali,38.0,Islamabad,AI,PhD,9.0,59156.0,95.08,,43.0,
+1290,Usman,28.0,Quetta,Backend,PhD,1.0,116208.0,96.31,4.0,32.0,model data system analysis pipeline data prediction
+1291,Ahmed,33.0,,Frontend,PhD,,135377.0,50.45,,,prediction training analysis analysis model
+1292,Zara,39.0,Quetta,AI,PhD,,82863.0,53.77,0.0,50.0,training learning model training prediction learning
+1293,Ahmed,23.0,,ML,Bachelors,5.0,105439.0,62.52,,35.0,system pipeline pipeline analysis data training model model prediction neural learning
+1294,Ali,44.0,Karachi,Frontend,PhD,7.0,178266.0,83.47,2.0,40.0,learning prediction model prediction neural feature neural system neural system
+1295,Ali,28.0,Islamabad,Frontend,,1.0,161361.0,94.41,,50.0,data neural learning pipeline pipeline pipeline neural
+1296,Usman,22.0,,Backend,PhD,6.0,136176.0,73.0,,47.0,model data learning learning training analysis pipeline training feature prediction feature system
+1297,Hina,28.0,Islamabad,Data,Masters,5.0,69777.0,80.35,3.0,41.0,system analysis system data model analysis model training data training neural system
+1298,Ahmed,33.0,Quetta,Data,,,127201.0,59.42,,34.0,
+1299,Omar,33.0,,Backend,Bachelors,13.0,55867.0,90.25,14.0,38.0,analysis prediction system prediction prediction learning data system
+1300,Usman,,Quetta,Backend,Bachelors,8.0,102501.0,98.37,7.0,49.0,prediction model feature prediction analysis analysis learning prediction training neural
+1301,Ayesha,26.0,Peshawar,Backend,PhD,6.0,79422.0,63.43,,57.0,learning model model pipeline model neural system pipeline training
+1302,Ali,44.0,Lahore,Data,PhD,0.0,,74.74,6.0,55.0,feature prediction training system model analysis prediction feature training training
+1303,Usman,,Quetta,Backend,Masters,13.0,178439.0,54.31,17.0,,
+1304,Ahmed,,Karachi,AI,Bachelors,7.0,,77.96,10.0,48.0,feature neural pipeline neural system feature analysis
+1305,Ali,28.0,Quetta,Frontend,PhD,10.0,,75.14,10.0,32.0,data analysis learning system pipeline learning feature prediction prediction system
+1306,Zara,21.0,Peshawar,Frontend,Bachelors,9.0,166683.0,57.22,,38.0,learning system training pipeline pipeline
+1307,Usman,36.0,Karachi,ML,Masters,,76307.0,72.1,5.0,33.0,prediction learning feature data prediction learning
+1308,Bilal,29.0,Peshawar,ML,Masters,2.0,120280.0,66.71,,46.0,training pipeline feature system model data
+1309,Ali,33.0,Karachi,Frontend,Masters,13.0,96523.0,76.09,0.0,46.0,system feature feature model neural neural
+1310,Ahmed,31.0,Islamabad,AI,Bachelors,1.0,177450.0,79.28,9.0,52.0,training neural system analysis learning neural training
+1311,Sara,33.0,Lahore,Data,,11.0,,50.42,,52.0,learning model training data system prediction model learning
+1312,Omar,,Lahore,Data,PhD,2.0,143215.0,88.05,2.0,31.0,learning model prediction prediction system prediction training feature neural pipeline pipeline
+1313,Fatima,30.0,Peshawar,AI,Masters,10.0,138707.0,85.65,3.0,38.0,learning learning data learning pipeline feature feature data data data model
+1314,Hina,24.0,Lahore,Data,,,,68.31,10.0,38.0,learning system neural data pipeline pipeline learning model learning data model training
+1315,Fatima,26.0,Peshawar,Backend,Masters,12.0,158070.0,52.65,,34.0,feature neural training data pipeline system system system learning
+1316,Ahmed,27.0,Peshawar,Frontend,Bachelors,13.0,119872.0,87.75,0.0,44.0,data neural data data model
+1317,Ayesha,25.0,Peshawar,Frontend,Masters,2.0,127736.0,97.76,8.0,44.0,model system analysis prediction analysis analysis
+1318,Ayesha,,Lahore,AI,Bachelors,,45470.0,62.01,,32.0,training neural analysis training neural training neural model prediction feature analysis
+1319,Sara,,Peshawar,Data,Masters,4.0,132969.0,66.18,18.0,48.0,learning feature learning prediction prediction training learning
+1320,Hina,39.0,Lahore,ML,PhD,5.0,131493.0,59.19,12.0,57.0,
+1321,Bilal,43.0,,ML,PhD,,46523.0,78.85,15.0,32.0,training analysis prediction model feature analysis feature learning learning analysis
+1322,Sara,30.0,Quetta,Data,,6.0,71169.0,,3.0,35.0,
+1323,Fatima,30.0,Peshawar,ML,PhD,13.0,85641.0,67.81,0.0,33.0,
+1324,Sara,,Karachi,AI,PhD,,69661.0,84.85,19.0,53.0,model neural data system system feature system training
+1325,Fatima,41.0,Peshawar,AI,PhD,7.0,,78.01,12.0,42.0,prediction data system feature feature system
+1326,Ali,27.0,Islamabad,Data,Bachelors,2.0,,69.32,0.0,56.0,pipeline model neural prediction neural neural analysis system model feature model
+1327,Ayesha,38.0,Peshawar,ML,PhD,3.0,143619.0,71.01,4.0,42.0,learning training training model learning training training data neural prediction feature
+1328,Ali,24.0,Karachi,AI,Bachelors,5.0,116102.0,78.11,4.0,56.0,system neural system prediction pipeline data neural neural prediction
+1329,Omar,,Karachi,AI,Masters,,73085.0,50.29,13.0,40.0,analysis system learning training feature pipeline data system learning analysis prediction training
+1330,Hina,34.0,Lahore,Backend,PhD,6.0,,53.93,13.0,34.0,pipeline data neural model feature feature model prediction
+1331,Bilal,33.0,Quetta,Backend,PhD,8.0,177202.0,94.06,7.0,30.0,pipeline model data training system prediction pipeline
+1332,Fatima,,Peshawar,AI,PhD,12.0,145723.0,53.89,3.0,38.0,training training neural data system analysis pipeline analysis model prediction prediction
+1333,Bilal,27.0,,Data,Masters,,173114.0,85.34,,46.0,analysis analysis data pipeline neural system data system data pipeline
+1334,Fatima,22.0,Quetta,Frontend,,12.0,110134.0,96.0,,51.0,
+1335,Ahmed,33.0,Peshawar,Frontend,Bachelors,14.0,82982.0,,18.0,30.0,pipeline prediction data neural system
+1336,Sara,34.0,Islamabad,AI,PhD,7.0,,68.52,14.0,32.0,analysis prediction training system feature
+1337,Omar,,,AI,Masters,7.0,73477.0,78.45,3.0,44.0,prediction pipeline analysis training training training learning model learning data training feature
+1338,Ayesha,29.0,Karachi,AI,Masters,5.0,154161.0,94.09,18.0,55.0,prediction training pipeline data data training neural
+1339,Fatima,37.0,Karachi,Data,Masters,3.0,92709.0,97.1,8.0,50.0,system analysis neural learning model pipeline analysis pipeline neural learning
+1340,Bilal,28.0,Islamabad,Backend,Masters,2.0,118137.0,86.98,12.0,55.0,
+1341,Omar,22.0,Lahore,AI,Masters,10.0,76018.0,54.33,,52.0,system prediction training prediction learning training learning model
+1342,Zara,,Quetta,AI,Bachelors,2.0,179133.0,83.46,13.0,59.0,pipeline learning pipeline model data feature learning feature neural feature
+1343,Zara,33.0,Peshawar,ML,Bachelors,5.0,179681.0,70.52,9.0,39.0,learning neural neural neural neural model
+1344,Ali,,Karachi,Data,Bachelors,12.0,75371.0,73.54,15.0,37.0,feature prediction training feature analysis model model feature
+1345,Ayesha,,Lahore,AI,PhD,7.0,,,4.0,41.0,pipeline system learning system analysis learning training data
+1346,Ahmed,26.0,,ML,Masters,6.0,47857.0,,5.0,54.0,neural analysis analysis neural pipeline learning prediction neural feature
+1347,Bilal,,Karachi,Frontend,PhD,10.0,,89.53,1.0,51.0,
+1348,Sara,27.0,Islamabad,AI,Masters,0.0,128578.0,,12.0,,learning feature feature system pipeline feature pipeline
+1349,Sara,,Peshawar,AI,Bachelors,10.0,129941.0,,12.0,56.0,pipeline pipeline model pipeline neural
+1350,Bilal,29.0,Quetta,ML,PhD,,51826.0,69.2,18.0,38.0,learning data feature data pipeline model neural learning analysis pipeline feature
+1351,Hina,,Karachi,Data,Bachelors,6.0,,,17.0,53.0,training learning feature learning learning learning learning learning data analysis data
+1352,Ahmed,,Karachi,AI,Masters,11.0,166044.0,87.45,18.0,54.0,data model neural data prediction system model pipeline prediction training pipeline
+1353,Omar,25.0,Peshawar,Frontend,Masters,6.0,115020.0,,0.0,39.0,prediction feature model feature prediction pipeline neural
+1354,Fatima,42.0,Lahore,AI,Masters,8.0,45495.0,55.88,7.0,49.0,
+1355,Hina,24.0,Quetta,Frontend,Bachelors,10.0,68481.0,62.6,15.0,38.0,model learning pipeline system training
+1356,Fatima,40.0,Karachi,Backend,Masters,10.0,157897.0,96.04,,44.0,training model training learning neural prediction data system training
+1357,Fatima,24.0,Quetta,Backend,,9.0,177815.0,79.08,7.0,52.0,
+1358,Hina,38.0,Karachi,Frontend,PhD,4.0,143475.0,,5.0,50.0,pipeline feature pipeline training training feature training
+1359,Ali,,,Data,Masters,0.0,97042.0,79.82,,50.0,prediction learning neural model data system feature pipeline feature analysis analysis prediction
+1360,Zara,37.0,,AI,Masters,1.0,89476.0,68.3,10.0,30.0,analysis pipeline pipeline neural feature neural pipeline pipeline learning training
+1361,Fatima,32.0,Karachi,AI,Masters,14.0,68552.0,,16.0,31.0,model prediction analysis neural neural
+1362,Hina,42.0,,Backend,PhD,3.0,109093.0,76.16,18.0,55.0,model neural data prediction model data pipeline
+1363,Hina,37.0,Lahore,Frontend,,4.0,109123.0,55.84,10.0,48.0,training model neural analysis model neural system prediction feature model neural
+1364,Usman,,Islamabad,AI,Bachelors,8.0,56535.0,56.45,7.0,59.0,analysis model model pipeline pipeline
+1365,Ali,42.0,Islamabad,AI,Bachelors,,106490.0,,3.0,,training analysis pipeline neural system training training training system
+1366,Ayesha,21.0,,Data,Masters,14.0,86562.0,96.83,,37.0,feature system neural model pipeline model system pipeline feature analysis system learning
+1367,Usman,42.0,Quetta,ML,Masters,0.0,159042.0,,7.0,35.0,
+1368,Usman,,Peshawar,Backend,PhD,2.0,129080.0,93.48,8.0,41.0,data training learning system feature model pipeline pipeline learning training neural
+1369,Bilal,38.0,Lahore,Backend,PhD,4.0,81269.0,88.2,1.0,55.0,prediction model feature analysis neural analysis prediction
+1370,Zara,38.0,Quetta,ML,PhD,2.0,120674.0,62.39,,56.0,pipeline learning training learning pipeline pipeline system
+1371,Hina,34.0,Lahore,AI,Masters,3.0,82462.0,51.82,5.0,58.0,neural pipeline pipeline data system system data training learning pipeline training
+1372,Zara,35.0,Lahore,Data,PhD,14.0,,55.09,18.0,44.0,training analysis system feature analysis data data feature pipeline
+1373,Ahmed,32.0,Karachi,Data,PhD,13.0,63147.0,86.42,7.0,43.0,prediction pipeline prediction analysis pipeline system learning
+1374,Bilal,24.0,Quetta,Backend,Bachelors,2.0,117095.0,59.98,13.0,50.0,analysis analysis prediction feature pipeline training analysis training neural model
+1375,Ayesha,23.0,Peshawar,Data,PhD,3.0,130925.0,68.56,,58.0,model learning pipeline learning feature learning
+1376,Zara,40.0,Karachi,ML,Bachelors,13.0,106381.0,75.08,11.0,30.0,pipeline learning model feature data analysis system neural pipeline
+1377,Sara,32.0,Lahore,AI,,14.0,139468.0,86.27,4.0,,feature analysis data feature feature data pipeline prediction
+1378,Fatima,27.0,Lahore,ML,PhD,12.0,103749.0,55.66,18.0,,neural feature pipeline prediction model feature data training training neural data
+1379,Ahmed,31.0,Lahore,Frontend,Bachelors,12.0,53731.0,,17.0,57.0,feature analysis pipeline feature prediction data learning pipeline learning learning
+1380,Ali,21.0,Quetta,Backend,Masters,14.0,,74.25,8.0,54.0,system neural analysis learning analysis data
+1381,Ayesha,26.0,Quetta,Data,Masters,14.0,91024.0,77.04,,32.0,
+1382,Ahmed,,Karachi,Frontend,PhD,0.0,156712.0,90.92,19.0,48.0,model feature analysis prediction analysis feature learning analysis neural system
+1383,Fatima,35.0,Peshawar,Data,Masters,11.0,,,11.0,47.0,pipeline system data prediction pipeline neural analysis feature
+1384,Bilal,,Karachi,AI,,7.0,43832.0,90.39,1.0,49.0,learning system data pipeline prediction
+1385,Fatima,31.0,Islamabad,AI,Masters,3.0,72332.0,84.64,9.0,57.0,prediction pipeline system prediction prediction system analysis data
+1386,Usman,43.0,Lahore,AI,PhD,6.0,52467.0,77.79,0.0,31.0,
+1387,Fatima,22.0,Lahore,Data,PhD,1.0,81025.0,84.98,3.0,58.0,pipeline data pipeline data pipeline
+1388,Usman,34.0,Lahore,Frontend,Bachelors,1.0,117994.0,70.6,11.0,54.0,data training training feature neural training
+1389,Bilal,22.0,Karachi,AI,PhD,5.0,134202.0,56.92,,57.0,feature learning neural system model model
+1390,Omar,24.0,Karachi,Frontend,Masters,13.0,83481.0,83.29,3.0,55.0,analysis analysis data data system pipeline neural model pipeline
+1391,Usman,37.0,Lahore,Data,PhD,1.0,173653.0,76.23,8.0,,
+1392,Ali,23.0,Karachi,Frontend,Bachelors,14.0,115118.0,81.97,5.0,37.0,
+1393,Fatima,33.0,Quetta,Data,PhD,14.0,164010.0,66.9,,48.0,system training model learning data feature feature training data pipeline data training
+1394,Fatima,,Quetta,Data,Masters,5.0,163714.0,95.34,9.0,51.0,prediction model training learning model analysis system analysis model data
+1395,Ali,27.0,Karachi,Backend,Bachelors,10.0,,79.37,13.0,44.0,
+1396,Sara,35.0,Lahore,Data,Masters,14.0,,54.27,17.0,39.0,training prediction prediction neural analysis
+1397,Hina,43.0,Karachi,Data,Bachelors,1.0,163607.0,72.49,5.0,51.0,pipeline data learning analysis prediction system pipeline data data
+1398,Omar,31.0,Karachi,ML,PhD,3.0,103044.0,87.82,17.0,58.0,prediction system neural pipeline system analysis
+1399,Ayesha,,Karachi,AI,Bachelors,6.0,51814.0,89.71,19.0,30.0,training prediction learning system feature feature pipeline data system pipeline
+1400,Usman,22.0,Islamabad,Backend,Bachelors,7.0,139340.0,74.73,15.0,35.0,training neural system system analysis learning pipeline training training learning
+1401,Ali,35.0,Quetta,Backend,PhD,14.0,,94.74,14.0,42.0,data training model model model analysis model analysis
+1402,Bilal,34.0,Peshawar,Backend,Masters,2.0,149236.0,63.38,15.0,43.0,feature data model data training analysis pipeline learning system training analysis
+1403,Usman,40.0,Peshawar,ML,PhD,,97836.0,70.53,7.0,32.0,learning analysis model system model data prediction prediction pipeline
+1404,Hina,42.0,Islamabad,Data,Bachelors,14.0,47435.0,94.93,12.0,40.0,
+1405,Bilal,31.0,Karachi,AI,PhD,12.0,,94.81,10.0,,model feature data data data pipeline analysis feature system prediction
+1406,Ahmed,23.0,,Frontend,Bachelors,8.0,160871.0,,6.0,,model pipeline learning prediction pipeline
+1407,Fatima,37.0,Islamabad,Data,PhD,1.0,174479.0,92.95,16.0,,training data analysis learning pipeline system pipeline training analysis
+1408,Ahmed,32.0,Lahore,ML,PhD,7.0,138943.0,54.44,17.0,56.0,prediction data neural training system feature training model training neural data
+1409,Usman,44.0,Quetta,Data,Masters,7.0,72940.0,93.25,18.0,44.0,data learning system feature learning data training feature neural
+1410,Hina,41.0,Peshawar,Data,Bachelors,,45666.0,66.03,12.0,,neural analysis pipeline neural data learning analysis learning analysis training learning learning
+1411,Omar,,,ML,,13.0,77122.0,58.92,14.0,44.0,analysis neural prediction pipeline training feature training
+1412,Usman,36.0,Peshawar,Backend,Bachelors,3.0,158647.0,61.97,,55.0,data pipeline neural neural data neural
+1413,Ali,25.0,Peshawar,Backend,PhD,0.0,169753.0,70.9,15.0,56.0,feature training learning pipeline data feature system
+1414,Zara,40.0,Quetta,AI,Bachelors,12.0,163402.0,62.56,4.0,53.0,analysis model system learning model analysis prediction pipeline training pipeline learning prediction
+1415,Usman,26.0,Peshawar,AI,Masters,0.0,141190.0,,2.0,42.0,training analysis feature model pipeline
+1416,Fatima,39.0,Peshawar,Backend,,1.0,140468.0,56.75,9.0,34.0,training feature pipeline analysis system
+1417,Fatima,,Islamabad,Frontend,,13.0,,,,33.0,pipeline neural prediction neural feature
+1418,Usman,23.0,Quetta,Data,Bachelors,14.0,,78.61,4.0,42.0,analysis feature feature pipeline model learning neural data training data
+1419,Bilal,21.0,,Frontend,,11.0,76713.0,,6.0,38.0,data model feature model analysis analysis system data training neural learning
+1420,Zara,26.0,Karachi,Data,Masters,13.0,83169.0,67.34,13.0,54.0,pipeline data training neural system data pipeline feature neural feature neural
+1421,Ali,35.0,Peshawar,Backend,,8.0,117511.0,87.32,2.0,46.0,analysis neural prediction analysis feature system learning training learning data
+1422,Usman,,Karachi,AI,PhD,12.0,80522.0,94.68,12.0,,
+1423,Bilal,23.0,,AI,PhD,,139397.0,87.84,12.0,53.0,prediction model model learning prediction neural model data model model system
+1424,Fatima,,Karachi,Frontend,Bachelors,1.0,43880.0,66.6,9.0,34.0,pipeline analysis feature analysis prediction training pipeline neural data pipeline training
+1425,Fatima,,Lahore,AI,Bachelors,5.0,83539.0,87.22,,45.0,learning feature analysis pipeline pipeline pipeline system pipeline prediction
+1426,Hina,,Islamabad,Backend,Masters,6.0,,57.6,5.0,36.0,prediction feature system system analysis analysis
+1427,Usman,38.0,Peshawar,Frontend,PhD,12.0,144843.0,56.52,7.0,30.0,prediction analysis feature analysis analysis system
+1428,Zara,35.0,Lahore,Data,Masters,6.0,88784.0,67.28,,57.0,data prediction neural neural model learning analysis analysis analysis
+1429,Sara,32.0,,AI,Masters,14.0,153034.0,90.39,,55.0,prediction training prediction training training analysis pipeline prediction analysis feature
+1430,Zara,36.0,,ML,,12.0,,62.32,,41.0,prediction neural neural analysis model learning model pipeline prediction pipeline
+1431,Fatima,28.0,Islamabad,AI,PhD,8.0,93997.0,53.16,7.0,50.0,training neural system analysis feature data data system
+1432,Fatima,34.0,Peshawar,Data,PhD,5.0,142399.0,56.59,6.0,40.0,model prediction neural system training data prediction pipeline prediction neural
+1433,Ahmed,37.0,Lahore,Frontend,Bachelors,13.0,54549.0,92.94,13.0,41.0,data data data data training training system feature
+1434,Fatima,41.0,,Data,Bachelors,7.0,96920.0,81.69,18.0,48.0,prediction pipeline pipeline pipeline feature analysis
+1435,Ali,28.0,,ML,Masters,,,62.66,13.0,55.0,training system system training training
+1436,Ayesha,35.0,Islamabad,Backend,Bachelors,5.0,64624.0,,12.0,,neural prediction prediction data data analysis model feature neural
+1437,Usman,,Islamabad,AI,PhD,1.0,,76.38,0.0,41.0,analysis system pipeline learning prediction
+1438,Zara,38.0,Quetta,Frontend,PhD,0.0,129326.0,82.77,18.0,43.0,system model pipeline system learning system training learning data data prediction system
+1439,Ayesha,40.0,,Backend,Bachelors,4.0,100390.0,61.66,0.0,31.0,neural data feature system training data learning
+1440,Bilal,,,Data,,13.0,108369.0,93.22,3.0,31.0,prediction pipeline training feature training analysis training
+1441,Sara,23.0,Peshawar,Frontend,Masters,8.0,49589.0,65.47,9.0,54.0,learning prediction learning training learning neural prediction training
+1442,Ali,32.0,,Backend,Bachelors,7.0,153012.0,84.71,2.0,58.0,feature system analysis analysis system pipeline model training neural pipeline
+1443,Zara,41.0,Peshawar,Frontend,Masters,,113181.0,50.81,,33.0,feature data system analysis training system neural system pipeline pipeline analysis pipeline
+1444,Ayesha,44.0,Peshawar,ML,Masters,12.0,163711.0,68.63,8.0,49.0,prediction data system analysis feature neural model
+1445,Sara,23.0,Lahore,ML,Masters,3.0,116425.0,,2.0,52.0,neural prediction training pipeline prediction neural pipeline neural prediction
+1446,Ahmed,,Peshawar,AI,,,55994.0,77.17,5.0,,learning data system data data pipeline
+1447,Ali,,,AI,PhD,,151915.0,53.64,5.0,45.0,training feature prediction feature analysis neural learning training learning
+1448,Ali,35.0,Quetta,ML,Bachelors,4.0,162961.0,,11.0,39.0,pipeline prediction feature model learning learning model training
+1449,Ahmed,,Lahore,Frontend,PhD,,144672.0,60.89,0.0,42.0,model system feature model data
+1450,Usman,27.0,Karachi,ML,Masters,2.0,,83.85,15.0,31.0,
+1451,Ahmed,37.0,Karachi,AI,PhD,4.0,57205.0,90.16,4.0,32.0,
+1452,Ali,32.0,Peshawar,ML,,1.0,96677.0,78.09,8.0,,analysis learning prediction analysis analysis neural feature training neural
+1453,Ali,40.0,Peshawar,ML,,9.0,72930.0,87.04,9.0,,prediction neural data model system neural learning model analysis
+1454,Ayesha,24.0,Peshawar,Frontend,,0.0,,83.09,12.0,48.0,system neural model prediction prediction neural model
+1455,Fatima,29.0,Karachi,Backend,Masters,10.0,153153.0,67.78,14.0,56.0,feature analysis feature analysis learning training neural data feature pipeline training
+1456,Sara,26.0,Islamabad,AI,Bachelors,0.0,58316.0,90.44,11.0,50.0,data neural data feature prediction training pipeline data
+1457,Ahmed,36.0,Quetta,Frontend,PhD,9.0,136058.0,,4.0,49.0,neural training learning data pipeline pipeline data pipeline learning
+1458,Sara,42.0,Islamabad,ML,PhD,6.0,127876.0,78.56,,48.0,learning prediction model prediction data
+1459,Ahmed,42.0,Islamabad,ML,PhD,1.0,125366.0,87.27,17.0,37.0,feature feature data learning neural system system
+1460,Bilal,41.0,,Backend,Masters,3.0,53403.0,68.95,11.0,,prediction neural feature system training prediction model feature model neural learning training
+1461,Ali,41.0,Islamabad,AI,,4.0,,65.14,2.0,39.0,training learning feature data feature neural feature model neural feature analysis
+1462,Fatima,22.0,Lahore,AI,PhD,6.0,113495.0,72.97,6.0,32.0,neural pipeline system system pipeline model prediction analysis
+1463,Ayesha,44.0,Peshawar,Data,Masters,1.0,136090.0,90.9,16.0,35.0,neural data system model pipeline prediction data neural model
+1464,Fatima,28.0,Lahore,AI,Masters,13.0,76701.0,96.5,18.0,58.0,analysis system data prediction analysis pipeline pipeline learning feature
+1465,Fatima,31.0,Quetta,Backend,Masters,5.0,174457.0,77.25,17.0,44.0,learning model pipeline prediction prediction pipeline model pipeline
+1466,Fatima,33.0,Peshawar,Data,PhD,0.0,97241.0,83.07,0.0,,learning data prediction feature feature training
+1467,Sara,37.0,Islamabad,Data,PhD,6.0,105030.0,95.16,4.0,,feature model system feature data model feature analysis analysis neural analysis analysis
+1468,Ahmed,28.0,Quetta,ML,PhD,8.0,145185.0,54.93,1.0,47.0,feature data training prediction analysis model learning data data system
+1469,Omar,41.0,,ML,PhD,,76404.0,61.6,,43.0,feature analysis feature training pipeline
+1470,Bilal,38.0,Islamabad,AI,PhD,4.0,95182.0,85.45,6.0,48.0,feature data feature pipeline analysis system analysis neural analysis pipeline
+1471,Zara,38.0,Lahore,Data,PhD,3.0,72991.0,91.19,10.0,57.0,neural system model pipeline model prediction learning model learning learning
+1472,Fatima,34.0,Peshawar,ML,PhD,2.0,144601.0,92.85,10.0,,analysis training pipeline analysis feature
+1473,Usman,35.0,Islamabad,Backend,PhD,8.0,,70.76,17.0,39.0,model data feature model prediction pipeline prediction training neural
+1474,Sara,,Lahore,ML,PhD,4.0,162002.0,54.47,16.0,44.0,system feature training training feature
+1475,Ayesha,31.0,Quetta,ML,Masters,7.0,123848.0,71.89,1.0,,
+1476,Zara,33.0,Quetta,Data,PhD,8.0,97692.0,61.54,,52.0,prediction model feature analysis learning analysis data pipeline
+1477,Omar,21.0,Quetta,Data,Bachelors,4.0,77500.0,64.56,,31.0,analysis analysis feature feature analysis pipeline feature
+1478,Usman,,Quetta,Frontend,Masters,9.0,73785.0,88.61,9.0,32.0,training learning learning neural system learning prediction neural system system prediction
+1479,Omar,,Karachi,Backend,PhD,8.0,124146.0,53.78,2.0,36.0,training neural pipeline training system data analysis system analysis feature
+1480,Zara,28.0,,Data,Bachelors,1.0,87997.0,91.38,,52.0,prediction neural system feature prediction analysis analysis prediction system system
+1481,Fatima,31.0,Peshawar,AI,PhD,8.0,47170.0,71.38,2.0,45.0,data system feature prediction training prediction analysis analysis
+1482,Usman,42.0,,Backend,Bachelors,10.0,111743.0,79.8,10.0,39.0,model neural learning data training data data
+1483,Omar,39.0,Islamabad,Backend,Bachelors,3.0,75187.0,54.48,11.0,48.0,model system prediction feature feature feature learning training pipeline
+1484,Ayesha,,,Data,,5.0,172965.0,66.87,3.0,57.0,analysis system feature analysis model model
+1485,Ahmed,29.0,Quetta,Backend,Bachelors,5.0,78090.0,54.49,15.0,46.0,system training neural training training data pipeline pipeline model feature
+1486,Ali,37.0,Lahore,Data,,5.0,99412.0,98.08,19.0,57.0,model analysis system analysis system pipeline learning pipeline prediction prediction feature
+1487,Ahmed,32.0,Islamabad,ML,Masters,1.0,96030.0,90.36,17.0,48.0,data data system learning model analysis
+1488,Zara,34.0,Lahore,Frontend,Bachelors,6.0,,72.98,,34.0,analysis data system neural pipeline
+1489,Sara,,Peshawar,ML,,12.0,,61.18,5.0,52.0,
+1490,Ali,36.0,Lahore,Data,,,169626.0,96.67,14.0,,
+1491,Bilal,42.0,Peshawar,Data,Masters,,44042.0,67.23,,42.0,system pipeline feature learning system training training pipeline neural prediction
+1492,Ayesha,42.0,Karachi,ML,PhD,13.0,77201.0,58.05,2.0,,
+1493,Bilal,40.0,Karachi,AI,Masters,0.0,54016.0,78.16,4.0,40.0,model pipeline learning neural model data analysis data analysis
+1494,Usman,21.0,,AI,,1.0,,97.19,16.0,40.0,analysis pipeline prediction pipeline pipeline system prediction analysis data
+1495,Ali,30.0,Islamabad,AI,PhD,6.0,,50.19,13.0,,data feature pipeline model pipeline
+1496,Bilal,28.0,Quetta,Data,Bachelors,0.0,158171.0,61.91,8.0,44.0,
+1497,Bilal,38.0,,Backend,,14.0,101720.0,96.92,2.0,46.0,model training pipeline data system prediction
+1498,Omar,21.0,Quetta,Data,Bachelors,0.0,145514.0,58.55,12.0,,prediction neural analysis model learning prediction
+1499,Ahmed,22.0,Lahore,Backend,,0.0,173058.0,55.66,2.0,47.0,model prediction system neural feature
+1500,Omar,21.0,Peshawar,ML,PhD,7.0,,,10.0,57.0,system system pipeline data prediction
+1501,Ali,21.0,Karachi,Frontend,PhD,3.0,167101.0,93.09,1.0,,
+1502,Ali,29.0,Islamabad,Backend,PhD,3.0,134699.0,73.86,14.0,33.0,pipeline model system prediction pipeline pipeline data data learning prediction prediction
+1503,Zara,33.0,Peshawar,AI,Masters,12.0,139273.0,99.73,12.0,,neural learning pipeline analysis pipeline data learning pipeline training prediction
+1504,Omar,21.0,Peshawar,Data,PhD,,103745.0,83.96,18.0,51.0,prediction prediction learning prediction prediction system analysis prediction learning system training
+1505,Hina,,,ML,Bachelors,10.0,172283.0,,15.0,52.0,feature training neural neural neural
+1506,Ahmed,40.0,Islamabad,AI,Masters,10.0,171301.0,99.64,,34.0,learning learning learning model prediction pipeline pipeline pipeline analysis
+1507,Ali,42.0,Karachi,ML,Bachelors,10.0,,70.39,6.0,36.0,pipeline system pipeline neural analysis pipeline feature system
+1508,Zara,27.0,Peshawar,Frontend,Bachelors,0.0,,64.37,12.0,31.0,neural learning learning model feature model data neural feature prediction feature
+1509,Omar,22.0,Peshawar,Data,PhD,11.0,71819.0,77.89,,30.0,learning prediction neural pipeline pipeline training
+1510,Ahmed,26.0,Lahore,Data,PhD,9.0,87779.0,,,41.0,neural feature pipeline training feature system prediction analysis
+1511,Omar,27.0,,Frontend,Bachelors,8.0,,54.32,9.0,39.0,analysis neural training model prediction
+1512,Bilal,34.0,Karachi,Data,Bachelors,6.0,105584.0,,8.0,,prediction model system feature prediction learning neural training feature data learning
+1513,Zara,38.0,Islamabad,Backend,Masters,3.0,98032.0,72.48,6.0,,pipeline model analysis learning training neural feature learning feature
+1514,Ahmed,35.0,Peshawar,ML,,11.0,155074.0,91.84,14.0,41.0,system system model neural training training training
+1515,Fatima,22.0,Peshawar,AI,Masters,5.0,139273.0,78.62,7.0,31.0,data pipeline prediction feature feature learning
+1516,Usman,30.0,Karachi,Frontend,Masters,13.0,68036.0,99.96,,56.0,feature pipeline model feature feature prediction
+1517,Usman,43.0,Quetta,Backend,Masters,1.0,111356.0,64.34,10.0,57.0,system system feature prediction analysis pipeline learning
+1518,Ahmed,32.0,Peshawar,AI,Bachelors,6.0,43052.0,64.02,4.0,39.0,
+1519,Omar,37.0,Karachi,AI,,1.0,84377.0,57.99,1.0,,training prediction model feature model neural
+1520,Zara,28.0,Lahore,Frontend,Masters,9.0,107819.0,58.2,,46.0,analysis model training data analysis neural neural model pipeline data analysis pipeline
+1521,Usman,31.0,Quetta,Backend,Bachelors,7.0,153689.0,64.26,15.0,,model learning pipeline model training pipeline training data
+1522,Zara,,Islamabad,AI,PhD,,70461.0,,12.0,32.0,model neural learning pipeline pipeline pipeline
+1523,Usman,26.0,Peshawar,AI,PhD,0.0,60750.0,,7.0,36.0,prediction feature system model feature system training
+1524,Bilal,29.0,Karachi,Backend,Masters,12.0,49472.0,98.75,8.0,41.0,feature training model neural learning training
+1525,Omar,,Lahore,Data,Bachelors,7.0,109263.0,,,37.0,analysis analysis pipeline pipeline learning feature pipeline prediction neural pipeline
+1526,Bilal,29.0,Islamabad,AI,,1.0,152036.0,94.06,10.0,49.0,neural training data analysis pipeline prediction pipeline neural feature
+1527,Usman,27.0,Karachi,ML,,5.0,65523.0,,,41.0,neural learning pipeline feature prediction model model pipeline learning training feature prediction
+1528,Fatima,29.0,Karachi,Backend,Masters,12.0,,55.64,9.0,32.0,
+1529,Fatima,38.0,Islamabad,AI,Bachelors,0.0,106060.0,93.5,11.0,46.0,pipeline system feature pipeline model learning
+1530,Bilal,32.0,Lahore,Frontend,Masters,4.0,,,5.0,57.0,training prediction neural neural model learning learning neural training training
+1531,Fatima,28.0,Lahore,ML,PhD,,,58.24,,38.0,feature neural feature training data feature system analysis data pipeline feature training
+1532,Usman,28.0,Quetta,AI,,6.0,100726.0,71.49,9.0,39.0,model learning training system system analysis learning pipeline learning learning
+1533,Ahmed,38.0,Peshawar,ML,PhD,12.0,132906.0,64.36,17.0,51.0,
+1534,Bilal,40.0,Islamabad,ML,PhD,9.0,56532.0,86.84,17.0,,learning system model data model analysis feature prediction learning
+1535,Sara,35.0,Islamabad,Data,PhD,0.0,162689.0,72.67,,54.0,prediction feature analysis feature learning training training prediction pipeline learning
+1536,Omar,,,ML,,14.0,83162.0,,8.0,30.0,neural feature analysis model prediction
+1537,Fatima,,Lahore,Data,Masters,1.0,174821.0,,6.0,51.0,
+1538,Fatima,40.0,Peshawar,Backend,PhD,,51353.0,,17.0,41.0,pipeline data data data analysis feature pipeline data learning
+1539,Ali,36.0,Quetta,Data,PhD,5.0,152313.0,74.1,7.0,34.0,
+1540,Hina,24.0,Karachi,Frontend,Bachelors,2.0,68477.0,75.16,10.0,42.0,prediction training analysis learning system training analysis
+1541,Bilal,26.0,Karachi,AI,,13.0,126373.0,,,56.0,learning neural pipeline learning model
+1542,Ayesha,42.0,Islamabad,Backend,,9.0,,86.46,8.0,44.0,
+1543,Fatima,23.0,Peshawar,Backend,,1.0,,93.74,7.0,51.0,prediction feature neural learning training prediction
+1544,Omar,29.0,,Frontend,Bachelors,9.0,166150.0,96.94,2.0,59.0,model system pipeline feature neural prediction learning training data system learning prediction
+1545,Sara,30.0,Peshawar,Data,PhD,3.0,87636.0,90.25,16.0,40.0,feature training neural model neural system neural learning feature pipeline
+1546,Fatima,,Peshawar,AI,Masters,,69685.0,92.53,1.0,,analysis neural feature learning analysis model system
+1547,Sara,31.0,Lahore,Data,,6.0,,77.53,14.0,34.0,neural neural pipeline analysis prediction system system training analysis feature neural feature
+1548,Usman,38.0,Islamabad,ML,Bachelors,7.0,128916.0,91.29,13.0,31.0,learning pipeline feature feature training learning analysis system
+1549,Usman,42.0,Peshawar,Data,Masters,1.0,147967.0,65.18,17.0,41.0,training learning prediction model learning training
+1550,Hina,32.0,Karachi,Backend,Masters,,,69.92,15.0,57.0,system pipeline model data learning analysis feature training feature pipeline neural
+1551,Ahmed,43.0,Lahore,AI,Bachelors,6.0,89756.0,65.85,19.0,31.0,system analysis learning pipeline system analysis prediction system prediction
+1552,Ayesha,32.0,Quetta,Data,Masters,7.0,,73.37,3.0,55.0,
+1553,Ali,33.0,Islamabad,AI,Bachelors,5.0,101192.0,64.28,19.0,,feature training system training training
+1554,Hina,33.0,Lahore,AI,Masters,5.0,88733.0,98.08,,50.0,neural analysis pipeline feature neural neural data learning
+1555,Zara,39.0,Quetta,ML,Bachelors,9.0,65993.0,65.64,5.0,32.0,learning system prediction training learning prediction pipeline
+1556,Ali,39.0,Quetta,ML,Masters,0.0,,54.9,10.0,39.0,model pipeline learning training pipeline prediction learning
+1557,Bilal,43.0,Peshawar,Backend,PhD,3.0,147044.0,76.34,16.0,48.0,pipeline neural neural feature pipeline neural learning
+1558,Omar,34.0,Peshawar,Frontend,PhD,,168406.0,52.85,2.0,37.0,analysis neural system learning pipeline analysis training data analysis neural analysis
+1559,Zara,24.0,Peshawar,AI,PhD,0.0,109351.0,55.53,,36.0,model model neural system analysis prediction model feature analysis training
+1560,Zara,33.0,Lahore,Frontend,Masters,,110309.0,60.97,,30.0,neural model training model neural feature prediction model pipeline
+1561,Hina,28.0,,Backend,Masters,1.0,,73.22,15.0,41.0,pipeline prediction analysis model neural prediction analysis system system
+1562,Ahmed,43.0,Islamabad,AI,PhD,10.0,116000.0,71.66,,58.0,data model prediction feature feature analysis model neural learning
+1563,Hina,41.0,Peshawar,AI,PhD,12.0,61576.0,89.98,10.0,57.0,pipeline data feature model neural
+1564,Bilal,43.0,Quetta,Frontend,,4.0,43320.0,86.97,17.0,34.0,analysis training data learning data training model
+1565,Fatima,39.0,Karachi,Data,Bachelors,9.0,143002.0,71.32,14.0,45.0,
+1566,Fatima,32.0,Islamabad,ML,Bachelors,13.0,66572.0,,4.0,54.0,neural feature training system model learning prediction learning
+1567,Ahmed,38.0,,Data,PhD,8.0,57948.0,65.82,15.0,,feature neural system pipeline feature learning analysis training model data training model
+1568,Bilal,26.0,Islamabad,Frontend,PhD,10.0,156528.0,88.7,15.0,46.0,system system feature feature analysis system feature neural learning training model prediction
+1569,Ahmed,38.0,Islamabad,ML,,14.0,129051.0,52.6,16.0,53.0,system system analysis prediction model analysis system training pipeline pipeline data data
+1570,Sara,39.0,,Data,Bachelors,11.0,,50.64,,50.0,data analysis neural pipeline data pipeline
+1571,Fatima,42.0,Islamabad,ML,Masters,9.0,,89.78,2.0,31.0,analysis pipeline prediction system model model model neural
+1572,Zara,25.0,Karachi,AI,,2.0,147561.0,73.86,19.0,41.0,pipeline system feature data model pipeline
+1573,Ayesha,44.0,Peshawar,Data,Masters,7.0,52963.0,56.54,12.0,30.0,prediction pipeline training prediction pipeline
+1574,Omar,29.0,,ML,Masters,2.0,89434.0,61.78,,59.0,
+1575,Bilal,23.0,Islamabad,ML,Masters,5.0,106617.0,96.63,6.0,41.0,training pipeline data neural prediction pipeline prediction
+1576,Ali,30.0,Islamabad,ML,Bachelors,3.0,157569.0,92.98,,41.0,feature pipeline pipeline feature data feature data model system
+1577,Ahmed,39.0,Islamabad,Data,Masters,7.0,137352.0,85.49,8.0,41.0,data training learning model prediction
+1578,Omar,23.0,,Backend,PhD,,119732.0,74.11,,,pipeline learning neural learning feature data pipeline prediction
+1579,Ali,42.0,Lahore,Data,Bachelors,5.0,147648.0,76.02,14.0,54.0,learning model analysis data neural training learning pipeline prediction
+1580,Omar,35.0,Lahore,Frontend,PhD,7.0,121494.0,98.76,,46.0,data feature prediction analysis analysis prediction neural neural training feature feature
+1581,Ayesha,21.0,Karachi,Data,,0.0,117225.0,98.29,2.0,49.0,model prediction training neural analysis prediction system pipeline
+1582,Ali,,Lahore,ML,Bachelors,5.0,122867.0,60.76,9.0,53.0,model prediction pipeline system training system training feature data data analysis
+1583,Hina,32.0,,AI,PhD,0.0,118972.0,90.56,0.0,53.0,
+1584,Usman,37.0,Islamabad,Data,PhD,,,59.86,18.0,55.0,
+1585,Hina,41.0,Islamabad,Data,Bachelors,7.0,,,18.0,,system system feature neural data
+1586,Fatima,44.0,Karachi,ML,PhD,14.0,164481.0,83.8,12.0,40.0,prediction training analysis feature data model feature neural model prediction pipeline data
+1587,Usman,40.0,Islamabad,AI,,6.0,169529.0,70.25,11.0,42.0,model pipeline prediction training model pipeline training
+1588,Hina,25.0,Lahore,AI,PhD,2.0,,96.58,0.0,,training learning neural feature data training
+1589,Usman,24.0,Peshawar,Frontend,Masters,5.0,139108.0,54.45,18.0,37.0,
+1590,Usman,32.0,Peshawar,Data,PhD,14.0,137382.0,,,39.0,system learning learning neural pipeline analysis neural
+1591,Zara,40.0,,AI,Bachelors,8.0,49583.0,95.93,14.0,37.0,learning feature pipeline system learning
+1592,Ahmed,44.0,Lahore,AI,Bachelors,6.0,90387.0,95.21,15.0,49.0,model model prediction feature analysis data pipeline feature neural learning learning data
+1593,Ahmed,38.0,Islamabad,Backend,PhD,,63104.0,57.83,,37.0,neural prediction pipeline model learning neural prediction pipeline feature system model data
+1594,Zara,37.0,,Backend,Bachelors,2.0,,68.33,5.0,38.0,prediction prediction pipeline training prediction analysis
+1595,Omar,39.0,Lahore,AI,PhD,13.0,100624.0,80.96,10.0,36.0,feature pipeline data learning feature pipeline prediction neural learning pipeline model pipeline
+1596,Sara,29.0,Peshawar,Frontend,,,144320.0,57.97,2.0,43.0,
+1597,Omar,24.0,Islamabad,AI,Masters,12.0,,98.4,14.0,57.0,neural learning training feature analysis
+1598,Ali,41.0,Peshawar,ML,PhD,5.0,125469.0,95.74,0.0,31.0,neural feature training data learning data data neural learning training
+1599,Ali,22.0,Quetta,Data,Masters,10.0,117928.0,58.35,6.0,54.0,
+1600,Usman,24.0,,Frontend,,3.0,44141.0,56.06,0.0,40.0,system neural learning system data system model analysis data learning neural
+1601,Hina,22.0,Peshawar,ML,PhD,13.0,110871.0,54.27,,37.0,learning system training pipeline feature pipeline pipeline learning prediction training model
+1602,Hina,35.0,Lahore,Frontend,,12.0,176149.0,95.47,8.0,42.0,training data neural neural model neural training data neural data prediction prediction
+1603,Ahmed,22.0,Lahore,ML,PhD,2.0,86015.0,59.68,,50.0,neural model prediction feature analysis
+1604,Bilal,,Lahore,Data,Masters,8.0,,70.81,10.0,44.0,analysis neural feature training neural data analysis model feature prediction learning
+1605,Omar,,Peshawar,Data,PhD,9.0,45577.0,72.44,19.0,57.0,data prediction model pipeline learning neural analysis analysis prediction
+1606,Fatima,27.0,Lahore,Backend,PhD,1.0,60002.0,79.95,5.0,32.0,feature training neural feature system neural pipeline training model training system model
+1607,Ayesha,30.0,Islamabad,ML,Bachelors,0.0,,53.59,0.0,52.0,feature pipeline pipeline analysis data pipeline pipeline system prediction analysis prediction
+1608,Hina,39.0,Quetta,Backend,,14.0,79451.0,61.34,6.0,43.0,training learning system pipeline system learning analysis model feature data
+1609,Ayesha,39.0,Islamabad,ML,PhD,13.0,74831.0,96.57,11.0,59.0,data learning neural prediction analysis prediction data feature data system
+1610,Usman,42.0,Lahore,Backend,Masters,1.0,136498.0,95.42,,44.0,analysis neural model system neural analysis training neural analysis
+1611,Ayesha,32.0,Islamabad,Data,PhD,6.0,,89.06,18.0,31.0,neural system pipeline pipeline prediction training learning training model
+1612,Fatima,23.0,Lahore,Frontend,Bachelors,9.0,135119.0,50.97,16.0,58.0,training data prediction learning data pipeline neural training analysis pipeline data
+1613,Zara,33.0,Peshawar,Backend,Masters,0.0,,66.35,3.0,48.0,neural neural feature model learning model training
+1614,Fatima,38.0,Islamabad,ML,Masters,5.0,120632.0,,2.0,41.0,neural system pipeline system analysis pipeline training neural system learning
+1615,Ayesha,28.0,Peshawar,ML,Bachelors,13.0,76833.0,63.76,0.0,54.0,learning data neural prediction feature model system neural learning
+1616,Fatima,41.0,Peshawar,Data,Masters,6.0,64398.0,95.48,17.0,49.0,feature data prediction training pipeline pipeline learning
+1617,Sara,35.0,Karachi,ML,,8.0,101554.0,81.69,14.0,33.0,learning prediction analysis neural system data feature pipeline
+1618,Usman,21.0,,AI,Masters,14.0,,53.6,7.0,32.0,learning neural prediction analysis learning model prediction feature prediction prediction
+1619,Omar,23.0,Quetta,Frontend,Masters,13.0,104994.0,95.45,0.0,34.0,model feature prediction system feature neural data
+1620,Zara,28.0,Lahore,Backend,Bachelors,7.0,103884.0,97.89,19.0,32.0,feature feature prediction system learning neural model
+1621,Hina,,Quetta,Frontend,Bachelors,5.0,124361.0,53.89,13.0,54.0,system neural training neural model model
+1622,Ali,36.0,Lahore,Data,Masters,2.0,57482.0,76.62,3.0,44.0,analysis data prediction data model analysis neural pipeline
+1623,Omar,,Peshawar,Backend,,,,65.17,4.0,48.0,prediction system neural pipeline analysis model
+1624,Ali,30.0,Islamabad,Backend,,6.0,114854.0,69.64,12.0,31.0,system feature neural system model system system neural analysis data
+1625,Usman,32.0,Islamabad,AI,Bachelors,2.0,81256.0,58.98,14.0,41.0,feature neural neural learning feature training feature neural training analysis learning system
+1626,Zara,34.0,Karachi,Data,Bachelors,8.0,148721.0,78.9,5.0,34.0,model prediction feature model neural prediction neural analysis feature feature
+1627,Ahmed,34.0,Quetta,ML,Masters,11.0,121110.0,97.9,0.0,51.0,
+1628,Hina,,Quetta,AI,Masters,1.0,153606.0,75.15,18.0,46.0,analysis neural model model data prediction training neural pipeline training neural neural
+1629,Sara,43.0,Quetta,AI,PhD,2.0,54650.0,54.15,12.0,43.0,model feature neural prediction analysis system neural neural
+1630,Ahmed,,Peshawar,Frontend,Bachelors,,68930.0,81.0,5.0,57.0,pipeline neural pipeline learning analysis analysis training learning model
+1631,Usman,25.0,Quetta,Frontend,Masters,12.0,140400.0,,14.0,56.0,neural pipeline system model system pipeline prediction model data pipeline
+1632,Omar,26.0,Islamabad,Frontend,Bachelors,0.0,51801.0,92.8,15.0,51.0,analysis feature learning model feature analysis
+1633,Sara,33.0,Peshawar,AI,Masters,3.0,91360.0,,,39.0,training pipeline system pipeline pipeline model analysis training model analysis
+1634,Fatima,29.0,Lahore,ML,Bachelors,4.0,127908.0,59.64,9.0,32.0,feature neural prediction learning data analysis training feature analysis pipeline
+1635,Ayesha,42.0,Quetta,Backend,Masters,12.0,72334.0,59.56,8.0,33.0,neural prediction learning learning model system
+1636,Sara,35.0,Quetta,Frontend,,5.0,53288.0,,8.0,35.0,learning neural prediction analysis prediction learning system feature learning learning
+1637,Usman,,Lahore,ML,PhD,4.0,,63.28,16.0,53.0,pipeline system data prediction neural feature learning
+1638,Bilal,44.0,Quetta,Data,,0.0,,88.36,16.0,54.0,feature feature model learning feature
+1639,Ayesha,27.0,Lahore,Frontend,,2.0,101715.0,60.29,16.0,51.0,neural prediction model system model
+1640,Ali,40.0,Peshawar,Backend,,0.0,50737.0,,11.0,45.0,feature prediction data prediction learning system
+1641,Hina,22.0,Islamabad,Data,Bachelors,10.0,105140.0,73.27,,36.0,
+1642,Ali,27.0,Lahore,Data,Masters,4.0,45147.0,,11.0,,analysis model training feature analysis feature prediction learning
+1643,Sara,26.0,Karachi,Backend,Bachelors,4.0,,96.59,13.0,59.0,prediction model data analysis feature
+1644,Ali,37.0,Lahore,Frontend,Masters,11.0,92224.0,60.34,,50.0,pipeline learning pipeline learning training prediction neural analysis neural feature
+1645,Usman,22.0,Quetta,AI,Bachelors,,59643.0,67.91,18.0,59.0,learning learning learning feature feature analysis model system learning data
+1646,Fatima,23.0,Peshawar,Backend,Masters,12.0,78967.0,,,57.0,pipeline training data neural prediction neural training training training
+1647,Omar,25.0,Peshawar,Backend,Bachelors,5.0,143535.0,75.5,3.0,54.0,
+1648,Hina,25.0,Lahore,Backend,Masters,7.0,,73.03,,49.0,feature training learning system learning data
+1649,Ali,21.0,Islamabad,Data,PhD,,74808.0,95.04,,55.0,learning training feature data feature analysis data feature pipeline neural neural
+1650,Ali,28.0,Karachi,ML,Masters,11.0,98959.0,,14.0,40.0,
+1651,Sara,32.0,Peshawar,AI,Bachelors,,172921.0,69.18,14.0,51.0,pipeline prediction system pipeline learning pipeline model model feature feature feature data
+1652,Omar,44.0,Quetta,Frontend,PhD,3.0,,74.59,5.0,,neural data system training analysis prediction model neural prediction system system system
+1653,Ahmed,24.0,Quetta,Frontend,Masters,9.0,152255.0,94.81,2.0,30.0,
+1654,Ali,33.0,Islamabad,ML,PhD,10.0,126322.0,90.34,5.0,34.0,neural training analysis system neural prediction pipeline system prediction system model model
+1655,Usman,,,Backend,Masters,0.0,,50.18,15.0,,
+1656,Bilal,35.0,,AI,PhD,8.0,41132.0,66.0,1.0,50.0,data system model pipeline training learning learning analysis
+1657,Hina,,Quetta,Frontend,Bachelors,10.0,103668.0,71.09,6.0,43.0,neural training analysis prediction data
+1658,Ali,30.0,Islamabad,Frontend,Masters,6.0,148835.0,61.49,10.0,38.0,analysis prediction system system analysis training learning pipeline system analysis feature system
+1659,Usman,23.0,Peshawar,Backend,Masters,6.0,113169.0,59.98,6.0,46.0,system neural neural training feature training analysis data model
+1660,Usman,42.0,Peshawar,ML,Bachelors,11.0,140417.0,51.89,3.0,44.0,training pipeline prediction feature analysis analysis data analysis analysis neural system
+1661,Hina,34.0,,AI,PhD,4.0,41044.0,82.17,19.0,50.0,
+1662,Ahmed,36.0,Peshawar,ML,Bachelors,6.0,64363.0,63.13,,36.0,data analysis pipeline analysis training pipeline analysis learning neural pipeline training
+1663,Usman,30.0,Peshawar,ML,Bachelors,11.0,86694.0,,3.0,56.0,data pipeline training training prediction prediction feature model data neural data feature
+1664,Bilal,30.0,,AI,PhD,14.0,172654.0,61.55,,51.0,training neural training prediction pipeline training data data learning
+1665,Usman,32.0,Islamabad,AI,Bachelors,1.0,61301.0,90.1,4.0,51.0,neural learning learning data training neural analysis neural
+1666,Usman,29.0,Peshawar,Frontend,Masters,13.0,114329.0,92.57,18.0,41.0,data data model feature data
+1667,Usman,21.0,Karachi,Frontend,Masters,12.0,,74.15,4.0,52.0,pipeline model feature feature model training system
+1668,Fatima,25.0,Karachi,AI,Masters,3.0,102224.0,70.8,18.0,,training prediction neural system pipeline model prediction feature learning
+1669,Fatima,40.0,,Data,Bachelors,,135419.0,98.89,2.0,,
+1670,Ahmed,28.0,Lahore,Frontend,Masters,13.0,160050.0,60.03,,45.0,neural model analysis feature system training feature training feature
+1671,Ali,31.0,Lahore,Data,Masters,6.0,95856.0,,6.0,55.0,data learning data data neural training model analysis pipeline learning analysis
+1672,Usman,32.0,Lahore,AI,Masters,2.0,95809.0,64.59,16.0,,
+1673,Omar,21.0,Karachi,Frontend,Masters,1.0,62259.0,58.64,,38.0,pipeline feature data analysis system
+1674,Ali,42.0,,ML,,9.0,60655.0,68.97,8.0,,prediction pipeline analysis data neural model prediction prediction prediction system
+1675,Ahmed,40.0,Quetta,AI,Masters,1.0,61602.0,95.54,9.0,37.0,data training learning neural system training pipeline feature
+1676,Zara,31.0,Peshawar,Backend,Bachelors,12.0,125945.0,80.77,12.0,43.0,training training prediction neural neural training feature training training
+1677,Ali,25.0,Karachi,Data,,0.0,177145.0,70.6,,41.0,pipeline analysis system pipeline training feature neural
+1678,Ali,35.0,,AI,Masters,,140846.0,96.72,4.0,39.0,feature pipeline learning neural pipeline
+1679,Ayesha,25.0,Islamabad,AI,PhD,11.0,120818.0,52.42,2.0,59.0,neural pipeline system model learning
+1680,Sara,32.0,Peshawar,Frontend,Bachelors,5.0,41537.0,60.51,7.0,49.0,training pipeline feature system neural feature data
+1681,Ayesha,25.0,Karachi,Frontend,Bachelors,5.0,166545.0,78.29,19.0,49.0,feature learning neural learning training prediction training data prediction prediction
+1682,Bilal,37.0,Lahore,Frontend,Bachelors,8.0,129743.0,80.78,9.0,,prediction prediction learning feature learning neural neural data
+1683,Fatima,37.0,Lahore,Backend,Bachelors,3.0,126155.0,51.98,12.0,50.0,prediction learning analysis model analysis feature
+1684,Fatima,44.0,Quetta,Frontend,Masters,0.0,,,2.0,42.0,training neural data data prediction training data feature system neural data data
+1685,Sara,32.0,Quetta,AI,Masters,5.0,129846.0,82.46,7.0,58.0,feature learning learning feature model prediction data neural data
+1686,Hina,44.0,Lahore,Frontend,PhD,14.0,70562.0,84.9,8.0,48.0,model neural training prediction system data system neural analysis model analysis model
+1687,Hina,35.0,Islamabad,ML,PhD,4.0,68036.0,81.91,11.0,44.0,neural system pipeline pipeline training feature training model
+1688,Ahmed,35.0,Islamabad,Frontend,Bachelors,9.0,114233.0,66.03,10.0,,system system system prediction analysis analysis data analysis prediction training learning
+1689,Sara,26.0,Quetta,Backend,PhD,5.0,123049.0,54.68,1.0,,feature neural data system prediction neural prediction data system neural
+1690,Ali,32.0,Peshawar,ML,,,108681.0,71.36,17.0,50.0,pipeline feature data system training system prediction feature learning
+1691,Hina,40.0,Lahore,AI,Bachelors,1.0,67818.0,56.44,8.0,39.0,
+1692,Usman,38.0,,AI,Bachelors,5.0,102532.0,97.38,,32.0,neural learning feature learning system data data training feature training analysis pipeline
+1693,Omar,34.0,Quetta,Data,PhD,12.0,,73.76,1.0,50.0,analysis prediction analysis analysis neural model feature pipeline
+1694,Ali,22.0,Lahore,ML,Masters,0.0,60104.0,65.86,2.0,32.0,model pipeline pipeline system analysis prediction training learning model training
+1695,Bilal,29.0,Lahore,Data,PhD,6.0,164336.0,88.32,15.0,,
+1696,Usman,,Islamabad,ML,PhD,6.0,167904.0,74.9,18.0,34.0,training training data feature feature analysis pipeline model
+1697,Usman,,Peshawar,ML,Masters,9.0,109603.0,65.5,3.0,45.0,learning prediction training model training learning feature data feature
+1698,Sara,21.0,Peshawar,Backend,Masters,12.0,142499.0,90.6,17.0,46.0,
+1699,Ahmed,43.0,Lahore,Data,Bachelors,6.0,99025.0,93.36,19.0,35.0,training analysis neural training neural analysis
+1700,Bilal,,Karachi,Backend,Bachelors,,72317.0,83.65,17.0,55.0,model neural system learning pipeline model analysis prediction pipeline pipeline feature
+1701,Hina,26.0,Quetta,ML,PhD,11.0,145585.0,52.35,9.0,49.0,analysis pipeline model neural model training system prediction pipeline system data neural
+1702,Sara,25.0,Quetta,AI,Masters,10.0,88270.0,78.32,10.0,49.0,analysis prediction analysis analysis neural
+1703,Hina,41.0,Lahore,ML,Bachelors,9.0,159415.0,88.16,16.0,,
+1704,Sara,25.0,Karachi,Backend,,,120206.0,,,53.0,system feature feature neural training system prediction training data
+1705,Sara,21.0,Islamabad,Data,Masters,14.0,109468.0,61.43,,31.0,feature pipeline training learning analysis model
+1706,Sara,,,Data,PhD,3.0,63723.0,,19.0,49.0,model pipeline neural neural pipeline feature
+1707,Ahmed,39.0,Lahore,Backend,,12.0,100646.0,51.01,12.0,44.0,system training pipeline pipeline prediction pipeline training model learning learning training pipeline
+1708,Sara,34.0,Quetta,Data,,6.0,40074.0,87.64,,47.0,training data pipeline pipeline neural pipeline feature learning
+1709,Zara,32.0,Lahore,Frontend,Masters,10.0,66498.0,73.69,1.0,30.0,feature learning neural learning prediction feature neural neural model
+1710,Omar,30.0,Lahore,AI,PhD,8.0,136881.0,,13.0,55.0,analysis data analysis training model model pipeline feature prediction training feature analysis
+1711,Hina,40.0,Lahore,AI,Masters,4.0,,50.35,3.0,,model system analysis feature prediction prediction training data model
+1712,Ali,41.0,Quetta,AI,Bachelors,12.0,,90.97,16.0,58.0,neural system model training neural
+1713,Ayesha,38.0,,Data,Bachelors,1.0,,67.99,12.0,48.0,learning pipeline pipeline neural neural learning feature neural neural analysis analysis pipeline
+1714,Bilal,44.0,Islamabad,Data,PhD,6.0,,77.04,3.0,,
+1715,Fatima,31.0,Lahore,ML,PhD,9.0,,,,37.0,pipeline learning learning pipeline learning neural
+1716,Ahmed,22.0,Quetta,ML,PhD,0.0,71673.0,85.13,11.0,35.0,
+1717,Ali,,Islamabad,AI,Masters,6.0,,97.8,7.0,41.0,learning data data system system model training data
+1718,Usman,27.0,Islamabad,Frontend,PhD,5.0,133144.0,76.57,1.0,36.0,training training pipeline learning model prediction feature
+1719,Zara,,Islamabad,ML,PhD,,104824.0,69.99,5.0,47.0,prediction feature pipeline training learning analysis
+1720,Fatima,35.0,Quetta,ML,Bachelors,13.0,63525.0,97.69,,51.0,learning learning data system feature feature
+1721,Ayesha,,Quetta,Data,Bachelors,12.0,,82.11,11.0,43.0,feature model pipeline system learning training neural neural feature data training system
+1722,Ali,38.0,Lahore,Frontend,PhD,9.0,81846.0,64.91,9.0,37.0,model system feature system pipeline learning feature
+1723,Fatima,,Peshawar,AI,PhD,2.0,117261.0,56.32,9.0,53.0,feature learning neural prediction training prediction analysis pipeline prediction neural feature
+1724,Ali,,Islamabad,ML,Bachelors,14.0,,92.13,2.0,49.0,model system prediction learning model feature
+1725,Zara,26.0,,Frontend,PhD,2.0,47265.0,68.11,,51.0,prediction model pipeline feature pipeline analysis data
+1726,Ayesha,40.0,Quetta,Frontend,,6.0,62763.0,83.02,,43.0,training feature training feature system system training prediction pipeline learning neural
+1727,Usman,,Quetta,AI,Masters,12.0,55733.0,73.54,,34.0,
+1728,Sara,,Quetta,Frontend,Masters,1.0,152196.0,59.95,19.0,38.0,
+1729,Hina,,,Frontend,PhD,0.0,131038.0,80.08,18.0,37.0,analysis feature learning model feature analysis data feature feature
+1730,Usman,36.0,Quetta,Frontend,,8.0,77420.0,53.03,13.0,31.0,feature training data analysis learning feature
+1731,Sara,38.0,Lahore,ML,PhD,8.0,61058.0,70.67,1.0,57.0,neural analysis model system data feature
+1732,Ahmed,,Quetta,AI,PhD,6.0,,77.33,4.0,45.0,system data feature feature pipeline feature analysis data
+1733,Omar,43.0,Karachi,Frontend,Bachelors,6.0,126489.0,71.8,19.0,,analysis learning feature neural learning neural neural model neural learning
+1734,Bilal,28.0,Peshawar,Frontend,Bachelors,2.0,124664.0,87.43,7.0,36.0,neural system analysis analysis analysis system data neural
+1735,Bilal,38.0,Karachi,ML,Bachelors,9.0,,91.4,6.0,45.0,prediction pipeline prediction feature neural learning analysis neural neural prediction analysis
+1736,Hina,41.0,Quetta,AI,Masters,14.0,46041.0,88.56,5.0,36.0,pipeline neural model learning analysis prediction
+1737,Ayesha,21.0,Lahore,Data,PhD,1.0,118209.0,51.94,,56.0,pipeline neural learning analysis model learning
+1738,Zara,43.0,Islamabad,ML,Bachelors,10.0,,59.71,,43.0,system system data model learning feature neural prediction system data
+1739,Ayesha,28.0,Quetta,AI,PhD,6.0,176491.0,,17.0,43.0,training neural learning system training neural analysis
+1740,Zara,26.0,Lahore,Frontend,Masters,8.0,155158.0,96.74,18.0,41.0,prediction feature neural feature pipeline feature analysis neural neural neural training system
+1741,Ayesha,25.0,Peshawar,AI,Masters,0.0,41468.0,91.75,9.0,30.0,system prediction system model pipeline neural data model learning model pipeline
+1742,Omar,35.0,Karachi,AI,Bachelors,12.0,64309.0,92.13,13.0,30.0,analysis learning analysis learning pipeline analysis model analysis learning
+1743,Ahmed,42.0,Karachi,AI,Bachelors,13.0,112255.0,65.16,2.0,41.0,
+1744,Ahmed,35.0,Karachi,Data,PhD,3.0,121899.0,71.47,17.0,49.0,
+1745,Sara,22.0,Peshawar,AI,Bachelors,5.0,68718.0,73.54,,50.0,
+1746,Fatima,21.0,Lahore,Data,PhD,6.0,,57.87,5.0,44.0,
+1747,Ahmed,43.0,Peshawar,Frontend,Bachelors,9.0,90281.0,51.55,9.0,33.0,data prediction training model data analysis data analysis analysis prediction
+1748,Ahmed,,,Data,PhD,6.0,153451.0,97.35,11.0,,model neural neural neural neural data training data prediction
+1749,Usman,31.0,Quetta,Frontend,PhD,9.0,40767.0,62.04,6.0,45.0,data analysis feature system neural model
+1750,Usman,30.0,Islamabad,Frontend,PhD,1.0,174967.0,62.0,16.0,,feature learning analysis learning data prediction prediction analysis
+1751,Sara,,Peshawar,Data,PhD,,,54.17,0.0,36.0,model neural training data prediction
+1752,Fatima,,Peshawar,ML,Masters,3.0,158142.0,96.43,17.0,58.0,model prediction data data pipeline
+1753,Hina,37.0,Lahore,Backend,,4.0,,78.99,14.0,53.0,
+1754,Usman,28.0,Lahore,AI,,13.0,116870.0,83.35,18.0,51.0,
+1755,Hina,35.0,Peshawar,Backend,Masters,11.0,58174.0,95.58,0.0,,data prediction system neural analysis model pipeline pipeline model
+1756,Ali,,Karachi,AI,Masters,0.0,164357.0,67.28,,45.0,model model learning analysis pipeline neural system model training pipeline analysis training
+1757,Usman,37.0,,AI,PhD,0.0,139189.0,81.08,14.0,53.0,pipeline system training training system learning feature pipeline model neural prediction neural
+1758,Omar,32.0,Lahore,Frontend,Masters,9.0,,,,37.0,feature feature pipeline feature learning training pipeline training
+1759,Fatima,28.0,,AI,PhD,2.0,76674.0,59.34,0.0,52.0,data neural system data prediction feature data learning
+1760,Sara,34.0,Quetta,AI,,14.0,77260.0,91.56,7.0,51.0,learning data analysis learning learning feature pipeline pipeline learning analysis feature
+1761,Ali,24.0,,Data,PhD,14.0,,88.34,11.0,35.0,data analysis data analysis feature learning pipeline
+1762,Fatima,21.0,Karachi,Backend,Masters,9.0,57194.0,67.53,,39.0,pipeline training model neural pipeline pipeline training system training
+1763,Omar,21.0,,Data,Bachelors,2.0,,68.84,11.0,45.0,data pipeline neural system feature training data data neural neural model
+1764,Fatima,39.0,Islamabad,AI,PhD,11.0,170864.0,76.68,12.0,40.0,system training training prediction data pipeline prediction prediction
+1765,Omar,36.0,Islamabad,Frontend,Bachelors,7.0,83723.0,50.01,0.0,,
+1766,Omar,34.0,,Data,Bachelors,8.0,116298.0,62.06,18.0,58.0,training data neural prediction training training analysis data model analysis
+1767,Hina,41.0,Karachi,Data,Masters,14.0,99238.0,60.41,5.0,35.0,feature pipeline analysis model model model system training model learning prediction neural
+1768,Ayesha,36.0,Karachi,ML,Bachelors,13.0,145433.0,62.52,,,pipeline neural learning model model training neural pipeline neural
+1769,Ali,,Islamabad,AI,Masters,10.0,147092.0,90.3,3.0,,neural neural neural pipeline learning
+1770,Fatima,29.0,,Frontend,Bachelors,11.0,42147.0,63.98,4.0,50.0,neural system learning learning analysis
+1771,Zara,22.0,Lahore,Data,,0.0,78445.0,59.58,6.0,48.0,analysis training prediction learning analysis system
+1772,Ali,38.0,,Data,,13.0,146170.0,75.21,3.0,41.0,feature neural data feature model system neural prediction feature system training feature
+1773,Ayesha,26.0,,Frontend,PhD,10.0,173085.0,93.28,19.0,53.0,neural pipeline data prediction analysis pipeline learning
+1774,Ali,,Peshawar,AI,PhD,1.0,125617.0,,3.0,56.0,analysis training training neural learning data prediction feature
+1775,Ahmed,21.0,Islamabad,ML,Bachelors,9.0,93502.0,53.93,,35.0,learning neural pipeline neural pipeline training analysis system data system
+1776,Zara,29.0,Quetta,Data,PhD,1.0,,67.82,4.0,59.0,neural feature model data model data
+1777,Ayesha,36.0,,ML,,14.0,77755.0,87.38,8.0,47.0,neural data neural feature training training system neural
+1778,Hina,,Quetta,Backend,Bachelors,3.0,179805.0,77.53,1.0,42.0,system model model learning data
+1779,Fatima,29.0,Islamabad,AI,,1.0,49479.0,90.84,,36.0,pipeline prediction system prediction learning data data data
+1780,Bilal,41.0,Karachi,Backend,PhD,,115361.0,,,,system analysis learning model training prediction model
+1781,Ayesha,33.0,,Backend,,12.0,164232.0,,15.0,42.0,system feature learning prediction system data training
+1782,Sara,29.0,Lahore,Backend,PhD,14.0,145586.0,80.19,16.0,50.0,prediction prediction prediction training training model learning
+1783,Fatima,31.0,Peshawar,AI,Masters,8.0,121171.0,74.67,19.0,37.0,feature learning system system analysis prediction data
+1784,Ayesha,24.0,Islamabad,AI,,6.0,154151.0,52.0,,59.0,
+1785,Ahmed,22.0,Islamabad,Frontend,Bachelors,11.0,126296.0,99.22,10.0,50.0,model feature training training prediction training data model
+1786,Bilal,,Lahore,ML,,5.0,177934.0,69.17,1.0,46.0,feature pipeline learning system training feature system analysis learning feature analysis neural
+1787,Ahmed,34.0,Quetta,ML,Bachelors,,,57.61,0.0,38.0,neural analysis pipeline feature pipeline data training neural data data neural system
+1788,Bilal,,Karachi,Frontend,Bachelors,9.0,96022.0,83.34,1.0,49.0,prediction system analysis learning model neural system
+1789,Sara,,Quetta,Frontend,Bachelors,0.0,101991.0,64.21,8.0,42.0,neural pipeline neural neural neural
+1790,Fatima,39.0,Quetta,Backend,Masters,10.0,89853.0,,,31.0,
+1791,Hina,26.0,Lahore,Frontend,,,,79.34,14.0,33.0,learning system analysis system pipeline data
+1792,Ahmed,22.0,Lahore,Data,Bachelors,8.0,,72.29,9.0,59.0,learning pipeline learning training feature analysis data feature data
+1793,Ahmed,38.0,Lahore,ML,Bachelors,4.0,112361.0,91.81,,58.0,feature neural neural analysis pipeline neural analysis feature learning system
+1794,Omar,33.0,Peshawar,Frontend,Masters,10.0,117990.0,63.25,9.0,54.0,feature data data analysis analysis neural training system
+1795,Bilal,29.0,Quetta,Data,PhD,4.0,129787.0,72.43,16.0,31.0,system learning feature pipeline data neural
+1796,Usman,43.0,Islamabad,Data,PhD,5.0,80736.0,76.88,,33.0,system analysis learning prediction model
+1797,Fatima,39.0,Karachi,Data,Masters,,64530.0,83.18,17.0,47.0,system neural pipeline neural feature analysis system model feature prediction
+1798,Bilal,33.0,,Data,Masters,,146080.0,,,34.0,prediction prediction analysis feature prediction analysis system
+1799,Omar,31.0,Islamabad,Backend,PhD,7.0,114255.0,69.74,8.0,48.0,data system analysis learning learning analysis neural training model learning analysis
+1800,Ali,21.0,Quetta,Data,Masters,7.0,175958.0,82.3,15.0,39.0,training pipeline model learning prediction
+1801,Bilal,44.0,Lahore,Backend,PhD,13.0,,57.53,3.0,47.0,data data pipeline model model analysis learning training neural learning learning
+1802,Hina,42.0,,Backend,PhD,7.0,158623.0,,15.0,59.0,neural model prediction training learning data neural feature neural pipeline prediction
+1803,Fatima,27.0,Karachi,Data,,0.0,77387.0,,,54.0,analysis pipeline data model learning model system training
+1804,Omar,41.0,Peshawar,ML,Bachelors,,152260.0,86.48,,50.0,
+1805,Ali,35.0,,Data,PhD,7.0,178928.0,51.02,,39.0,system training training neural learning pipeline neural system pipeline
+1806,Zara,21.0,Karachi,Data,PhD,4.0,70988.0,60.26,9.0,34.0,system prediction data training data pipeline
+1807,Omar,,Islamabad,Data,PhD,8.0,116448.0,74.35,15.0,,pipeline model feature prediction prediction neural feature learning system
+1808,Zara,27.0,Islamabad,ML,PhD,1.0,153430.0,93.91,3.0,51.0,analysis feature neural learning data model
+1809,Fatima,35.0,Peshawar,AI,PhD,8.0,,76.36,12.0,42.0,model pipeline feature system feature
+1810,Ahmed,41.0,Peshawar,AI,PhD,11.0,59360.0,96.49,15.0,52.0,system model learning prediction system feature neural model
+1811,Omar,39.0,Lahore,Backend,,13.0,,74.19,19.0,46.0,feature neural neural data learning training pipeline learning
+1812,Sara,21.0,Islamabad,Backend,,7.0,74160.0,74.52,5.0,38.0,analysis system model feature pipeline learning
+1813,Zara,37.0,Karachi,ML,Masters,8.0,46789.0,55.99,10.0,53.0,learning feature training analysis neural model pipeline analysis pipeline pipeline
+1814,Hina,37.0,,Frontend,Masters,3.0,,90.13,,41.0,system system model model feature feature
+1815,Sara,23.0,Lahore,AI,PhD,0.0,105641.0,62.35,19.0,,
+1816,Ayesha,32.0,Peshawar,Backend,PhD,0.0,,94.98,9.0,43.0,prediction model training pipeline feature model analysis training
+1817,Ayesha,26.0,Peshawar,AI,Masters,,126673.0,95.54,0.0,,analysis learning data analysis prediction learning data system learning neural
+1818,Ali,31.0,,ML,Masters,1.0,45544.0,97.17,19.0,52.0,model data data pipeline data pipeline model training neural feature
+1819,Ahmed,23.0,Karachi,ML,PhD,13.0,103248.0,76.01,10.0,34.0,
+1820,Fatima,28.0,Peshawar,Frontend,PhD,7.0,74550.0,83.85,,48.0,system pipeline training system training neural system
+1821,Omar,34.0,Quetta,Frontend,Masters,,93693.0,88.93,13.0,57.0,system pipeline data analysis prediction data pipeline training system feature feature pipeline
+1822,Usman,34.0,Peshawar,ML,Masters,10.0,,,7.0,,learning neural data system pipeline
+1823,Hina,30.0,Quetta,Backend,Masters,4.0,120021.0,80.05,,38.0,prediction analysis prediction feature system data pipeline feature
+1824,Zara,22.0,Lahore,AI,Bachelors,4.0,55605.0,51.71,3.0,59.0,pipeline data model training system data analysis prediction pipeline data pipeline
+1825,Fatima,34.0,Lahore,Data,Masters,1.0,90713.0,74.88,6.0,36.0,pipeline system system neural model training model learning
+1826,Sara,29.0,,Frontend,Bachelors,6.0,,57.74,9.0,56.0,prediction learning learning analysis feature data analysis
+1827,Ayesha,23.0,Islamabad,Data,PhD,12.0,98466.0,59.15,18.0,55.0,feature system feature data learning data data neural pipeline data feature
+1828,Hina,41.0,Quetta,Backend,PhD,7.0,43981.0,68.25,3.0,,prediction system system neural neural pipeline
+1829,Usman,28.0,Karachi,Frontend,Masters,9.0,155631.0,71.62,1.0,37.0,feature training feature model system training feature prediction analysis learning feature
+1830,Omar,36.0,Peshawar,Data,PhD,12.0,159238.0,81.16,17.0,,system system data analysis neural system feature learning prediction
+1831,Ali,22.0,Karachi,Backend,PhD,,135335.0,,13.0,51.0,model analysis feature neural prediction
+1832,Usman,26.0,Peshawar,AI,PhD,1.0,147441.0,75.18,15.0,57.0,prediction system neural pipeline analysis neural model prediction system analysis learning
+1833,Hina,41.0,Islamabad,Backend,PhD,9.0,,59.13,,43.0,prediction feature feature system feature pipeline system model system neural data
+1834,Usman,32.0,Islamabad,Frontend,Bachelors,3.0,165580.0,78.7,,40.0,model training pipeline pipeline pipeline pipeline data neural pipeline data pipeline prediction
+1835,Hina,25.0,Islamabad,ML,Bachelors,4.0,,81.87,,43.0,model feature pipeline prediction system analysis prediction
+1836,Hina,22.0,,AI,Masters,12.0,172596.0,77.84,13.0,50.0,training learning neural pipeline analysis analysis training analysis
+1837,Bilal,36.0,,Data,Masters,1.0,158454.0,86.91,3.0,,feature prediction training learning analysis feature training data data feature pipeline
+1838,Zara,25.0,Lahore,Frontend,Masters,0.0,89402.0,66.78,18.0,32.0,prediction training model model pipeline
+1839,Ayesha,35.0,,ML,PhD,,131656.0,88.26,1.0,57.0,pipeline feature learning system feature learning learning prediction neural training learning
+1840,Bilal,32.0,,Backend,PhD,13.0,105614.0,,,58.0,feature training learning prediction training
+1841,Omar,24.0,Peshawar,ML,Bachelors,0.0,131009.0,74.21,,58.0,
+1842,Bilal,35.0,Peshawar,Frontend,Bachelors,12.0,85836.0,82.41,,52.0,data prediction pipeline feature model
+1843,Ahmed,31.0,Lahore,Frontend,Masters,14.0,171049.0,50.92,15.0,47.0,analysis model pipeline prediction feature prediction neural system
+1844,Ahmed,36.0,Peshawar,ML,Bachelors,3.0,116407.0,82.7,,32.0,system pipeline system system data system system pipeline prediction training training
+1845,Ayesha,43.0,Lahore,Backend,Bachelors,1.0,47610.0,80.93,17.0,,neural pipeline feature training learning
+1846,Usman,26.0,,ML,Bachelors,10.0,149381.0,,10.0,41.0,
+1847,Zara,34.0,Karachi,Frontend,,3.0,55791.0,54.29,6.0,44.0,analysis pipeline model pipeline prediction system pipeline training prediction feature pipeline data
+1848,Ayesha,38.0,Quetta,Frontend,Bachelors,7.0,98047.0,54.55,8.0,47.0,neural pipeline model neural prediction prediction prediction training prediction feature data learning
+1849,Hina,32.0,Islamabad,Data,Masters,7.0,110246.0,96.16,3.0,34.0,training training feature feature model neural model
+1850,Sara,,Islamabad,Data,Masters,14.0,126148.0,,,36.0,learning neural learning pipeline data data feature pipeline model neural feature learning
+1851,Zara,,Islamabad,AI,Bachelors,10.0,85890.0,56.36,3.0,40.0,prediction feature data data neural training learning learning analysis feature
+1852,Zara,41.0,Quetta,Frontend,Masters,,,,,55.0,
+1853,Hina,43.0,Peshawar,Data,,8.0,72888.0,79.62,,56.0,system feature feature system pipeline analysis training training data learning
+1854,Hina,31.0,Karachi,ML,Bachelors,12.0,177821.0,91.78,8.0,40.0,learning system analysis learning prediction analysis
+1855,Ali,43.0,Islamabad,Backend,PhD,14.0,86531.0,,11.0,56.0,training prediction analysis model model analysis training
+1856,Ayesha,36.0,Islamabad,ML,Masters,,155652.0,61.83,1.0,44.0,
+1857,Hina,35.0,Islamabad,Backend,Masters,14.0,60608.0,94.49,,39.0,training neural neural pipeline learning pipeline training feature analysis
+1858,Ahmed,41.0,,Data,PhD,11.0,120986.0,50.46,4.0,44.0,analysis pipeline data training analysis pipeline data data prediction
+1859,Omar,35.0,Islamabad,AI,Masters,4.0,123996.0,60.07,4.0,42.0,prediction system training data feature
+1860,Sara,24.0,Karachi,ML,,6.0,96017.0,97.95,19.0,,feature model training learning neural system prediction pipeline
+1861,Ayesha,,Islamabad,ML,PhD,2.0,97676.0,80.67,4.0,46.0,prediction analysis system pipeline prediction feature system
+1862,Fatima,39.0,,ML,,,,,3.0,42.0,
+1863,Ahmed,35.0,Quetta,Backend,PhD,3.0,,53.35,8.0,39.0,
+1864,Usman,24.0,Karachi,Data,Masters,,73123.0,,9.0,54.0,system training learning feature training
+1865,Hina,41.0,Quetta,ML,PhD,8.0,134346.0,62.24,,30.0,prediction neural training prediction model prediction learning model prediction pipeline analysis
+1866,Fatima,33.0,Karachi,ML,PhD,9.0,,94.07,9.0,30.0,pipeline neural model data neural pipeline prediction
+1867,Hina,42.0,Quetta,AI,,9.0,87599.0,70.8,9.0,59.0,
+1868,Zara,39.0,Quetta,AI,,13.0,85406.0,,18.0,44.0,
+1869,Ahmed,22.0,Karachi,Data,,11.0,,95.91,9.0,45.0,pipeline model analysis system prediction feature data learning system
+1870,Zara,34.0,Peshawar,Data,,0.0,107560.0,70.4,,41.0,neural feature system training feature analysis model
+1871,Ali,24.0,Quetta,Frontend,Bachelors,1.0,144143.0,59.56,16.0,,
+1872,Zara,36.0,Islamabad,AI,PhD,4.0,94943.0,75.86,,53.0,analysis training learning learning data
+1873,Ali,41.0,Peshawar,Frontend,Bachelors,2.0,115839.0,95.4,5.0,35.0,model data feature model learning data prediction
+1874,Ali,40.0,Karachi,Backend,Masters,1.0,,90.22,14.0,35.0,
+1875,Fatima,34.0,Peshawar,Frontend,Masters,0.0,65345.0,53.29,,41.0,
+1876,Hina,35.0,Lahore,ML,PhD,,90390.0,84.63,17.0,54.0,prediction pipeline data system learning pipeline model data
+1877,Usman,,Lahore,Frontend,Masters,2.0,99557.0,,3.0,44.0,
+1878,Zara,28.0,Quetta,Data,Bachelors,,41906.0,95.37,,,
+1879,Ahmed,36.0,,Backend,PhD,11.0,47961.0,56.12,15.0,53.0,model pipeline model learning learning analysis model pipeline system system data
+1880,Ali,30.0,,ML,Masters,0.0,159289.0,,18.0,33.0,data model prediction data prediction feature learning analysis
+1881,Hina,,Peshawar,Frontend,Masters,11.0,117567.0,,,59.0,analysis training model system analysis data data model model
+1882,Sara,38.0,,Backend,,0.0,120664.0,70.5,,31.0,
+1883,Ayesha,,Quetta,Backend,Bachelors,7.0,121199.0,74.1,9.0,56.0,pipeline feature pipeline learning analysis
+1884,Fatima,,Peshawar,ML,,14.0,139764.0,,1.0,,model feature prediction feature data pipeline feature learning prediction
+1885,Usman,33.0,Quetta,Frontend,,2.0,162357.0,63.91,3.0,41.0,analysis data neural prediction training training system training prediction neural system model
+1886,Bilal,24.0,,Backend,,10.0,120729.0,66.23,5.0,36.0,
+1887,Fatima,31.0,Lahore,Backend,PhD,,90568.0,97.26,10.0,49.0,training model prediction pipeline prediction learning neural pipeline pipeline analysis learning model
+1888,Sara,27.0,Lahore,AI,Masters,6.0,149349.0,64.13,13.0,38.0,prediction feature feature feature feature data feature prediction
+1889,Ayesha,32.0,Quetta,Backend,Masters,9.0,113302.0,73.04,15.0,38.0,pipeline prediction pipeline training analysis
+1890,Sara,30.0,Karachi,AI,PhD,2.0,,,,,learning system learning system model neural learning prediction
+1891,Zara,27.0,Quetta,Frontend,PhD,,,58.11,1.0,43.0,prediction data analysis feature learning data data data feature analysis
+1892,Ali,33.0,Quetta,Frontend,Bachelors,3.0,77146.0,,,30.0,prediction prediction prediction analysis training prediction training training
+1893,Usman,27.0,Islamabad,Frontend,Masters,3.0,80297.0,86.93,,52.0,system pipeline system system model
+1894,Omar,44.0,Islamabad,Data,Masters,4.0,126394.0,93.34,16.0,50.0,neural model neural learning analysis training neural
+1895,Ali,37.0,Islamabad,Frontend,Masters,,167173.0,81.31,,52.0,model feature data neural system system training analysis data prediction pipeline neural
+1896,Omar,30.0,,Backend,PhD,6.0,165942.0,83.45,6.0,41.0,system neural system training learning learning model
+1897,Ayesha,30.0,Karachi,ML,Bachelors,13.0,,56.31,18.0,,
+1898,Hina,44.0,,AI,Masters,13.0,84460.0,97.29,,,system feature training analysis prediction training system
+1899,Bilal,24.0,Islamabad,Data,PhD,3.0,102119.0,56.63,,42.0,prediction feature learning system model pipeline
+1900,Ahmed,40.0,Karachi,Frontend,Masters,7.0,172851.0,88.73,3.0,59.0,pipeline system prediction feature neural
+1901,Ali,24.0,,Frontend,,12.0,45057.0,63.24,17.0,56.0,data model neural pipeline feature learning data learning data
+1902,Usman,42.0,Quetta,ML,Masters,5.0,59157.0,96.68,7.0,,pipeline neural neural feature learning feature pipeline learning
+1903,Sara,,Peshawar,ML,Bachelors,13.0,75030.0,86.0,18.0,49.0,data learning model prediction prediction neural pipeline
+1904,Usman,42.0,Quetta,Data,Bachelors,0.0,148612.0,87.69,5.0,47.0,training system analysis feature prediction data
+1905,Ayesha,21.0,Peshawar,AI,Masters,0.0,155080.0,60.95,0.0,48.0,neural analysis pipeline system data data system neural system model model
+1906,Omar,32.0,,Frontend,Masters,8.0,123028.0,72.15,7.0,45.0,pipeline system data data pipeline
+1907,Sara,44.0,Peshawar,Data,Bachelors,9.0,176260.0,,0.0,56.0,learning prediction system system model model analysis training system feature system
+1908,Ahmed,33.0,Islamabad,Backend,PhD,5.0,69680.0,88.5,18.0,43.0,data data analysis model learning pipeline pipeline model prediction training
+1909,Ahmed,30.0,Lahore,Backend,Bachelors,9.0,142302.0,55.2,10.0,59.0,
+1910,Ali,35.0,Peshawar,Data,Masters,7.0,76445.0,98.12,14.0,58.0,
+1911,Ayesha,33.0,Quetta,Frontend,Masters,12.0,45796.0,94.51,10.0,37.0,training neural feature prediction model neural prediction analysis model analysis
+1912,Hina,43.0,Islamabad,Data,PhD,6.0,87218.0,,18.0,,
+1913,Ayesha,42.0,Quetta,Frontend,Bachelors,,179195.0,91.14,9.0,38.0,
+1914,Omar,42.0,Karachi,ML,Bachelors,5.0,179294.0,75.92,11.0,,model analysis analysis model prediction analysis analysis
+1915,Usman,41.0,Islamabad,Data,Bachelors,3.0,64074.0,73.09,0.0,55.0,system data feature analysis learning model data model learning
+1916,Ahmed,42.0,Peshawar,Frontend,Masters,6.0,156088.0,65.72,6.0,47.0,prediction data feature pipeline data training analysis model system
+1917,Usman,29.0,Islamabad,Data,,8.0,76839.0,79.05,,,system prediction training data learning training data prediction pipeline model
+1918,Usman,29.0,Quetta,Data,PhD,13.0,147112.0,86.49,9.0,52.0,data prediction learning prediction analysis prediction feature feature learning feature
+1919,Usman,,Lahore,Frontend,,10.0,,70.55,5.0,37.0,prediction data pipeline pipeline data neural system data pipeline training system
+1920,Ahmed,30.0,Islamabad,Frontend,Masters,9.0,108322.0,81.46,16.0,53.0,data feature system prediction model learning learning training learning neural feature pipeline
+1921,Fatima,44.0,Peshawar,AI,Bachelors,9.0,96321.0,84.97,17.0,43.0,system training training pipeline learning
+1922,Zara,30.0,Karachi,Data,PhD,13.0,150100.0,85.56,4.0,35.0,model data prediction prediction learning analysis feature
+1923,Omar,28.0,Lahore,Backend,,6.0,75507.0,52.6,17.0,39.0,pipeline system model training feature
+1924,Fatima,44.0,Karachi,Data,Masters,0.0,139244.0,92.99,,37.0,learning feature data prediction analysis
+1925,Omar,36.0,Islamabad,Data,Bachelors,,165788.0,,,59.0,prediction learning feature system feature
+1926,Sara,37.0,Quetta,Frontend,Bachelors,8.0,135251.0,63.12,7.0,,learning feature training training system neural data analysis
+1927,Ayesha,25.0,Quetta,Data,PhD,12.0,63806.0,62.09,12.0,,pipeline learning training learning data analysis training learning prediction
+1928,Ayesha,24.0,Peshawar,Data,Bachelors,3.0,170364.0,74.15,,58.0,data system system data prediction
+1929,Bilal,,Quetta,Backend,,,76901.0,,10.0,41.0,pipeline feature prediction neural prediction data prediction data model system system
+1930,Ayesha,44.0,Lahore,Frontend,Masters,2.0,92127.0,68.92,5.0,46.0,training pipeline learning analysis analysis pipeline
+1931,Ahmed,39.0,,Data,,,40453.0,87.49,,42.0,training pipeline pipeline data training data neural
+1932,Hina,24.0,Peshawar,ML,PhD,3.0,115432.0,54.84,0.0,48.0,prediction training feature model model prediction learning pipeline system system
+1933,Ali,27.0,Islamabad,AI,PhD,12.0,162872.0,73.8,17.0,41.0,training learning neural feature learning system learning feature system neural neural prediction
+1934,Bilal,30.0,Islamabad,Backend,Masters,9.0,127362.0,99.58,4.0,45.0,learning prediction prediction system analysis analysis neural analysis data model
+1935,Ali,38.0,Quetta,Data,,,50976.0,88.52,,,analysis feature training data model system data training system neural learning
+1936,Omar,39.0,Karachi,ML,Masters,1.0,154176.0,60.53,9.0,56.0,model system training training training data
+1937,Ali,24.0,Islamabad,Data,Bachelors,13.0,139122.0,75.07,4.0,34.0,training analysis prediction neural data data feature
+1938,Ali,30.0,Quetta,Data,PhD,,110404.0,61.68,13.0,54.0,prediction feature system model prediction system
+1939,Bilal,21.0,Peshawar,Frontend,PhD,13.0,121932.0,70.48,16.0,45.0,pipeline model training training model system
+1940,Sara,43.0,Quetta,Frontend,PhD,0.0,137170.0,89.0,0.0,54.0,data model training neural feature neural
+1941,Usman,38.0,Islamabad,Frontend,PhD,11.0,,,1.0,,
+1942,Ayesha,25.0,Peshawar,ML,PhD,9.0,133789.0,61.41,6.0,40.0,learning model pipeline pipeline learning learning system neural prediction
+1943,Ayesha,35.0,,Data,Bachelors,11.0,,96.11,,46.0,analysis training prediction analysis feature neural learning prediction analysis prediction learning data
+1944,Ahmed,37.0,Lahore,AI,Bachelors,0.0,173089.0,79.63,19.0,,data learning feature analysis training
+1945,Bilal,23.0,Peshawar,Backend,PhD,12.0,47957.0,69.0,,52.0,neural pipeline neural system model system neural data learning system feature system
+1946,Ahmed,32.0,,Frontend,,13.0,,75.1,,43.0,data analysis model analysis feature system analysis pipeline
+1947,Hina,22.0,Karachi,Frontend,,7.0,,80.25,4.0,35.0,data model analysis model prediction
+1948,Hina,,Peshawar,Data,PhD,13.0,,77.99,11.0,,model system prediction model system data system learning feature feature prediction feature
+1949,Ahmed,43.0,Lahore,Data,Bachelors,1.0,91586.0,74.32,,,system training analysis analysis feature model
+1950,Bilal,41.0,,ML,Masters,11.0,59252.0,75.25,15.0,59.0,neural training model learning pipeline model pipeline prediction data data pipeline
+1951,Ahmed,37.0,Islamabad,ML,Masters,9.0,43543.0,58.82,19.0,57.0,feature learning prediction analysis feature pipeline prediction
+1952,Ayesha,42.0,Karachi,Frontend,Masters,4.0,144647.0,90.64,15.0,40.0,neural learning data pipeline prediction model feature pipeline data prediction
+1953,Fatima,,Peshawar,Data,,11.0,75031.0,,18.0,41.0,prediction analysis prediction model model feature
+1954,Zara,25.0,,AI,Masters,3.0,105747.0,56.55,14.0,42.0,analysis prediction feature model model system prediction learning data
+1955,Ali,35.0,,Backend,Masters,7.0,95311.0,,,33.0,system model feature neural prediction prediction feature neural prediction prediction
+1956,Zara,23.0,Karachi,Data,Masters,,105867.0,96.62,9.0,36.0,model training neural training prediction learning system training prediction system pipeline analysis
+1957,Bilal,27.0,Peshawar,Data,Masters,9.0,128780.0,97.37,,31.0,training prediction model prediction model feature pipeline analysis learning
+1958,Zara,31.0,Islamabad,ML,Bachelors,8.0,97196.0,,6.0,35.0,data learning system model system neural
+1959,Hina,30.0,Lahore,Backend,PhD,6.0,113705.0,56.78,,35.0,system neural analysis training learning learning
+1960,Omar,29.0,,Frontend,PhD,14.0,97894.0,75.92,2.0,,prediction prediction feature learning system system
+1961,Ali,34.0,Islamabad,Data,Bachelors,12.0,127640.0,55.63,14.0,59.0,data feature learning neural analysis prediction learning data analysis prediction feature model
+1962,Usman,33.0,Lahore,Frontend,Bachelors,6.0,54591.0,96.7,0.0,49.0,feature prediction data data model feature neural data learning learning
+1963,Bilal,,Islamabad,Data,PhD,0.0,137247.0,59.18,2.0,37.0,neural data feature training analysis pipeline data training model
+1964,Ali,,Karachi,Frontend,Masters,,40727.0,62.64,9.0,37.0,system feature learning system neural neural pipeline learning pipeline system pipeline
+1965,Zara,27.0,Lahore,Backend,Masters,11.0,83822.0,70.33,14.0,58.0,training analysis training learning feature analysis learning pipeline training feature training
+1966,Hina,41.0,,ML,PhD,1.0,143399.0,,5.0,37.0,model training prediction neural system feature pipeline data feature prediction
+1967,Sara,38.0,Quetta,Backend,Masters,3.0,152113.0,89.73,,,pipeline pipeline analysis model feature learning pipeline
+1968,Fatima,23.0,Islamabad,AI,Bachelors,,170431.0,72.82,,30.0,pipeline data data learning pipeline prediction system
+1969,Usman,30.0,Karachi,ML,,10.0,168588.0,58.54,,,model training analysis training pipeline pipeline neural neural system analysis
+1970,Fatima,42.0,Peshawar,Backend,Masters,13.0,100091.0,63.36,,41.0,learning learning neural learning analysis analysis system training pipeline neural
+1971,Ali,27.0,Islamabad,AI,,2.0,134192.0,75.46,3.0,44.0,feature prediction prediction model model training model model prediction
+1972,Hina,29.0,Peshawar,Data,PhD,6.0,150805.0,57.37,17.0,33.0,neural feature prediction model neural analysis
+1973,Hina,37.0,,Data,Bachelors,11.0,158089.0,80.58,2.0,57.0,
+1974,Zara,31.0,Islamabad,Frontend,Masters,7.0,129367.0,,16.0,54.0,learning neural learning prediction prediction neural
+1975,Ayesha,27.0,Lahore,ML,PhD,1.0,53265.0,85.74,,32.0,model system data data training data training feature neural data prediction
+1976,Zara,44.0,Peshawar,Data,Masters,3.0,176496.0,96.89,17.0,43.0,model model feature training analysis feature system learning analysis neural analysis
+1977,Ayesha,34.0,Quetta,ML,Bachelors,,119622.0,95.61,1.0,51.0,learning pipeline training training analysis learning pipeline prediction learning prediction analysis
+1978,Ayesha,39.0,,Data,,2.0,75929.0,97.3,12.0,52.0,data feature learning learning analysis system feature prediction training learning system
+1979,Usman,24.0,Lahore,Frontend,Bachelors,1.0,101892.0,,14.0,37.0,model neural pipeline analysis model feature
+1980,Zara,26.0,Lahore,Backend,Masters,11.0,96630.0,56.58,4.0,42.0,analysis model feature prediction pipeline feature
+1981,Sara,,Lahore,Frontend,Bachelors,12.0,171025.0,65.11,2.0,52.0,data training data analysis data feature feature
+1982,Ahmed,27.0,Islamabad,AI,Masters,13.0,127580.0,94.75,4.0,,pipeline data prediction pipeline pipeline analysis learning neural analysis
+1983,Ahmed,33.0,Islamabad,Data,Bachelors,5.0,117462.0,98.6,4.0,,learning data learning model training prediction
+1984,Zara,34.0,Islamabad,AI,Masters,12.0,153396.0,92.97,4.0,34.0,system neural model model prediction model pipeline system
+1985,Zara,,Quetta,AI,,3.0,,55.5,,42.0,pipeline neural learning data prediction pipeline pipeline training learning system
+1986,Fatima,28.0,Quetta,ML,PhD,5.0,135310.0,97.37,2.0,57.0,neural pipeline analysis learning feature prediction learning model model analysis
+1987,Usman,,Quetta,Data,PhD,1.0,88928.0,71.17,19.0,,data system training model learning model pipeline
+1988,Zara,21.0,Karachi,AI,Bachelors,11.0,129876.0,,17.0,49.0,
+1989,Fatima,24.0,Quetta,Backend,Masters,3.0,64976.0,72.12,19.0,30.0,neural prediction prediction data learning training feature prediction learning feature analysis learning
+1990,Ayesha,23.0,Islamabad,AI,Bachelors,10.0,164984.0,,3.0,45.0,prediction neural training neural feature training pipeline pipeline
+1991,Hina,29.0,Islamabad,Backend,PhD,5.0,138256.0,77.19,0.0,59.0,learning system training training neural training prediction data neural pipeline training
+1992,Hina,28.0,,ML,Bachelors,13.0,140537.0,66.93,15.0,58.0,system learning training neural learning data data system learning system
+1993,Ayesha,21.0,Karachi,AI,Bachelors,4.0,175772.0,73.67,7.0,52.0,system model system neural feature
+1994,Bilal,26.0,Quetta,Frontend,,2.0,149331.0,80.66,16.0,53.0,analysis system pipeline analysis learning data pipeline training
+1995,Fatima,29.0,Peshawar,ML,Masters,7.0,47526.0,93.44,7.0,31.0,analysis pipeline pipeline neural training learning
+1996,Fatima,27.0,Karachi,Backend,Bachelors,6.0,143863.0,83.1,6.0,36.0,training neural prediction neural learning
+1997,Ayesha,24.0,Lahore,ML,PhD,2.0,113366.0,71.7,7.0,35.0,pipeline analysis data model model feature analysis
+1998,Sara,33.0,,AI,Masters,5.0,,90.97,11.0,34.0,prediction data training neural training
+1999,Omar,37.0,Lahore,Data,PhD,,178982.0,95.28,15.0,58.0,system model neural training neural
+2000,Ali,22.0,Islamabad,Data,Bachelors,10.0,111185.0,55.99,,33.0,
+2001,Ayesha,,Islamabad,Backend,Masters,4.0,90248.0,76.6,18.0,31.0,training prediction learning data training learning
+2002,Zara,32.0,Karachi,Backend,Masters,10.0,173023.0,64.23,9.0,39.0,training feature data model feature training training analysis model pipeline
+2003,Zara,41.0,Karachi,Data,PhD,4.0,119888.0,52.35,6.0,51.0,data feature learning prediction model
+2004,Usman,28.0,Lahore,Backend,PhD,,134533.0,83.43,11.0,34.0,
+2005,Ayesha,26.0,Islamabad,ML,PhD,10.0,,93.14,19.0,47.0,pipeline pipeline analysis data neural neural data feature neural model feature
+2006,Usman,28.0,Lahore,Frontend,Masters,4.0,129719.0,,4.0,39.0,system training data pipeline training pipeline
+2007,Ayesha,38.0,Peshawar,Frontend,Masters,10.0,179876.0,90.62,15.0,52.0,
+2008,Fatima,23.0,Lahore,ML,Bachelors,14.0,,92.67,,51.0,
+2009,Ali,42.0,Quetta,Frontend,Masters,2.0,69592.0,95.72,6.0,57.0,pipeline training learning learning prediction system neural pipeline data neural model neural
+2010,Fatima,32.0,Lahore,AI,Bachelors,9.0,80643.0,63.26,,44.0,prediction analysis learning neural learning learning model neural data
+2011,Omar,23.0,Quetta,ML,PhD,4.0,102665.0,95.2,13.0,56.0,
+2012,Hina,,Quetta,Backend,PhD,6.0,45972.0,66.03,10.0,38.0,feature neural data neural analysis analysis neural neural pipeline pipeline prediction
+2013,Ahmed,26.0,Quetta,ML,Masters,4.0,,77.62,6.0,40.0,learning training analysis data analysis data training pipeline
+2014,Ayesha,,Peshawar,Data,PhD,,65020.0,52.53,9.0,55.0,system learning feature training data data feature system data analysis feature
+2015,Omar,43.0,,Backend,,8.0,142621.0,,,50.0,learning prediction pipeline feature training pipeline
+2016,Hina,32.0,Lahore,Data,Masters,14.0,125374.0,86.02,3.0,54.0,system model learning training learning model neural
+2017,Bilal,22.0,Peshawar,Backend,Bachelors,2.0,84912.0,72.22,15.0,,
+2018,Ali,26.0,,Frontend,Masters,,,62.81,9.0,58.0,learning training analysis prediction training analysis learning learning model system feature neural
+2019,Usman,37.0,Karachi,ML,Bachelors,5.0,73798.0,59.52,18.0,46.0,prediction data neural system model system feature training feature training
+2020,Usman,,Lahore,AI,,0.0,147791.0,83.5,16.0,50.0,learning pipeline feature model prediction training pipeline learning neural data feature prediction
+2021,Fatima,22.0,Karachi,Backend,Masters,9.0,,50.02,8.0,,data model prediction system learning data pipeline analysis prediction prediction
+2022,Zara,43.0,Peshawar,Backend,,4.0,106983.0,90.29,12.0,52.0,data pipeline training system neural prediction system
+2023,Hina,40.0,Islamabad,Data,Masters,,173922.0,53.96,0.0,45.0,analysis feature training learning feature
+2024,Bilal,28.0,,Frontend,Masters,4.0,51953.0,59.57,1.0,35.0,data prediction neural pipeline neural learning prediction pipeline pipeline system
+2025,Omar,,Islamabad,Data,Bachelors,8.0,146410.0,69.31,12.0,51.0,model data neural data training learning neural model system
+2026,Ali,32.0,,Data,PhD,10.0,165155.0,74.24,8.0,40.0,model learning training feature analysis
+2027,Hina,,Quetta,Frontend,Bachelors,5.0,,67.75,6.0,52.0,prediction feature learning feature neural prediction data
+2028,Bilal,,Quetta,AI,Bachelors,7.0,44055.0,66.04,15.0,,
+2029,Ahmed,33.0,Karachi,Data,PhD,9.0,78170.0,98.2,18.0,33.0,training prediction analysis learning neural training
+2030,Ayesha,35.0,Quetta,Data,,7.0,139976.0,82.08,,58.0,pipeline learning learning analysis system model analysis
+2031,Usman,43.0,Quetta,Backend,PhD,12.0,68251.0,51.17,5.0,44.0,
+2032,Omar,36.0,Islamabad,Frontend,Masters,2.0,175604.0,71.51,,30.0,neural prediction model feature model learning prediction feature analysis system pipeline
+2033,Usman,30.0,Islamabad,ML,PhD,6.0,175996.0,93.75,18.0,51.0,model training learning pipeline neural feature analysis training model
+2034,Omar,43.0,Karachi,AI,PhD,13.0,88037.0,65.07,10.0,59.0,training pipeline system model data neural system model feature
+2035,Fatima,36.0,Lahore,AI,PhD,6.0,132115.0,54.73,11.0,58.0,feature analysis analysis prediction learning
+2036,Zara,32.0,Karachi,Frontend,Bachelors,13.0,,,9.0,49.0,system system prediction model neural pipeline learning
+2037,Omar,37.0,Karachi,Backend,Bachelors,,110400.0,80.3,12.0,30.0,learning training analysis data learning
+2038,Usman,36.0,Peshawar,Backend,Masters,11.0,139525.0,78.52,11.0,38.0,training neural model learning neural
+2039,Fatima,32.0,,Frontend,Bachelors,5.0,141164.0,52.68,,41.0,training training analysis training pipeline training pipeline
+2040,Omar,28.0,,Backend,Masters,11.0,,57.02,19.0,33.0,learning model learning feature data analysis pipeline data neural data learning
+2041,Ahmed,40.0,Karachi,AI,Bachelors,6.0,55385.0,81.13,17.0,57.0,system data system feature neural training learning data learning system analysis model
+2042,Zara,23.0,Karachi,AI,PhD,13.0,49336.0,60.39,3.0,51.0,model prediction prediction neural feature data prediction system training analysis system feature
+2043,Omar,36.0,Quetta,ML,Bachelors,1.0,105421.0,75.2,4.0,42.0,analysis learning learning pipeline analysis neural training learning feature pipeline prediction
+2044,Fatima,33.0,Peshawar,Frontend,Masters,8.0,76021.0,77.24,4.0,36.0,prediction pipeline system neural pipeline analysis
+2045,Hina,43.0,Karachi,Data,Bachelors,9.0,,64.18,11.0,37.0,learning system prediction system pipeline neural model training learning
+2046,Sara,39.0,Islamabad,Data,,9.0,157369.0,,2.0,57.0,pipeline neural pipeline system data feature
+2047,Bilal,28.0,Islamabad,ML,Masters,,89111.0,92.12,7.0,42.0,learning training feature system prediction prediction model data
+2048,Sara,42.0,Quetta,ML,PhD,0.0,129402.0,86.12,1.0,40.0,training model feature pipeline training
+2049,Sara,25.0,Quetta,Backend,PhD,2.0,159774.0,53.9,17.0,38.0,system pipeline system prediction analysis learning data
+2050,Ali,40.0,Lahore,ML,Masters,13.0,82719.0,55.31,8.0,54.0,pipeline data feature neural analysis feature model model prediction model model learning
+2051,Ahmed,28.0,,ML,PhD,14.0,165695.0,74.64,,53.0,system neural analysis model learning
+2052,Hina,,Lahore,Data,PhD,2.0,174585.0,58.04,6.0,45.0,learning data training analysis system training training training neural pipeline training analysis
+2053,Ayesha,32.0,Quetta,Backend,Bachelors,0.0,144126.0,98.91,,39.0,feature data learning data pipeline system data
+2054,Omar,21.0,Quetta,ML,,11.0,117658.0,57.93,,40.0,prediction data feature model training prediction model analysis training
+2055,Bilal,41.0,Quetta,ML,PhD,6.0,71007.0,74.37,14.0,41.0,system model pipeline learning neural prediction data model system
+2056,Zara,40.0,,Backend,PhD,,146833.0,,,57.0,data training model data training system feature prediction model
+2057,Hina,26.0,Quetta,Frontend,PhD,9.0,158637.0,81.97,11.0,43.0,model prediction prediction feature feature model prediction prediction analysis pipeline model analysis
+2058,Usman,42.0,Islamabad,Backend,Masters,12.0,,56.45,0.0,48.0,data model model analysis pipeline neural system
+2059,Ayesha,,Lahore,Data,Bachelors,1.0,133220.0,71.52,11.0,41.0,model model feature training analysis training pipeline feature
+2060,Ali,28.0,,Frontend,PhD,9.0,66393.0,63.74,5.0,47.0,model feature pipeline neural neural learning neural training prediction system learning neural
+2061,Ali,27.0,Lahore,AI,PhD,4.0,,94.39,18.0,,data model model neural feature
+2062,Hina,21.0,,Backend,Masters,5.0,157243.0,52.03,18.0,,prediction model feature training model
+2063,Fatima,,Karachi,Data,PhD,8.0,128290.0,95.69,15.0,32.0,neural data system pipeline training prediction learning
+2064,Sara,36.0,Peshawar,Frontend,Masters,3.0,144263.0,91.65,,30.0,neural learning model data analysis neural feature system prediction data feature
+2065,Usman,32.0,Peshawar,Backend,Bachelors,1.0,45993.0,64.88,2.0,58.0,feature data pipeline analysis data pipeline analysis model prediction feature
+2066,Ali,26.0,Peshawar,ML,Bachelors,,133650.0,89.46,9.0,48.0,data data learning prediction data feature data system training learning prediction pipeline
+2067,Bilal,,,Backend,PhD,2.0,157595.0,51.56,17.0,58.0,prediction model training data analysis system prediction model training system model system
+2068,Ali,22.0,Karachi,AI,PhD,1.0,92066.0,98.34,12.0,33.0,model data learning neural model system analysis system model pipeline training prediction
+2069,Zara,34.0,Peshawar,Backend,PhD,11.0,151850.0,,17.0,52.0,training analysis feature system training neural neural feature feature
+2070,Omar,24.0,Peshawar,Frontend,Masters,0.0,82942.0,65.16,,57.0,training analysis prediction prediction data
+2071,Ali,,Quetta,Frontend,PhD,9.0,56138.0,68.13,2.0,45.0,neural feature feature data prediction neural prediction data prediction data pipeline data
+2072,Zara,43.0,Peshawar,Backend,PhD,1.0,158558.0,53.32,,41.0,feature data analysis model data data data pipeline
+2073,Hina,,Quetta,Frontend,Bachelors,5.0,49190.0,99.47,19.0,50.0,
+2074,Hina,33.0,Islamabad,ML,PhD,7.0,132259.0,51.96,6.0,50.0,model model model system pipeline analysis neural analysis model training analysis prediction
+2075,Ayesha,22.0,Karachi,Backend,Bachelors,12.0,118422.0,82.75,7.0,42.0,learning feature data training learning pipeline learning pipeline model learning model pipeline
+2076,Ali,29.0,Peshawar,ML,,2.0,122315.0,72.14,8.0,46.0,
+2077,Bilal,41.0,Karachi,ML,Bachelors,10.0,69086.0,97.45,13.0,37.0,
+2078,Ali,,Karachi,Data,PhD,14.0,165604.0,,4.0,42.0,
+2079,Bilal,29.0,Karachi,Backend,Bachelors,8.0,140814.0,,18.0,49.0,system data learning analysis learning data system
+2080,Ahmed,21.0,Islamabad,Frontend,Masters,14.0,159324.0,74.12,15.0,,
+2081,Ayesha,31.0,Lahore,ML,Bachelors,11.0,168921.0,85.14,11.0,34.0,analysis learning training feature pipeline pipeline analysis system learning analysis prediction
+2082,Ahmed,23.0,Peshawar,Data,Bachelors,8.0,43435.0,53.4,3.0,47.0,data feature system neural feature learning data feature training system
+2083,Ali,40.0,Lahore,Backend,Bachelors,1.0,141505.0,59.69,7.0,44.0,analysis model system neural data feature data training prediction prediction
+2084,Ayesha,,,Backend,PhD,7.0,93331.0,60.73,,41.0,
+2085,Ahmed,24.0,Lahore,AI,PhD,9.0,153457.0,86.91,14.0,,analysis learning neural training learning learning neural learning neural feature feature
+2086,Sara,38.0,Karachi,AI,,10.0,,59.46,5.0,46.0,feature learning model neural pipeline prediction learning training prediction prediction system neural
+2087,Ali,43.0,Quetta,ML,Masters,11.0,93014.0,78.67,4.0,54.0,feature learning training training analysis pipeline prediction model
+2088,Ahmed,26.0,Karachi,AI,Masters,4.0,70297.0,60.76,13.0,44.0,prediction prediction pipeline feature neural feature feature feature feature analysis
+2089,Sara,23.0,Karachi,ML,Bachelors,3.0,83890.0,93.08,12.0,31.0,learning model analysis pipeline neural system
+2090,Sara,42.0,Lahore,Frontend,,9.0,61322.0,97.11,9.0,35.0,analysis analysis prediction model data system analysis
+2091,Hina,31.0,Karachi,ML,Bachelors,4.0,75739.0,,17.0,46.0,data system feature prediction model prediction training feature neural data training
+2092,Ali,35.0,Lahore,AI,Bachelors,3.0,,67.62,3.0,45.0,model data learning data neural training data prediction prediction feature
+2093,Sara,42.0,,Frontend,Bachelors,,48314.0,61.7,,46.0,pipeline learning data training feature model prediction prediction
+2094,Hina,25.0,,AI,Masters,,133831.0,52.49,10.0,54.0,model training model data prediction analysis feature analysis
+2095,Ahmed,40.0,Lahore,ML,PhD,12.0,115164.0,63.43,16.0,49.0,data learning feature training neural neural data training prediction feature learning system
+2096,Zara,30.0,Quetta,Data,Masters,9.0,147658.0,82.71,17.0,38.0,feature data model learning system neural
+2097,Ali,32.0,Peshawar,Backend,Bachelors,11.0,117028.0,76.68,,56.0,
+2098,Ayesha,35.0,,AI,Bachelors,12.0,76113.0,,,34.0,learning analysis training pipeline prediction pipeline data analysis training data
+2099,Bilal,37.0,Lahore,ML,Masters,13.0,157174.0,69.81,,52.0,data learning training feature data learning training prediction
+2100,Bilal,30.0,,Frontend,Bachelors,5.0,,84.69,,30.0,
+2101,Ahmed,26.0,Islamabad,AI,Bachelors,1.0,79029.0,74.47,,35.0,pipeline neural pipeline learning system data data neural
+2102,Fatima,38.0,Islamabad,AI,Masters,4.0,41737.0,75.63,0.0,53.0,analysis analysis data data prediction training feature neural neural data neural
+2103,Fatima,33.0,Lahore,Backend,Masters,5.0,171042.0,63.39,15.0,43.0,neural system learning pipeline feature feature neural
+2104,Ahmed,,,ML,Masters,,125474.0,72.75,14.0,46.0,pipeline pipeline model data data training neural analysis system pipeline neural training
+2105,Sara,44.0,Karachi,Data,Bachelors,11.0,118218.0,73.54,5.0,54.0,system prediction data feature system training system neural analysis learning data
+2106,Ali,30.0,Peshawar,Frontend,,1.0,168692.0,85.33,,,prediction pipeline system pipeline model feature
+2107,Bilal,34.0,Peshawar,ML,PhD,13.0,168411.0,97.03,7.0,30.0,model feature prediction feature analysis pipeline analysis system learning learning analysis
+2108,Bilal,26.0,Peshawar,Frontend,PhD,6.0,40294.0,66.47,6.0,30.0,data learning system neural analysis data model training
+2109,Sara,23.0,Karachi,AI,Masters,3.0,64596.0,52.11,1.0,42.0,analysis feature model data model pipeline
+2110,Bilal,,,Backend,PhD,7.0,138185.0,74.81,,43.0,model feature training system neural training training training
+2111,Ayesha,27.0,Quetta,Backend,Bachelors,6.0,51434.0,77.22,,56.0,model feature feature neural model training
+2112,Ali,40.0,Islamabad,Data,PhD,6.0,98382.0,58.42,15.0,35.0,model analysis system training training feature neural
+2113,Omar,34.0,Lahore,Backend,Bachelors,,78098.0,88.02,,56.0,system neural model prediction analysis
+2114,Bilal,29.0,Peshawar,AI,,0.0,,99.25,19.0,35.0,data model prediction analysis neural prediction analysis data model neural system
+2115,Ahmed,35.0,Islamabad,Data,Masters,9.0,123029.0,97.29,,30.0,feature feature neural analysis model feature neural neural learning system
+2116,Ayesha,41.0,Quetta,ML,,5.0,86228.0,,9.0,,training prediction model learning training neural data
+2117,Bilal,23.0,Lahore,Backend,PhD,5.0,43771.0,93.77,,43.0,neural training analysis training feature model neural
+2118,Ayesha,22.0,Karachi,Data,,5.0,114099.0,85.22,11.0,32.0,system system learning system analysis neural model pipeline feature feature analysis
+2119,Hina,22.0,Karachi,AI,Masters,12.0,160811.0,72.69,5.0,52.0,prediction data neural neural analysis feature feature prediction neural model
+2120,Omar,23.0,Quetta,Frontend,PhD,11.0,102257.0,77.03,18.0,39.0,feature learning feature learning neural prediction model
+2121,Usman,38.0,,Frontend,PhD,5.0,,,,,neural pipeline analysis learning training neural model learning prediction feature training
+2122,Ahmed,34.0,Peshawar,AI,,11.0,98436.0,74.01,8.0,48.0,analysis pipeline system pipeline learning analysis data pipeline feature
+2123,Ahmed,40.0,Islamabad,AI,PhD,9.0,147779.0,68.66,5.0,48.0,neural data system feature prediction prediction learning feature neural
+2124,Ali,38.0,Lahore,Frontend,PhD,6.0,164891.0,74.66,15.0,57.0,neural learning model prediction system learning pipeline analysis system model
+2125,Ayesha,30.0,Karachi,Data,PhD,13.0,72376.0,,,52.0,analysis model pipeline training system model learning data prediction neural feature system
+2126,Sara,,Quetta,Frontend,Bachelors,,117924.0,59.45,15.0,33.0,prediction analysis pipeline data analysis learning data learning analysis learning analysis
+2127,Ahmed,,Quetta,AI,Bachelors,5.0,69332.0,95.05,,49.0,system feature analysis data training training pipeline neural learning feature prediction
+2128,Ayesha,21.0,Islamabad,Backend,Masters,0.0,171001.0,83.71,4.0,,prediction pipeline learning neural model model
+2129,Ayesha,24.0,Quetta,ML,Bachelors,2.0,86737.0,81.66,,39.0,learning training neural neural system
+2130,Zara,,Quetta,Backend,,,170912.0,54.97,1.0,56.0,data system feature feature system training
+2131,Zara,21.0,Lahore,Backend,PhD,5.0,129031.0,80.21,,54.0,analysis training training prediction prediction training feature training analysis neural
+2132,Usman,34.0,Peshawar,AI,Masters,7.0,,56.05,8.0,31.0,
+2133,Hina,,Islamabad,Frontend,Masters,2.0,67472.0,53.93,16.0,33.0,pipeline training prediction learning system prediction prediction learning
+2134,Usman,42.0,,Data,PhD,9.0,99946.0,76.37,13.0,53.0,analysis model system model system data prediction pipeline model data
+2135,Bilal,34.0,Peshawar,Backend,Masters,7.0,,70.14,6.0,35.0,system prediction feature data model analysis model feature neural pipeline neural learning
+2136,Sara,40.0,Lahore,Frontend,Bachelors,7.0,169237.0,79.44,18.0,59.0,model model training learning feature training
+2137,Bilal,23.0,Lahore,Data,Bachelors,4.0,42765.0,,0.0,36.0,model training learning neural feature system training
+2138,Fatima,23.0,Quetta,Backend,Bachelors,,83074.0,71.55,19.0,45.0,prediction learning pipeline model training training system feature prediction
+2139,Bilal,29.0,Peshawar,Data,Bachelors,,142795.0,58.74,,,analysis prediction neural training pipeline model training analysis feature model
+2140,Ali,26.0,Islamabad,Frontend,Masters,4.0,141387.0,99.36,,36.0,
+2141,Bilal,33.0,Islamabad,ML,,8.0,171841.0,78.06,2.0,47.0,analysis neural learning model feature learning
+2142,Usman,41.0,,Frontend,PhD,13.0,42972.0,84.37,17.0,49.0,
+2143,Ahmed,22.0,Quetta,AI,Masters,6.0,143903.0,66.27,1.0,55.0,system pipeline prediction training feature feature system system
+2144,Ahmed,28.0,Karachi,Data,Masters,7.0,143579.0,54.74,9.0,55.0,learning learning system data learning training learning data pipeline
+2145,Zara,41.0,Lahore,ML,Masters,0.0,79339.0,98.79,10.0,51.0,model system system feature analysis training pipeline learning prediction
+2146,Sara,22.0,Quetta,Data,PhD,10.0,143376.0,64.31,2.0,48.0,learning analysis prediction neural pipeline pipeline data system prediction analysis feature
+2147,Sara,24.0,Peshawar,Data,Bachelors,1.0,82399.0,71.19,6.0,38.0,
+2148,Ali,35.0,Lahore,Backend,Masters,7.0,84013.0,,,58.0,system system analysis model feature pipeline training model neural system
+2149,Usman,24.0,Islamabad,AI,,11.0,,,18.0,,learning system learning analysis feature neural
+2150,Zara,33.0,,Data,PhD,8.0,,90.51,17.0,39.0,analysis pipeline feature neural data feature pipeline neural neural model prediction data
+2151,Fatima,32.0,Islamabad,Frontend,PhD,3.0,178919.0,,12.0,42.0,neural feature prediction neural model analysis
+2152,Sara,33.0,Peshawar,Frontend,Bachelors,11.0,43285.0,63.91,12.0,47.0,
+2153,Ahmed,34.0,,Backend,Masters,,163637.0,53.08,18.0,45.0,system feature training neural learning model
+2154,Bilal,40.0,Peshawar,AI,PhD,10.0,75863.0,58.12,,,data learning system learning training neural feature
+2155,Bilal,38.0,Lahore,AI,Bachelors,9.0,171627.0,94.75,,46.0,pipeline training system neural system neural pipeline
+2156,Zara,26.0,Quetta,Frontend,PhD,13.0,61323.0,84.3,11.0,51.0,prediction pipeline training feature feature model learning feature
+2157,Usman,31.0,Karachi,ML,PhD,8.0,110968.0,62.5,12.0,42.0,system system data pipeline training analysis analysis
+2158,Usman,22.0,Quetta,Backend,PhD,3.0,93915.0,53.28,11.0,41.0,neural feature analysis data pipeline feature system system training pipeline
+2159,Hina,43.0,Quetta,Backend,PhD,9.0,,84.53,18.0,39.0,prediction pipeline learning learning data neural system pipeline neural data system
+2160,Omar,39.0,Peshawar,Frontend,PhD,9.0,148500.0,78.62,,30.0,model prediction neural learning pipeline training neural model pipeline learning training training
+2161,Sara,39.0,Karachi,Frontend,Bachelors,,151266.0,70.23,6.0,59.0,learning learning analysis pipeline model
+2162,Usman,25.0,Lahore,ML,,8.0,66739.0,68.18,,,neural model neural feature learning training prediction analysis feature feature training
+2163,Ahmed,39.0,,ML,,10.0,168041.0,60.84,5.0,50.0,learning learning neural feature training model model prediction feature data
+2164,Zara,22.0,Islamabad,AI,Masters,6.0,93019.0,83.48,18.0,51.0,neural neural model training neural model analysis system neural pipeline feature model
+2165,Fatima,30.0,Lahore,Backend,Masters,1.0,47373.0,98.53,18.0,47.0,learning system model system pipeline analysis system model feature
+2166,Hina,22.0,Peshawar,Backend,,,60187.0,58.79,3.0,31.0,learning analysis learning learning neural training system neural
+2167,Ayesha,31.0,Quetta,Frontend,Bachelors,3.0,107863.0,79.86,18.0,45.0,
+2168,Ali,38.0,Quetta,AI,Bachelors,7.0,137927.0,71.21,8.0,41.0,system prediction model prediction feature neural
+2169,Fatima,44.0,Quetta,Backend,PhD,13.0,124085.0,72.33,15.0,38.0,learning feature feature feature model
+2170,Ayesha,35.0,Karachi,AI,PhD,6.0,157996.0,62.71,3.0,32.0,prediction feature analysis prediction pipeline analysis feature pipeline model analysis data
+2171,Bilal,29.0,,AI,,12.0,79220.0,91.26,5.0,51.0,data pipeline learning analysis model system learning data model data feature
+2172,Ali,43.0,Peshawar,Frontend,Masters,,,74.26,7.0,55.0,data neural feature pipeline model data feature
+2173,Sara,39.0,Karachi,AI,PhD,,,77.17,15.0,,model data feature training analysis pipeline system system
+2174,Ahmed,29.0,Islamabad,ML,Masters,7.0,119971.0,65.24,4.0,,system system training learning training
+2175,Ali,,Peshawar,ML,PhD,0.0,95556.0,59.09,9.0,57.0,data pipeline pipeline data model training prediction pipeline analysis system data prediction
+2176,Omar,41.0,Peshawar,Data,Masters,,78192.0,,12.0,33.0,system feature neural neural learning analysis pipeline analysis neural feature
+2177,Ayesha,29.0,Peshawar,Frontend,PhD,1.0,175453.0,85.71,13.0,55.0,analysis neural data prediction learning pipeline training model data
+2178,Sara,,,Data,PhD,1.0,,59.81,6.0,,analysis learning learning feature feature neural
+2179,Omar,39.0,,ML,Bachelors,14.0,44782.0,84.5,19.0,37.0,system data prediction data feature pipeline pipeline pipeline pipeline pipeline analysis
+2180,Bilal,27.0,Lahore,Data,PhD,,100030.0,69.52,5.0,39.0,data neural feature data prediction learning training neural model training feature
+2181,Omar,36.0,Peshawar,Frontend,,4.0,,70.79,6.0,45.0,pipeline model analysis neural neural learning model
+2182,Hina,36.0,Quetta,Frontend,Bachelors,1.0,137469.0,73.46,4.0,52.0,learning pipeline prediction analysis feature prediction system data
+2183,Hina,21.0,Peshawar,AI,Masters,,86950.0,68.39,,40.0,
+2184,Zara,24.0,Islamabad,Backend,,2.0,173595.0,55.03,,47.0,
+2185,Fatima,,Islamabad,AI,Bachelors,2.0,175653.0,65.48,5.0,51.0,training training training prediction data feature
+2186,Fatima,27.0,Quetta,Frontend,Masters,1.0,176681.0,83.19,0.0,43.0,
+2187,Sara,,Lahore,ML,PhD,12.0,90539.0,83.29,3.0,37.0,feature prediction training analysis feature pipeline
+2188,Bilal,37.0,Lahore,ML,,5.0,,64.31,18.0,52.0,neural training model training training
+2189,Usman,25.0,Karachi,AI,,1.0,90182.0,73.01,11.0,,system feature analysis pipeline neural
+2190,Hina,27.0,Quetta,Frontend,,13.0,,,14.0,46.0,learning training feature analysis feature feature
+2191,Sara,40.0,Peshawar,ML,Masters,13.0,,60.52,2.0,50.0,
+2192,Usman,40.0,Quetta,Frontend,Bachelors,7.0,53163.0,51.15,19.0,47.0,feature system pipeline system neural data data model
+2193,Fatima,24.0,Karachi,ML,Masters,7.0,62419.0,94.84,7.0,35.0,learning data data system system data prediction
+2194,Zara,26.0,Quetta,Frontend,PhD,12.0,,60.54,10.0,52.0,analysis system feature pipeline learning training learning
+2195,Omar,27.0,Quetta,Data,Masters,13.0,,61.38,15.0,,training data data training analysis learning model system analysis
+2196,Hina,38.0,Karachi,Frontend,Masters,11.0,,63.98,,,neural prediction prediction pipeline analysis analysis analysis system prediction pipeline training
+2197,Sara,25.0,Lahore,Frontend,PhD,4.0,72214.0,56.37,,52.0,learning training model prediction system system data data feature feature pipeline system
+2198,Ali,40.0,Peshawar,AI,Bachelors,9.0,42413.0,81.96,4.0,32.0,
+2199,Usman,23.0,Karachi,Data,Masters,6.0,49505.0,53.76,19.0,36.0,
