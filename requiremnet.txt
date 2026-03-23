@@ -2,4 +2,5 @@ ipykernel
 numpy
 pandas
 matplotlib
+seaborn
 faker
