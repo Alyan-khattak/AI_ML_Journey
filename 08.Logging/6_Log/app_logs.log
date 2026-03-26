@@ -1,0 +1,29 @@
+ 2026-03-26 17:54:07  - root - INFO - login Func Called
+ 2026-03-26 17:54:07  - Auth - INFO - user : admin attempted Login
+ 2026-03-26 17:54:07  - Auth - DEBUG - user admin logged in Succesfully
+ 2026-03-26 17:54:07  - root - INFO - login Func Called
+ 2026-03-26 17:54:07  - Auth - INFO - user : admin attempted Login
+ 2026-03-26 17:54:07  - Auth - WARNING - Wrong Password for user admin
+ 2026-03-26 17:54:07  - root - INFO - login Func Called
+ 2026-03-26 17:54:07  - Auth - INFO - user : unknown attempted Login
+ 2026-03-26 17:54:07  - Auth - WARNING - Wrong Password for user unknown
+ 2026-03-26 17:54:07  - root - DEBUG - Adding data to Database
+ 2026-03-26 17:54:07  - Database - INFO - added value 10
+ 2026-03-26 17:54:07  - root - DEBUG - Adding data to Database
+ 2026-03-26 17:54:07  - Database - INFO - added value 20
+ 2026-03-26 17:54:07  - root - DEBUG - Fetching Data from DB
+ 2026-03-26 17:54:07  - Database - INFO - Fetched Data: [10, 20]
+ 2026-03-26 17:54:07  - root - DEBUG - Deleting data
+ 2026-03-26 17:54:07  - Database - INFO - Deleted value: 10
+ 2026-03-26 17:54:07  - root - DEBUG - Deleting data
+ 2026-03-26 17:54:07  - Database - ERROR - Value 50 not found in database
+ 2026-03-26 17:54:07  - root - INFO - Calling API: /users
+ 2026-03-26 17:54:07  - Network - WARNING - API response is slow
+ 2026-03-26 17:54:07  - root - INFO - Calling API: /error
+ 2026-03-26 17:54:07  - Network - ERROR - API request failed
+ 2026-03-26 17:54:07  - root - INFO - Calling API: /home
+ 2026-03-26 17:54:07  - Network - INFO - API request successful
+ 2026-03-26 17:54:07  - root - INFO - Divide function called
+ 2026-03-26 17:54:07  - root - DEBUG - Result: 5.0
+ 2026-03-26 17:54:07  - root - INFO - Divide function called
+ 2026-03-26 17:54:07  - root - ERROR - Division by zero attempted
