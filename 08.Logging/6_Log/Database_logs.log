@@ -1,0 +1,5 @@
+2026-03-26 17:54:07,865 - Database - INFO - added value 10
+2026-03-26 17:54:07,865 - Database - INFO - added value 20
+2026-03-26 17:54:07,865 - Database - INFO - Fetched Data: [10, 20]
+2026-03-26 17:54:07,866 - Database - INFO - Deleted value: 10
+2026-03-26 17:54:07,866 - Database - ERROR - Value 50 not found in database
