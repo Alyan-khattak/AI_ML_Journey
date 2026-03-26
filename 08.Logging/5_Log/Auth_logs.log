@@ -1,0 +1,4 @@
+2026-03-26 17:21:13,320 - Auth - INFO - Login attempt for User : admin
+2026-03-26 17:21:13,320 - Auth - WARNING - Invalid Credentail for admin
+2026-03-26 17:21:13,320 - Auth - INFO - Login attempt for User : admin
+2026-03-26 17:21:13,320 - Auth - DEBUG - user: admin Logged in Successfully
