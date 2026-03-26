@@ -1,0 +1,4 @@
+2026-03-26 16:20:10,947 - Module 1 - DEBUG - This is a Debug msg 
+2026-03-26 16:20:10,949 - Module 1 - INFO - this is an Info msg 
+2026-03-26 16:20:10,950 - Module 1 - ERROR - this is an error msg 
+2026-03-26 16:20:10,951 - Module 1 - WARNING - this is WARNING 
