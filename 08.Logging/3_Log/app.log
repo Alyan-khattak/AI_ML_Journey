@@ -1,0 +1,16 @@
+2026 - 03 - 26 13:56:21 - root - INFO - Dividing 10 by 2
+2026 - 03 - 26 13:56:21 - root - DEBUG - Division Result : 5.0
+2026 - 03 - 26 13:56:21 - root - INFO - Dividing 5 by 0
+2026 - 03 - 26 13:56:21 - root - ERROR - Division by zero
+2026 - 03 - 26 13:56:21 - root - INFO - Dividing 7 by 1
+2026 - 03 - 26 13:56:21 - root - DEBUG - Division Result : 7.0
+2026 - 03 - 26 13:56:21 - root - INFO - User admin is Attempting to Log in 
+2026 - 03 - 26 13:56:21 - root - WARNING - Failed Login attempt for User 'admin'
+2026 - 03 - 26 13:56:21 - root - INFO - User user1 is Attempting to Log in 
+2026 - 03 - 26 13:56:21 - root - WARNING - Failed Login attempt for User 'user1'
+2026 - 03 - 26 13:56:21 - root - INFO - Processing list: [10, 20, -5, 15, -2]
+2026 - 03 - 26 13:56:21 - root - DEBUG - total sum: 10
+2026 - 03 - 26 13:56:21 - root - INFO - Atempting to read file: example.txt
+2026 - 03 - 26 13:56:21 - root - ERROR - File: example.txt not Found
+2026 - 03 - 26 13:56:21 - root - INFO - Atempting to read file: logger.py
+2026 - 03 - 26 13:56:21 - root - ERROR - File: logger.py not Found
