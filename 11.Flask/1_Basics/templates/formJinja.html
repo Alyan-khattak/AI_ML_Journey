@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Page</title>
+</head>
+<body>
+
+    <h1>Enter Your name </h1>
+
+    <form method="POST" action={{url_for("form")}}>
+
+        <input type = "text" name=username placeholder="Your name">
+        <input type="submit" value="submit">
+    
+    </form>
+
+    <a href=" {{url_for("home")}}"> Back to Home </a>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head> 
+
+    <title> {{title}} </title>  <!-- Jinja2 variable passed from Flask -->
+
+</head>
+
+<body> 
+
+    <h1> {{title}} </h1>
+    <h2> Item list </h2>
+
+    <ul> 
+        {% for item in items %}
+
+        <li> {{item}} </li> <!-- Looping through list using Jinja2 -->
+    {% endfor %}
+    </ul>
+
+</body>
+
+</html>

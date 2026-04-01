@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greet Page</title>
+</head>
+<body>
+    <h1>Hello, {{ username }}!</h1> <!-- Dynamic variable from Flask via URL -->
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
