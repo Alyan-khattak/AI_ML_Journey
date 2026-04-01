@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title> {{ name }} 's Profile </title>  <!-- Dynamic title using variable -->
+
+</head>
+<body> 
+
+    <h1> Profile: {{ name }} </h1>
+    <p>Age: {{ name }} </p>
+
+    <h2> Hobbies </h2>
+
+    <ul> 
+
+        {% for hobby in hobbies %} <!-- Loop through hobbies -->
+            <li> {{ hobby}} </li>
+        {% endfor %}
+
+    </ul>
+
+    <a href="{{url_for('home')}}">Back to Homee </a>
+
+</body>
+
+</html>
