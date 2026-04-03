@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks Form</title>
+</head>
+<body>
+
+<h1>Enter Your Marks</h1>
+
+<!-- Form sends data to same route -->
+<form method="POST" action={{url_for("form")}}>
+    
+    <!-- name="marks" → Flask will access using request.form.get("marks") -->
+    <input type="number" name="marks" placeholder="Enter marks" required>
+    
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>

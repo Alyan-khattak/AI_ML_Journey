@@ -5,7 +5,6 @@
 │   ├─ products.html
 │   └─ product_detail.html
 """
-
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -17,24 +16,16 @@ products = [
     {"id": 3, "name": "Headphones", "price": 150},
 ]
 
-
-# ---------------- Route 1: Show all products ----------------
-
+# Route 1: Show all products
 @app.route("/products")
-def show_produts():
-    return render_template("products.html", products = products)
+def show_products():
+    return render_template("products.html", products=products)
 
-
-# ---------------- Route 2: Dynamic product detail ----------------
+# Route 2: Product details
 @app.route("/product/<int:product_id>")
 def product_detail(product_id):
-
-    product = next((p for p in products if p["id"] ==product_id), None)
-    return render_template("product_detail.html", product = product)
-
-app = Flask(__name__)
-
+    product = next((p for p in products if p["id"] == product_id), None)
+    return render_template("product_detail.html", product=product)
 
 if __name__ == "__main__":
-
     app.run(debug=True)

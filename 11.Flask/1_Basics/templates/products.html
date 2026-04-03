@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+</head>
+<body>
+
+    <ul> 
+        {% for product in products %}
+        <li> 
+            <a href="{{url_for("product_detail", product_id = product.id)}}"> {{ product.name}} - ${{product.price}} </a>
+    </ul>
+        {% endfor %}
+
+</body>
+</html>

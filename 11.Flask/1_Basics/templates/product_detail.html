@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name if product else "Not Found" }}</title>
+</head>
+<body>
+    {% if product %}
+        <h1>{{ product.name }}</h1>
+        <p>Price: ${{ product.price }}</p>
+    {% else %}
+        <h1>Product not found!</h1>
+    {% endif %}
+    <a href="{{ url_for('show_products') }}">Back to Products</a>
+</body>
+</html>
