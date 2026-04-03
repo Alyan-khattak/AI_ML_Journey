@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+
+<h1>Your Marks: {{ score }}</h1> <!-- Jinja variable -->
+
+{% if status == "pass" %}
+    <h2 style="color:green;">You Passed 🎉</h2>
+
+    <!-- Dynamic URL to pass page -->
+     <a href="{{url_for('pass_page', score=score)}}"> Go to Pass Page </a>
+
+{% else%}
+        <!-- Dynamic URL to fail page -->
+        <a href="{{ url_for('fail_page', score=score) }}">Go to Fail Page</a>
+
+{% endif %}
+
+</body>
+</html>
