@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Students</title>
+</head>
+<body>
+
+<h1>All Students</h1>
+
+<ul>
+{% for student in students %}
+    <li>
+        <!-- Dynamic URL -->
+        <a href="{{ url_for('result', student_id=student.id) }}">
+            {{ student.name }} - {{ student.marks }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+<a href="{{ url_for('form') }}">Back</a>
+
+</body>
+</html>

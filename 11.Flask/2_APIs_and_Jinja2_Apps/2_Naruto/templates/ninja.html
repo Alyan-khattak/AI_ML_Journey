@@ -1,0 +1,12 @@
+<h1>{{ ninja.name }}</h1>
+
+<p>Rank: {{ ninja.rank }}</p>
+<p>Chakra: {{ ninja.chakra }}</p>
+
+{% if ninja.chakra > 80 %}
+    <p style="color:green;">Elite Ninja 🔥</p>
+{% else %}
+    <p style="color:gray;">Average Ninja</p>
+{% endif %}
+
+<a href="/ninjas">Back</a>

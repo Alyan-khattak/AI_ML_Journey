@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+
+<h1>Student Result</h1>
+
+<!-- Access dictionary passed from Flask -->
+<p>Name: {{ student.name }}</p>
+<p>Marks: {{ student.marks }}</p>
+<p>Grade: {{ student.grade }}</p>
+
+{% if student.status == "pass" %}
+    <p style="color:green;">Status: PASS ✅</p>
+{% else %}
+    <p style="color:red;">Status: FAIL ❌</p>
+{% endif %}
+
+<a href="{{ url_for('form') }}">Back</a>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+<h1>All Shinobi</h1>
+
+<ul>
+{% for ninja in ninjas %}
+    <li>
+        <a href="{{ url_for('show_ninja', ninja_id=ninja.id) }}">
+            {{ ninja.name }} ({{ ninja.rank }})
+        </a>
+    </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,18 @@
+<h1>Create Shinobi</h1>
+
+<form method="POST" action="/create"> <!-- Tranfer intput to "/create" in app.py-->
+    <input name="name" placeholder="Name"><br><br>
+
+    <select name="rank">
+        <option>Genin</option>
+        <option>Chunin</option>
+        <option>Jonin</option>
+        <option>Kage</option>
+    </select><br><br>
+
+    <input type="number" name="chakra" placeholder="Chakra"><br><br>
+
+    <input type="submit">
+</form>
+
+<a href="/ninjas">View Ninjas</a>
