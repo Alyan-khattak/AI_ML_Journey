@@ -1,0 +1,10 @@
+<h1>Missions</h1>
+
+<ul>
+{% for m in missions %}
+    <li>
+        {{ m.title }} - {{ m.difficulty }}  
+        (Assigned to {{ m.ninja.name }})
+    </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Form</title>
+</head>
+<body>
+
+<h1>Enter Student Data</h1>
+
+<form method="POST" action="/submit">  <!-- action = /submit means shoot or send data this is submitted using this form to route "/submit" -->
+    
+    <!-- name="name" → Flask reads using request.form.get("name") -->
+    <input type="text" name="name" placeholder="Enter Name" required><br><br>
+
+    <input type="number" name="marks" placeholder="Enter Marks" required><br><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+<a href="/all">View All Students</a>
+
+</body>
+</html>
