@@ -9,3 +9,4 @@ faker
 requests 
 bs4  #beatiful soup for web scrapping
 flask
+streamlit
