@@ -11,3 +11,4 @@ bs4  #beatiful soup for web scrapping
 flask
 streamlit
 imbalanced-learn
+openpyxl
