@@ -12,3 +12,4 @@ flask
 streamlit
 imbalanced-learn
 openpyxl
+scikit-learn
