@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results — Forest Fire FWI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f1117;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ---------------- Header ---------------- */
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f97316;
+        }
+
+        .header p {
+            color: #64748b;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* ---------------- Severity Banner ---------------- */
+        .severity-banner {
+            width: 100%;
+            max-width: 860px;
+            border-radius: 14px;
+            padding: 24px 32px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .severity-banner.low       { background: #052e16; border: 1px solid #16a34a; }
+        .severity-banner.moderate  { background: #422006; border: 1px solid #ca8a04; }
+        .severity-banner.high      { background: #431407; border: 1px solid #ea580c; }
+        .severity-banner.very-high { background: #450a0a; border: 1px solid #dc2626; }
+        .severity-banner.extreme   { background: #2d0a0a; border: 1px solid #7f1d1d; }
+
+        .severity-left h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .severity-banner.low       .severity-left h2 { color: #4ade80; }
+        .severity-banner.moderate  .severity-left h2 { color: #facc15; }
+        .severity-banner.high      .severity-left h2 { color: #fb923c; }
+        .severity-banner.very-high .severity-left h2 { color: #f87171; }
+        .severity-banner.extreme   .severity-left h2 { color: #fca5a5; }
+
+        .severity-left p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .severity-right {
+            text-align: right;
+        }
+
+        .fwi-value {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .severity-banner.low       .fwi-value { color: #4ade80; }
+        .severity-banner.moderate  .fwi-value { color: #facc15; }
+        .severity-banner.high      .fwi-value { color: #fb923c; }
+        .severity-banner.very-high .fwi-value { color: #f87171; }
+        .severity-banner.extreme   .fwi-value { color: #fca5a5; }
+
+        .fwi-label {
+            color: #64748b;
+            font-size: 0.78rem;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------------- Models Grid ---------------- */
+        .section-title {
+            width: 100%;
+            max-width: 860px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 14px;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            width: 100%;
+            max-width: 860px;
+            margin-bottom: 32px;
+        }
+
+        .model-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+
+        .model-card.best {
+            border-color: #f97316;
+            background: #1c1409;
+        }
+
+        .best-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #f97316;
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .model-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 14px;
+            padding-right: 60px;
+        }
+
+        .model-card.best .model-name {
+            color: #fb923c;
+        }
+
+        .prediction-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #e2e8f0;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .model-card.best .prediction-value {
+            color: #f97316;
+        }
+
+        .model-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .meta-value {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* R² bar */
+        .r2-bar-container {
+            margin-top: 12px;
+        }
+
+        .r2-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        .r2-bar-track {
+            height: 4px;
+            background: #0f1117;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .r2-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: #f97316;
+            transition: width 0.5s ease;
+        }
+
+        .model-card:not(.best) .r2-bar-fill {
+            background: #334155;
+        }
+
+        /* ---------------- Input Summary ---------------- */
+        .input-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 24px;
+            width: 100%;
+            max-width: 860px;
+            margin-bottom: 28px;
+        }
+
+        .input-card h3 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 16px;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .input-item {
+            background: #0f1117;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 10px 14px;
+        }
+
+        .input-item-label {
+            font-size: 0.7rem;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 4px;
+        }
+
+        .input-item-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        /* ---------------- Back Button ---------------- */
+        .btn-back {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+            margin-bottom: 40px;
+        }
+
+        .btn-back:hover {
+            border-color: #f97316;
+            color: #f97316;
+        }
+
+        /* ---------------- Footer ---------------- */
+        .footer {
+            color: #334155;
+            font-size: 0.78rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🔥 FWI Prediction Results</h1>
+        <p>All 7 models ran on your input — best model highlighted</p>
+    </div>
+
+    <!-- Severity Banner -->
+    {% set severity_class = severity | lower | replace(" ", "-") %}
+    <div class="severity-banner {{ severity_class }}">
+        <div class="severity-left">
+            <h2>{{ severity_icon }} {{ severity }} Fire Danger</h2>
+            <p>Based on best model prediction (highest R² score)</p>
+        </div>
+        <div class="severity-right">
+            <div class="fwi-value">{{ best_pred }}</div>
+            <div class="fwi-label">FWI Score</div>
+        </div>
+    </div>
+
+    <!-- Models Grid -->
+    <div class="section-title">All Model Predictions — sorted by R² score</div>
+
+    <div class="models-grid">
+        {% for result in results %}
+        <div class="model-card {% if result.is_best %}best{% endif %}">
+
+            {% if result.is_best %}
+            <span class="best-badge">⭐ Best</span>
+            {% endif %}
+
+            <div class="model-name">{{ result.model }}</div>
+            <div class="prediction-value">{{ result.prediction }}</div>
+
+            <div class="model-meta">
+                <div class="meta-row">
+                    <span class="meta-label">R² Score</span>
+                    <span class="meta-value">{{ result.r2 }}</span>
+                </div>
+            </div>
+
+            <div class="r2-bar-container">
+                <div class="r2-bar-track">
+                    <div class="r2-bar-fill"
+                         style="width: {{ (result.r2 * 100) | round(1) }}%">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Input Summary -->
+    <div class="input-card">
+        <h3>Input Values Used</h3>
+        <div class="input-grid">
+            {% for key, value in input_data.items() %}
+            <div class="input-item">
+                <div class="input-item-label">{{ key }}</div>
+                <div class="input-item-value">{{ value }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="/" class="btn-back">← Predict Again</a>
+
+    <div class="footer">
+        Algerian Forest Fire Dataset · 1_SuperVised_Learning
+    </div>
+
+</body>
+</html>
