@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result — Fraud Detection</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f1117;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* ---------------- Header ---------------- */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ef4444;
+        }
+
+        .header p {
+            color: #64748b;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* ---------------- Result Banner ---------------- */
+        .banner {
+            width: 100%;
+            max-width: 640px;
+            border-radius: 14px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .banner.fraud {
+            background: #450a0a;
+            border: 1px solid #dc2626;
+        }
+
+        .banner.legit {
+            background: #052e16;
+            border: 1px solid #16a34a;
+        }
+
+        .banner-left h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .banner.fraud .banner-left h2 { color: #f87171; }
+        .banner.legit .banner-left h2 { color: #4ade80; }
+
+        .banner-left p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .banner-right {
+            text-align: right;
+        }
+
+        .prob-value {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .banner.fraud .prob-value { color: #f87171; }
+        .banner.legit .prob-value { color: #4ade80; }
+
+        .prob-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------------- Details Card ---------------- */
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            padding: 28px;
+            width: 100%;
+            max-width: 640px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+
+        /* ---------------- Metric Rows ---------------- */
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .metric-row:last-child { border-bottom: none; }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .metric-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        /* ---------------- Probability Bar ---------------- */
+        .prob-bar-section {
+            margin-top: 8px;
+        }
+
+        .prob-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .prob-bar-track {
+            height: 8px;
+            background: #0f1117;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .prob-bar-fill {
+            height: 100%;
+            border-radius: 8px;
+            transition: width 0.5s ease;
+        }
+
+        .fraud-fill  { background: #ef4444; }
+        .legit-fill  { background: #22c55e; }
+
+        /* ---------------- What this means ---------------- */
+        .explain-box {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 16px 18px;
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-top: 4px;
+        }
+
+        .explain-box span { color: #94a3b8; font-weight: 500; }
+
+        /* ---------------- Back Button ---------------- */
+        .btn-back {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+            margin-bottom: 40px;
+        }
+
+        .btn-back:hover {
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        .footer {
+            color: #334155;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🛡️ Fraud Detection Result</h1>
+        <p>Logistic Regression · Threshold 0.30 · AUC 0.9679</p>
+    </div>
+
+    <!-- Result Banner -->
+    <div class="banner {% if result.prediction == 1 %}fraud{% else %}legit{% endif %}">
+        <div class="banner-left">
+            <h2>
+                {% if result.prediction == 1 %}
+                    🚨 FRAUD DETECTED
+                {% else %}
+                    ✅ LEGITIMATE
+                {% endif %}
+            </h2>
+            <p>
+                {% if result.prediction == 1 %}
+                    Transaction flagged — review recommended
+                {% else %}
+                    Transaction appears legitimate
+                {% endif %}
+            </p>
+        </div>
+        <div class="banner-right">
+            <div class="prob-value">{{ result.probability }}%</div>
+            <div class="prob-label">Fraud Probability</div>
+        </div>
+    </div>
+
+    <!-- Details Card -->
+    <div class="card">
+        <h3>Transaction Details</h3>
+
+        <div class="metric-row">
+            <span class="metric-label">Amount</span>
+            <span class="metric-value">€{{ result.amount }}</span>
+        </div>
+
+        <div class="metric-row">
+            <span class="metric-label">Time</span>
+            <span class="metric-value">{{ result.time }} seconds</span>
+        </div>
+
+        <div class="metric-row">
+            <span class="metric-label">Fraud Probability</span>
+            <span class="metric-value">{{ result.probability }}%</span>
+        </div>
+
+        <div class="metric-row">
+            <span class="metric-label">Threshold Used</span>
+            <span class="metric-value">{{ result.threshold }}%</span>
+        </div>
+
+        <div class="metric-row">
+            <span class="metric-label">Risk Level</span>
+            <span class="metric-value">{{ result.risk_icon }} {{ result.risk_level }}</span>
+        </div>
+
+        <div class="metric-row">
+            <span class="metric-label">Decision</span>
+            <span class="metric-value">{{ result.label }}</span>
+        </div>
+
+        <!-- Probability Bar -->
+        <div class="prob-bar-section" style="margin-top: 16px;">
+            <div class="prob-bar-labels">
+                <span>0%</span>
+                <span>Fraud Probability</span>
+                <span>100%</span>
+            </div>
+            <div class="prob-bar-track">
+                <div class="prob-bar-fill {% if result.prediction == 1 %}fraud-fill{% else %}legit-fill{% endif %}"
+                     style="width: {{ result.probability }}%">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- What this means -->
+    <div class="card">
+        <h3>What This Means</h3>
+
+        <div class="explain-box">
+            {% if result.prediction == 1 %}
+                <span>Fraud Detected :</span> The model calculated a {{ result.probability }}%
+                probability of fraud — above the {{ result.threshold }}% threshold.<br><br>
+                <span>Recommended Action :</span> Block the transaction and contact the
+                cardholder for verification. The model catches 90% of real fraud cases.<br><br>
+                <span>Note :</span> This may be a false alarm. For every 100 flagged
+                transactions, approximately 3-7 are actual fraud.
+            {% else %}
+                <span>Legitimate :</span> The model calculated only a {{ result.probability }}%
+                probability of fraud — below the {{ result.threshold }}% threshold.<br><br>
+                <span>Recommended Action :</span> Allow the transaction to proceed normally.<br><br>
+                <span>Note :</span> The model has AUC of 0.9679 meaning it correctly
+                separates fraud from legitimate transactions 96.8% of the time.
+            {% endif %}
+        </div>
+    </div>
+
+    <a href="/" class="btn-back">← Analyse Another Transaction</a>
+
+    <div class="footer">Credit Card Fraud Detection · Logistic Regression · AUC 0.9679</div>
+
+</body>
+</html>

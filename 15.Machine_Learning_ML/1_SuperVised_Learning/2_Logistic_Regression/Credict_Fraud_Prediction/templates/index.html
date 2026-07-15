@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detector</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f1117;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* ---------------- Header ---------------- */
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ef4444;
+        }
+
+        .header p {
+            color: #64748b;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        /* ---------------- Card ---------------- */
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 36px;
+            width: 100%;
+            max-width: 680px;
+        }
+
+        .card h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------------- Form ---------------- */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hint {
+            font-size: 0.72rem;
+            color: #475569;
+            font-weight: 400;
+            text-transform: none;
+        }
+
+        input[type="number"] {
+            background: #0f1117;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+            width: 100%;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #ef4444;
+        }
+
+        input::placeholder { color: #475569; }
+
+        /* ---------------- V features section ---------------- */
+        .v-section {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+
+        .v-section h3 {
+            font-size: 0.78rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .v-note {
+            font-size: 0.78rem;
+            color: #475569;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .v-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .v-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .v-group label {
+            font-size: 0.7rem;
+        }
+
+        .v-group input {
+            padding: 8px 10px;
+            font-size: 0.82rem;
+        }
+
+        /* ---------------- Error ---------------- */
+        .error-box {
+            background: #450a0a;
+            border: 1px solid #991b1b;
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #fca5a5;
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+        }
+
+        /* ---------------- Button ---------------- */
+        .btn {
+            width: 100%;
+            margin-top: 28px;
+            padding: 14px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover { background: #dc2626; }
+
+        /* ---------------- Info ---------------- */
+        .info-box {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .info-box span { color: #94a3b8; font-weight: 500; }
+
+        .footer {
+            margin-top: 32px;
+            color: #334155;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🛡️ Fraud Detection System</h1>
+        <p>Credit Card Transaction Analyser — Logistic Regression Model</p>
+        <span class="badge">AUC 0.9679 · Threshold 0.30 · Recall 90%</span>
+    </div>
+
+    <div class="card">
+        <h2>Enter Transaction Details</h2>
+
+        {% if error %}
+        <div class="error-box">⚠️ {{ error }}</div>
+        {% endif %}
+
+        <form action="/predict" method="POST">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Amount <span class="hint">(€)</span></label>
+                    <input type="number" name="amount" placeholder="e.g. 149.62"
+                           step="0.01" min="0" required
+                           value="{{ request.form.get('amount', '') }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Time <span class="hint">(seconds since first txn)</span></label>
+                    <input type="number" name="time" placeholder="e.g. 0"
+                           step="1" min="0" required
+                           value="{{ request.form.get('time', '') }}">
+                </div>
+
+            </div>
+
+            <!-- V1 - V28 Features -->
+            <div class="v-section">
+                <h3>V1 — V28 Features</h3>
+                <p class="v-note">
+                    PCA transformed features — anonymized for privacy.
+                    Leave as 0 if unknown. Real values come from your bank's transaction data.
+                </p>
+
+                <div class="v-grid">
+                    {% for i in range(1, 29) %}
+                    <div class="v-group">
+                        <label>V{{ i }}</label>
+                        <input type="number" name="v{{ i }}"
+                               placeholder="0" step="0.000001"
+                               value="{{ request.form.get('v' ~ i, '') }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button type="submit" class="btn">
+                🔍 Analyse Transaction
+            </button>
+
+        </form>
+
+        <div class="info-box">
+            <span>Threshold :</span> 0.30 — if fraud probability >= 30% → flagged as fraud<br>
+            <span>Recall :</span> 90% — model catches 9 out of every 10 real fraud cases<br>
+            <span>AUC :</span> 0.9679 — strong separation between fraud and legitimate
+        </div>
+
+    </div>
+
+    <div class="footer">Credit Card Fraud Detection · Logistic Regression · AUC 0.9679</div>
+
+</body>
+</html>
