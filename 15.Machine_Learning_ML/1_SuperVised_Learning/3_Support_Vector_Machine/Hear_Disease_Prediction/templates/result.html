@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result — Heart Disease Predictor</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f1117;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* ---------------- Header ---------------- */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 { font-size: 2rem; font-weight: 700; color: #ef4444; }
+        .header p  { color: #64748b; margin-top: 6px; font-size: 0.9rem; }
+
+        /* ---------------- Banner ---------------- */
+        .banner {
+            width: 100%;
+            max-width: 680px;
+            border-radius: 14px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .banner.disease   { background: #450a0a; border: 1px solid #dc2626; }
+        .banner.healthy   { background: #052e16; border: 1px solid #16a34a; }
+
+        .banner-left h2 { font-size: 1.6rem; font-weight: 700; }
+
+        .banner.disease .banner-left h2 { color: #f87171; }
+        .banner.healthy .banner-left h2 { color: #4ade80; }
+
+        .banner-left p { font-size: 0.85rem; color: #94a3b8; margin-top: 4px; }
+
+        .banner-right { text-align: right; }
+
+        .prob-value { font-size: 3rem; font-weight: 800; line-height: 1; }
+        .banner.disease .prob-value { color: #f87171; }
+        .banner.healthy .prob-value { color: #4ade80; }
+
+        .prob-label {
+            font-size: 0.75rem; color: #64748b; margin-top: 4px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        /* ---------------- Risk Bar ---------------- */
+        .risk-section {
+            width: 100%;
+            max-width: 680px;
+            margin-bottom: 24px;
+        }
+
+        .risk-bar-container {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+
+        .risk-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .risk-bar-title {
+            font-size: 0.82rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .risk-bar-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .risk-bar-track {
+            height: 10px;
+            background: #0f1117;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .risk-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.8s ease;
+        }
+
+        .risk-low       .risk-bar-fill { background: #22c55e; }
+        .risk-low       .risk-bar-value { color: #4ade80; }
+        .risk-moderate  .risk-bar-fill { background: #eab308; }
+        .risk-moderate  .risk-bar-value { color: #facc15; }
+        .risk-elevated  .risk-bar-fill { background: #f97316; }
+        .risk-elevated  .risk-bar-value { color: #fb923c; }
+        .risk-high      .risk-bar-fill { background: #ef4444; }
+        .risk-high      .risk-bar-value { color: #f87171; }
+        .risk-very-high .risk-bar-fill { background: #991b1b; }
+        .risk-very-high .risk-bar-value { color: #fca5a5; }
+
+        .threshold-line {
+            position: absolute;
+            top: -4px;
+            height: 18px;
+            width: 2px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .threshold-label {
+            font-size: 0.7rem;
+            color: #475569;
+            margin-top: 6px;
+            text-align: right;
+        }
+
+        /* ---------------- Card ---------------- */
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            padding: 28px;
+            width: 100%;
+            max-width: 680px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 18px;
+        }
+
+        /* ---------------- Patient Data Grid ---------------- */
+        .patient-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .patient-item {
+            background: #0f1117;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+
+        .patient-label {
+            font-size: 0.7rem;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 4px;
+        }
+
+        .patient-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        /* ---------------- Recommendation Box ---------------- */
+        .rec-box {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 16px 18px;
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .rec-box span { color: #94a3b8; font-weight: 500; }
+
+        /* ---------------- Back Button ---------------- */
+        .btn-back {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+            margin-bottom: 40px;
+        }
+
+        .btn-back:hover { border-color: #ef4444; color: #ef4444; }
+
+        .footer { color: #334155; font-size: 0.75rem; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🫀 Prediction Result</h1>
+        <p>Logistic Regression · Threshold {{ result.threshold }}% · AUC 0.9458</p>
+    </div>
+
+    <!-- Result Banner -->
+    <div class="banner {% if result.prediction == 1 %}disease{% else %}healthy{% endif %}">
+        <div class="banner-left">
+            <h2>
+                {% if result.prediction == 1 %}
+                    🚨 {{ result.label }}
+                {% else %}
+                    ✅ {{ result.label }}
+                {% endif %}
+            </h2>
+            <p>{{ result.risk_icon }} {{ result.risk_level }}</p>
+        </div>
+        <div class="banner-right">
+            <div class="prob-value">{{ result.probability }}%</div>
+            <div class="prob-label">Disease Probability</div>
+        </div>
+    </div>
+
+    <!-- Risk Bar -->
+    <div class="risk-section">
+        <div class="risk-bar-container risk-{{ result.risk_class }}">
+            <div class="risk-bar-header">
+                <span class="risk-bar-title">Disease Risk Level</span>
+                <span class="risk-bar-value">{{ result.risk_icon }} {{ result.risk_level }}</span>
+            </div>
+            <div class="risk-bar-track">
+                <div class="risk-bar-fill" style="width: {{ result.probability }}%"></div>
+                <div class="threshold-line" style="left: {{ result.threshold }}%"></div>
+            </div>
+            <div class="threshold-label">↑ Threshold: {{ result.threshold }}%</div>
+        </div>
+    </div>
+
+    <!-- Patient Data -->
+    <div class="card">
+        <h3>Patient Data Entered</h3>
+        <div class="patient-grid">
+            <div class="patient-item">
+                <div class="patient-label">Age</div>
+                <div class="patient-value">{{ result.age }} years</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Sex</div>
+                <div class="patient-value">{{ result.sex }}</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Chest Pain</div>
+                <div class="patient-value">{{ result.cp }}</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Resting BP</div>
+                <div class="patient-value">{{ result.trestbps }} mm Hg</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Cholesterol</div>
+                <div class="patient-value">{{ result.chol }} mg/dl</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Fasting Blood Sugar</div>
+                <div class="patient-value">{{ result.fbs }}</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Resting ECG</div>
+                <div class="patient-value">{{ result.restecg }}</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Max Heart Rate</div>
+                <div class="patient-value">{{ result.thalach }} bpm</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Exercise Angina</div>
+                <div class="patient-value">{{ result.exang }}</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">ST Depression</div>
+                <div class="patient-value">{{ result.oldpeak }}</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">ST Slope</div>
+                <div class="patient-value">{{ result.slope }}</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Major Vessels</div>
+                <div class="patient-value">{{ result.ca }}</div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-label">Thalassemia</div>
+                <div class="patient-value">{{ result.thal }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommendation -->
+    <div class="card">
+        <h3>Clinical Recommendation</h3>
+        <div class="rec-box">
+            {% if result.prediction == 1 %}
+                <span>Heart Disease Detected :</span> The model calculated a {{ result.probability }}%
+                probability of heart disease — above the {{ result.threshold }}% threshold.<br><br>
+                <span>Recommended Action :</span> Refer patient for further cardiac evaluation
+                including angiography, stress testing, or echocardiogram.
+                Early intervention significantly improves outcomes.<br><br>
+                <span>Key Risk Factors :</span> Review chest pain type, ST depression (oldpeak),
+                maximum heart rate, and number of major vessels — these are the strongest
+                predictors identified by the model.
+            {% else %}
+                <span>No Heart Disease Detected :</span> The model calculated only a {{ result.probability }}%
+                probability of heart disease — below the {{ result.threshold }}% threshold.<br><br>
+                <span>Recommended Action :</span> Continue routine monitoring.
+                Advise patient on maintaining healthy lifestyle — diet, exercise,
+                regular blood pressure and cholesterol checks.<br><br>
+                <span>Note :</span> This model has 96% recall — it catches 24 out of 25
+                heart disease cases. However, a negative result does not guarantee
+                absence of disease. Clinical judgment should always prevail.
+            {% endif %}
+        </div>
+    </div>
+
+    <a href="/" class="btn-back">← Analyse Another Patient</a>
+
+    <div class="footer">Heart Disease Prediction · Cleveland Clinic Data · AUC 0.9458</div>
+
+</body>
+</html>

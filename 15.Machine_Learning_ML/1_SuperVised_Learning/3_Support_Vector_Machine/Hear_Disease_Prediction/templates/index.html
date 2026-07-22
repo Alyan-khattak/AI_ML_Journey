@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Predictor</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f1117;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* ---------------- Header ---------------- */
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ef4444;
+        }
+
+        .header p {
+            color: #64748b;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        /* ---------------- Card ---------------- */
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 36px;
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .card h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------------- Form ---------------- */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .hint {
+            font-size: 0.7rem;
+            color: #475569;
+            font-weight: 400;
+            text-transform: none;
+        }
+
+        input, select {
+            background: #0f1117;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+            width: 100%;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ef4444;
+        }
+
+        select { cursor: pointer; }
+
+        /* ---------------- Error ---------------- */
+        .error-box {
+            background: #450a0a;
+            border: 1px solid #991b1b;
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #fca5a5;
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+        }
+
+        /* ---------------- Button ---------------- */
+        .btn {
+            width: 100%;
+            margin-top: 28px;
+            padding: 14px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover { background: #dc2626; }
+
+        /* ---------------- Info ---------------- */
+        .info-box {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .info-box span { color: #94a3b8; font-weight: 500; }
+
+        .footer {
+            margin-top: 32px;
+            color: #334155;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🫀 Heart Disease Predictor</h1>
+        <p>Cleveland Clinic Data — Logistic Regression + SVM</p>
+        <span class="badge">AUC 0.9458 · Threshold 0.55 · Recall 96%</span>
+    </div>
+
+    <div class="card">
+        <h2>Enter Patient Medical Data</h2>
+
+        {% if error %}
+        <div class="error-box">⚠️ {{ error }}</div>
+        {% endif %}
+
+        <form action="/predict" method="POST">
+            <div class="form-grid">
+
+                <!-- Age -->
+                <div class="form-group">
+                    <label>Age <span class="hint">(years)</span></label>
+                    <input type="number" name="age" placeholder="e.g. 54" min="18" max="100" required
+                           value="{{ request.form.get('age', '') }}">
+                </div>
+
+                <!-- Sex -->
+                <div class="form-group">
+                    <label>Sex</label>
+                    <select name="sex" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                    </select>
+                </div>
+
+                <!-- Chest Pain Type -->
+                <div class="form-group">
+                    <label>Chest Pain Type</label>
+                    <select name="cp" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">Typical Angina</option>
+                        <option value="1">Atypical Angina</option>
+                        <option value="2">Non-Anginal Pain</option>
+                        <option value="3">Asymptomatic</option>
+                    </select>
+                </div>
+
+                <!-- Resting BP -->
+                <div class="form-group">
+                    <label>Resting BP <span class="hint">(mm Hg)</span></label>
+                    <input type="number" name="trestbps" placeholder="e.g. 130" min="80" max="220" required
+                           value="{{ request.form.get('trestbps', '') }}">
+                </div>
+
+                <!-- Cholesterol -->
+                <div class="form-group">
+                    <label>Cholesterol <span class="hint">(mg/dl)</span></label>
+                    <input type="number" name="chol" placeholder="e.g. 243" min="100" max="600" required
+                           value="{{ request.form.get('chol', '') }}">
+                </div>
+
+                <!-- Fasting Blood Sugar -->
+                <div class="form-group">
+                    <label>Fasting Blood Sugar <span class="hint">> 120</span></label>
+                    <select name="fbs" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">No (≤ 120 mg/dl)</option>
+                        <option value="1">Yes (> 120 mg/dl)</option>
+                    </select>
+                </div>
+
+                <!-- Resting ECG -->
+                <div class="form-group">
+                    <label>Resting ECG</label>
+                    <select name="restecg" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">Normal</option>
+                        <option value="1">ST-T Abnormality</option>
+                        <option value="2">Left Ventricular Hypertrophy</option>
+                    </select>
+                </div>
+
+                <!-- Max Heart Rate -->
+                <div class="form-group">
+                    <label>Max Heart Rate <span class="hint">(bpm)</span></label>
+                    <input type="number" name="thalach" placeholder="e.g. 150" min="60" max="220" required
+                           value="{{ request.form.get('thalach', '') }}">
+                </div>
+
+                <!-- Exercise Angina -->
+                <div class="form-group">
+                    <label>Exercise Angina</label>
+                    <select name="exang" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <!-- ST Depression -->
+                <div class="form-group">
+                    <label>ST Depression <span class="hint">(oldpeak)</span></label>
+                    <input type="number" name="oldpeak" placeholder="e.g. 1.4" step="0.1" min="0" max="7" required
+                           value="{{ request.form.get('oldpeak', '') }}">
+                </div>
+
+                <!-- Slope -->
+                <div class="form-group">
+                    <label>ST Slope</label>
+                    <select name="slope" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">Upsloping</option>
+                        <option value="1">Flat</option>
+                        <option value="2">Downsloping</option>
+                    </select>
+                </div>
+
+                <!-- Major Vessels -->
+                <div class="form-group">
+                    <label>Major Vessels <span class="hint">(0-3)</span></label>
+                    <select name="ca" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <!-- Thalassemia -->
+                <div class="form-group">
+                    <label>Thalassemia</label>
+                    <select name="thal" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="0">Normal</option>
+                        <option value="1">Fixed Defect</option>
+                        <option value="2">Reversible Defect</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn">
+                🔍 Analyse Patient
+            </button>
+
+        </form>
+
+        <div class="info-box">
+            <span>Model :</span> Logistic Regression (Tuned) — AUC 0.9458<br>
+            <span>Threshold :</span> 0.55 — optimized using Youden's J statistic<br>
+            <span>Recall :</span> 96% — catches 24 out of 25 heart disease patients<br>
+            <span>Dataset :</span> Cleveland Clinic — 279 patients, 13 features
+        </div>
+
+    </div>
+
+    <div class="footer">Heart Disease Prediction · Cleveland Clinic Data · SVM + Logistic Regression</div>
+
+</body>
+</html>
