@@ -13,3 +13,4 @@ streamlit
 imbalanced-learn
 openpyxl
 scikit-learn
+xgboost
