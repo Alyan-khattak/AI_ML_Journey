@@ -16,3 +16,4 @@ scikit-learn
 xgboost
 kneed
 nltk
+svgling
