@@ -82,6 +82,7 @@ Each folder represents a concept I studied and practiced.
   - [NLP for ML](./15.Machine_Learning_ML/NLP_for_ML)
     - [Basics](./15.Machine_Learning_ML/NLP_for_ML/1_Basics)
     - [Vectors](./15.Machine_Learning_ML/NLP_for_ML/2_Vectors)
+    - [Projects](./15.Machine_Learning_ML/NLP_for_ML/3_Projects)
 
 ---
 
