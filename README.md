@@ -20,7 +20,7 @@ Each folder represents a concept I studied and practiced.
 
 ---
 
-## 🐍 Python Foundations
+## 1. 🐍 Python Foundations
 
 - [Data Structures](./1.Data_Structures)
 - [Functions](./2.Functions)
@@ -32,7 +32,7 @@ Each folder represents a concept I studied and practiced.
 
 ---
 
-## 📊 Data Analysis & Visualization
+## 2. 📊 Data Analysis & Visualization
 
 - [Data Analysis and Visualization](./7.Data_Analysis_and_Visualization)
   - [Numpy](./7.Data_Analysis_and_Visualization/1_Numpy)
@@ -42,7 +42,7 @@ Each folder represents a concept I studied and practiced.
 
 ---
 
-## ⚙️ Python Tooling
+## 3. ⚙️ Python Tooling
 
 - [Logging](./08.Logging)
 - [Multi-Threading & Multi-Processing](./09.Multi_Threading_%26_Multi_Processing)
@@ -50,21 +50,21 @@ Each folder represents a concept I studied and practiced.
 
 ---
 
-## 🌐 Web & App Frameworks
+## 4. 🌐 Web & App Frameworks
 
 - [Flask](./11.Flask)
 - [Streamlit](./12.Streamlit)
 
 ---
 
-## 🔬 Feature Engineering & EDA
+## 5. 🔬 Feature Engineering & EDA
 
 - [Feature Engineering](./13.Feature_Engineering%20)
 - [Exploratory Data Analysis (EDA)](./14.Exploratory_Data_Analysis_EDA)
 
 ---
 
-## 🤖 Machine Learning
+## 6. 🤖 Machine Learning
 
 - [Machine Learning](./15.Machine_Learning_ML)
   - [Supervised Learning](./15.Machine_Learning_ML/1_SuperVised_Learning)
