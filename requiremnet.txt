@@ -18,3 +18,4 @@ kneed
 nltk
 svgling
 gensim
+tqdm
