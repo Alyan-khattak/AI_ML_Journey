@@ -94,7 +94,7 @@ Each folder represents a concept I studied and practiced.
 ## 7. ☁️ Deployment
 
 - [Deployment](./16.Deployment)
-  - - [Docker](./16.Deployment/Docker)
+  - [Docker](./16.Deployment/1_Docker)
 
 
 ---
