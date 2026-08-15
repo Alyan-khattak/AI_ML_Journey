@@ -9,6 +9,9 @@ Each folder represents a concept I studied and practiced.
 
 ---
 
+> 📖 **Learning Source:** [Complete Data Science with ML & NLP 2024 by Krish Naik](https://github.com/krishnaik06/Complete-Data-Science-With-Machine-Learning-And-NLP-2024)
+
+
 ## 📚 Table of Contents
 
 - [🐍 Python Foundations](#-python-foundations)
