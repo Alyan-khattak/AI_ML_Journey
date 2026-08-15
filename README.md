@@ -20,6 +20,7 @@ Each folder represents a concept I studied and practiced.
 - [🌐 Web & App Frameworks](#-web--app-frameworks)
 - [🔬 Feature Engineering & EDA](#-feature-engineering--eda)
 - [🤖 Machine Learning](#-machine-learning)
+- [🐳 Deploymeny](#-deployment)
 
 ---
 
@@ -86,6 +87,15 @@ Each folder represents a concept I studied and practiced.
     - [Basics](./15.Machine_Learning_ML/NLP_for_ML/1_Basics)
     - [Vectors](./15.Machine_Learning_ML/NLP_for_ML/2_Vectors)
     - [Projects](./15.Machine_Learning_ML/NLP_for_ML/3_Projects)
+
+---
+
+
+## 7. ☁️ Deployment
+
+- [Deployment](./16.Deployment)
+  - - [Docker](./16.Deployment/Docker)
+
 
 ---
 
