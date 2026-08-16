@@ -19,3 +19,4 @@ nltk
 svgling
 gensim
 tqdm
+redis

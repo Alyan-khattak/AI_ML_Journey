@@ -1,0 +1,171 @@
+# Docker Compose file format/version.
+#
+# NOTE:
+# Modern Docker Compose no longer requires the "version" field.
+# If you are learning older Compose syntax, "3.0" is valid for
+# understanding the concept, but with modern Docker Compose you
+# can simply remove this line.
+version: "3.0"
+
+
+# "services" is the main section of a Docker Compose file.
+#
+# A service represents a container/application that Docker Compose
+# should create and manage.
+#
+# In this example we have 3 services:
+#
+#   1. web    → our Flask application
+#   2. redis  → Redis service
+#   3. mysql  → MySQL service
+#
+# Docker Compose will create a separate container for each service.
+services:
+
+
+  # ============================================================
+  # WEB SERVICE
+  # ============================================================
+
+  # "web" is the name of our Flask service.
+  #
+  # This name is also useful for communication between containers.
+  #
+  # For example, another container on the same Compose network
+  # can communicate with this service using:
+  #
+  #     web
+  #
+  # instead of trying to find the container's IP address.
+  web:
+
+    # "build: ." tells Docker Compose to BUILD an image for this
+    # service using the Dockerfile in the current directory.
+    #
+    # "." means:
+    #
+    #     Use the current directory as the build context.
+    #
+    # Docker Compose will look for:
+    #
+    #     ./Dockerfile
+    #
+    # and use it to build the Flask image.
+    #
+    # Example project:
+    #
+    #     project/
+    #     ├── Dockerfile
+    #     ├── docker-compose.yml
+    #     ├── app.py
+    #     └── requirements.txt
+    #
+    # When we run:
+    #
+    #     docker compose up
+    #
+    # Compose builds the image from this Dockerfile.
+    build: .
+
+
+    # "ports" creates a connection between a port on our HOST
+    # computer and a port inside the CONTAINER.
+    ports:
+
+      # Port mapping:
+      #
+      #     "5000:5000"
+      #
+      # The format is:
+      #
+      #     "HOST_PORT:CONTAINER_PORT"
+      #
+      # Therefore:
+      #
+      #     5000 → port on our computer
+      #     5000 → port inside the Flask container
+      #
+      # So when we open:
+      #
+      #     http://localhost:5000
+      #
+      # the request is forwarded to port 5000 inside the
+      # Flask container.
+      - "5000:5000"
+
+
+  # ============================================================
+  # REDIS SERVICE
+  # ============================================================
+
+  # "redis" is the name of the Redis service.
+  #
+  # Docker Compose will create a separate Redis container for it.
+  #
+  # Other services can communicate with Redis using the hostname:
+  #
+  #     redis
+  #
+  # For example, in Python:
+  #
+  #     redis.Redis(host="redis", port=6379)
+  #
+  # We do NOT need to use the Redis container's IP address.
+  redis:
+
+    # Instead of building Redis using our own Dockerfile,
+    # download/use the official Redis image.
+    #
+    # "redis" means the image from Docker Hub.
+    #
+    # If no tag is specified, Docker uses the default "latest" tag.
+    #
+    # Equivalent to:
+    #
+    #     image: redis:latest
+    #
+    image: redis
+
+
+  # ============================================================
+  # MYSQL SERVICE
+  # ============================================================
+
+  # "mysql" is the name of our MySQL service.
+  #
+  # Docker Compose will create another container for MySQL.
+  #
+  # Other containers can communicate with MySQL using:
+  #
+  #     mysql
+  #
+  # as the hostname.
+  mysql:
+
+    # Use the official MySQL Docker image.
+    #
+    # Because no version tag is specified, Docker uses:
+    #
+    #     mysql:latest
+    #
+    # In real projects, it is usually better to specify a
+    # particular version rather than relying on "latest".
+    image: mysql
+
+
+########################################################3
+########################################################
+# Clean UP Code
+
+# services:
+
+#   web:
+#     build: .
+#     ports:
+#       - "5000:5000"
+
+#   redis:
+#     image: redis
+
+#   mysql:
+#     image: mysql
