@@ -95,6 +95,12 @@ Each folder represents a concept I studied and practiced.
 
 - [Deployment](./16.Deployment)
   - [Docker](./16.Deployment/1_Docker)
+  - [End-to-End-ML-Project](./16.Deployment/2_End_to_End_ML-deployement)
+    - [Student_Performance_Indicator](./16.Deployment/2_End_to_End_ML-deployement/Student_Performance_Indicator/)
+    > # IMP
+      > First real end-to-end ML project. This defines the **standard folder structure and pipeline** used for all future ML projects.
+      >
+       
 
 
 ---
