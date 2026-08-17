@@ -33,7 +33,7 @@ setup(
     author="M.Alyan",
     author_email="alyankhattake@gmail.com",
     packages=find_packages(),   # auto-finds all folders with __init__.py
-    install_requires=get_requirements('equirements.txt')
+    install_requires=get_requirements('requirements.txt')
 )
 
 

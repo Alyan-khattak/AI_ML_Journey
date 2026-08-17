@@ -1,4 +1,1 @@
-pandas 
-numpy 
-seaborn
--e . #this will automatically trigger setp.py
+pip install -e .
