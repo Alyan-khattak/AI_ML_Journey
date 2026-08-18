@@ -44,6 +44,113 @@ data_transformation.py
 
 """
 
+"""
+ENTRY POINT
+python data_ingestion.py
+        │
+        ▼
+┌─────────────────────────────────────────────────────┐
+│                   DATA INGESTION                     │
+│                                                      │
+│  DataIngestionConfig (dataclass)                     │
+│  ├── train_data_path = "artifacts/train.csv"         │
+│  ├── test_data_path  = "artifacts/test.csv"          │
+│  └── raw_data_path   = "artifacts/raw.csv"           │
+│                                                      │
+│  DataIngestion.__init__()                            │
+│  └── self.ingestion_config = DataIngestionConfig()   │
+│                                                      │
+│  DataIngestion.initiate_data_ingestion()             │
+│  ├── 1. pd.read_csv(stud.csv)     → df (1000 rows)  │
+│  ├── 2. os.makedirs(artifacts/)   → folder banta hai │
+│  ├── 3. df.to_csv(raw.csv)        → backup save      │
+│  ├── 4. train_test_split(df, 0.2) → 800 / 200 rows  │
+│  ├── 5. train_set.to_csv(train.csv)                  │
+│  ├── 6. test_set.to_csv(test.csv)                    │
+│  └── 7. return ("artifacts/train.csv",               │
+│                  "artifacts/test.csv")  ◄── KEY      │
+└─────────────────────────────────────────────────────┘
+        │
+        │  return value
+        │  train_data = "artifacts/train.csv"
+        │  test_data  = "artifacts/test.csv"
+        │
+        ▼
+┌─────────────────────────────────────────────────────┐
+│                DATA TRANSFORMATION                   │
+│                                                      │
+│  DataTransformationConfig (dataclass)                │
+│  └── preprocessor_object_file_path                   │
+│      = "artifacts/preprocessor.pkl"                  │
+│                                                      │
+│  DataTransformation.__init__()                       │
+│  └── self.data_transformation_config                 │
+│      = DataTransformationConfig()                    │
+│                                                      │
+│  get_data_transformer_object()  ← called internally  │
+│  ├── num_pipeline                                    │
+│  │   ├── SimpleImputer(median)                       │
+│  │   └── StandardScaler()                            │
+│  ├── cat_pipeline                                    │
+│  │   ├── SimpleImputer(most_frequent)                │
+│  │   ├── OneHotEncoder()                             │
+│  │   └── StandardScaler(with_mean=False)             │
+│  └── ColumnTransformer(num+cat) → return preprocessor│
+│                          ▲ UNFITTED blueprint        │
+│                                                      │
+│  initiate_data_transformation(train_data, test_data) │
+│  ├── 1. pd.read_csv(train.csv)  → train_df 800 rows │
+│  ├── 2. pd.read_csv(test.csv)   → test_df  200 rows │
+│  ├── 3. get_data_transformer_object() → blueprint    │
+│  │                                                   │
+│  ├── 4. X_train = train_df.drop("math_score")       │
+│  │      y_train = train_df["math_score"]             │
+│  │      X_test  = test_df.drop("math_score")         │
+│  │      y_test  = test_df["math_score"]              │
+│  │                                                   │
+│  ├── 5. preprocessor.fit_transform(X_train) ← FIT   │
+│  │      preprocessor.transform(X_test)  ← NO FIT    │
+│  │                                                   │
+│  ├── 6. np.c_[X_train_arr, y_train] → train_arr     │
+│  │      np.c_[X_test_arr,  y_test]  → test_arr      │
+│  │                                                   │
+│  ├── 7. save_object(preprocessor.pkl)                │
+│  │                                                   │
+│  └── 8. return (train_arr,                           │
+│                  test_arr,                           │
+│                  "artifacts/preprocessor.pkl")       │
+└─────────────────────────────────────────────────────┘
+        │
+        ▼
+   MODEL TRAINER (next step)
+   train_arr, test_arr ready
+   preprocessor.pkl disk pe saved
+
+
+DISK PE KYA BANA:
+artifacts/
+├── raw.csv           ← ingestion  (1000 rows, original)
+├── train.csv         ← ingestion  ( 800 rows, raw split)
+├── test.csv          ← ingestion  ( 200 rows, raw split)
+└── preprocessor.pkl  ← transformation (fitted pipeline)
+
+
+DONO KA CONNECTION:
+ingestion  → CSV files save karta hai disk pe
+             paths return karta hai strings ke roop mein
+transformation → woh paths leta hai
+                 CSVs padhta hai
+                 transform karta hai
+                 numpy arrays return karta hai
+                 pkl save karta hai
+
+STRINGS (paths) IN  →  ingestion
+STRINGS (paths) OUT →  transformation IN
+NUMPY ARRAYS OUT    →  model trainer IN
+
+
+"""
+
 ##==================================================================
 
 import sys
