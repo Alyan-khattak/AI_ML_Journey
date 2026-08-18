@@ -170,6 +170,8 @@ from src.components.data_transformation import DataTransformation, DataTransform
 #   train_data_path: str = os.path.join("artifacts","train.csv")
 # ──────────────────────────────────────────────────────────
 
+from src.components.model_trainer import ModelTrainer
+
 @dataclass
 class DataIngestionConfig:
     # Yeh class sirf PATHS store karti hai — koi logic nahi
@@ -249,7 +251,7 @@ if __name__ == "__main__":
     data_transformation = DataTransformation()
 
     # train_data aur test_data paths pass karo — wahi jo ingestion ne return kiye
-    data_transformation.initiate_data_transformation(train_data, test_data)
+    train_array, test_array, _ = data_transformation.initiate_data_transformation(train_data, test_data)
 
     # IMP: yeh line chalane se poori pipeline ek saath chalti hai:
     # 1. CSV padha jaata hai
@@ -257,6 +259,9 @@ if __name__ == "__main__":
     # 3. ColumnTransformer fit hota hai train pe
     # 4. train_arr, test_arr numpy arrays ban jaate hain
     # 5. preprocessor.pkl artifacts/ mein save ho jaata hai
+
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_array, test_array))
 
 
 # ─────────────────────────────────────────────────────────────────
