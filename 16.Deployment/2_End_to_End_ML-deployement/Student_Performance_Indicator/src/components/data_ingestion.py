@@ -4,6 +4,34 @@
 # Notebook ka kaam (data padhna + train/test split) ko production-ready code mein convert karta hai.
 # CI/CD pipeline mein linearly flow karta hai — koi manual step nahi.
 
+###==============================================================
+
+"""
+
+- This File Reads data from some source
+- Split it in Train set and Test set 
+    - save raw, train, test data in artifact folder 
+- return train and test data set path via initiate_data_ingestion function
+- these path are given to then :: initiate_data_transformation(self, train_path, test_path):
+
+
+"""
+
+
+"""
+data_transformation.py
+
+- via --.>initiate_data_transformation(self, train_path, test_path): get train and test dataset paths that are given by data_ingestion.py
+- split that data in X_train, y_train, X_test, y_test
+- make a preprocessor objject for standarzation
+- apply Standard scaler and transfom featurs  via preprocessor obj
+- save the preprocessor obj
+
+
+"""
+
+##==================================================================
+
 import os
 import sys
 from src.exception import CustomException

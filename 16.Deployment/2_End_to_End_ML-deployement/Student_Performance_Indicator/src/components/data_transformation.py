@@ -16,6 +16,36 @@
 #                        ↓
 # ModelTrainer → model train karo
 
+
+
+###==============================================================
+
+"""
+data_ingestion.py
+- This File Reads data from some source
+- Split it in Train set and Test set 
+    - save raw, train, test data in artifact folder 
+- return train and test data set path  via initiate_data_ingestion function
+- these path are given to then :: initiate_data_transformation(self, train_path, test_path):
+
+
+"""
+
+
+"""
+data_transformation.py
+
+- via --.>initiate_data_transformation(self, train_path, test_path): get train and test dataset paths that are given by data_ingestion.py
+- split that data in X_train, y_train, X_test, y_test
+- make a preprocessor objject for standarzation
+- apply Standard scaler and transfom featurs  via preprocessor obj
+- save the preprocessor obj
+
+
+"""
+
+##==================================================================
+
 import sys
 import os
 from dataclasses import dataclass
@@ -143,16 +173,25 @@ class DataTransformation:
 
             target_col_name  = "math_score"
 
+            ##-----------------------------------------##
+            ##     TRAIN TEST SPLIT
+            ##-----------------------------------------##
+
             # ── TRAIN DATA SPLIT ──────────────────────────────────
             # X (features) aur y (target) alag karo
-            input_feature_train_df  = train_df.drop(target_col_name, axis=1)
-            target_feature_train_df = train_df[target_col_name]
+            input_feature_train_df  = train_df.drop(target_col_name, axis=1)  # X_train
+            target_feature_train_df = train_df[target_col_name]               # y_train
 
             # ── TEST DATA SPLIT ───────────────────────────────────
-            input_feature_test_df  = test_df.drop(target_col_name, axis=1)
-            target_feature_test_df = test_df[target_col_name]
+            input_feature_test_df  = test_df.drop(target_col_name, axis=1)  # X_test
+            target_feature_test_df = test_df[target_col_name]               # y_test
 
             logging.info("Applying preprocessor on Training and Test Data")
+
+
+            ##-----------------------------------------##
+            ##     Standardzation 
+            ##-----------------------------------------##
 
             # IMP: fit_transform SIRF train pe — test ka koi bhi information
             # preprocessor mein nahi jaana chahiye (no leakage)
