@@ -39,7 +39,19 @@ def save_object(file_path, obj):
     except Exception as e:
         raise CustomException(e, sys)
 
-# ─────────────────────────────────────────────────────────────────
+
+
+#############
+# Method to load Pikle Files
+##################
+
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as f:
+            return dill.load(f)
+    except Exception as e:
+        raise CustomException(e,sys)
+ # ─────────────────────────────────────────────────────────────────
 # DRY RUN — save_object
 #
 # save_object("artifacts/preprocessor.pkl", fitted_column_transformer)

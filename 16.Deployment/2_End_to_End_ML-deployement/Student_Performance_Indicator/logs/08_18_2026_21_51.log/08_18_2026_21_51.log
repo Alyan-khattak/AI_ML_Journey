@@ -1,0 +1,12 @@
+[2026-08-18 21:51:39,185] 200 root - INFO - Entered Data Ingestion Method
+[2026-08-18 21:51:39,238] 203 root - INFO - Read the Dataset as DataFrame
+[2026-08-18 21:51:39,244] 219 root - INFO - Train Test Split Initiated
+[2026-08-18 21:51:39,267] 228 root - INFO - Ingestion of the Data is completed
+[2026-08-18 21:51:39,272] 275 root - INFO - Read Train and Test Data completed
+[2026-08-18 21:51:39,272] 277 root - INFO - Obtaining preprocessing object
+[2026-08-18 21:51:39,272] 236 root - INFO - Numerical Cols   : ['writing_score', 'reading_score']
+[2026-08-18 21:51:39,272] 237 root - INFO - Categorical Cols : ['gender', 'race_ethnicity', 'parental_level_of_education', 'lunch', 'test_preparation_course']
+[2026-08-18 21:51:39,278] 296 root - INFO - Applying preprocessor on Training and Test Data
+[2026-08-18 21:51:39,326] 326 root - INFO - Preprocessor pickle saved
+[2026-08-18 21:51:39,327] 62 root - INFO - Splitting train and test arrays into X, y
+[2026-08-18 21:51:42,460] 106 root - INFO - Linear Regression — best params: {}
