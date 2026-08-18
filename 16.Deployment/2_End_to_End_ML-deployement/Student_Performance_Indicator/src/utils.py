@@ -12,8 +12,10 @@ import pandas as pd
 import dill                          # pickle ka powerful version — complex objects bhi save karta hai
                                      # sklearn Pipeline, ColumnTransformer etc. bhi handle karta hai
 from sklearn.metrics import r2_score
+from sklearn.model_selection import GridSearchCV
 
 from src.exception import CustomException
+from src.logger import logging
 
 
 def save_object(file_path, obj):
@@ -55,7 +57,7 @@ def save_object(file_path, obj):
 # ─────────────────────────────────────────────────────────────────
 
 
-def evaluate_model(X_train, y_train, X_test, y_test, models):
+def evaluate_model(X_train, y_train, X_test, y_test, models, params):
     """
     Sab models ko train karta hai aur har ek ka test R2 score return karta hai.
     ModelTrainer is function ko call karta hai — training loop yahan hai.
@@ -75,7 +77,30 @@ def evaluate_model(X_train, y_train, X_test, y_test, models):
         report = {}
 
         for name, model in models.items():
-            model.fit(X_train, y_train)              # train karo
+            # model.fit(X_train, y_train)              # train karo # as we are doing Hyper-permeter Tuning we dont need the simple fit 
+
+            param_grid = params[name]
+
+            grid_cv = GridSearchCV(
+                estimator=model,
+                param_grid=param_grid,
+                cv=3,
+                scoring="r2",
+                n_jobs=-1
+            )
+            # grid serach CV will gve us the best Prameters
+            grid_cv.fit(X_train,y_train) #  # CV pe best params dhundho
+
+            logging.info(f"{name} — best params: {grid_cv.best_params_}") 
+            # best params model pe set karo
+            model.set_params(**grid_cv.best_params_) # for every model use the best params 
+            # ** = dict unpack
+            # {"n_estimators": 100, "max_depth": 5}
+            # → model.set_params(n_estimators=100, max_depth=5)
+
+            # ab best params se final train
+            model.fit(X_train, y_train)
+
 
             y_train_pred = model.predict(X_train)    # train predictions
             y_test_pred  = model.predict(X_test)     # test predictions
@@ -126,69 +151,132 @@ def evaluate_model(X_train, y_train, X_test, y_test, models):
 
 
 """
+╔══════════════════════════════════════════════════════════════════╗
+║                    model_trainer.py                             ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  DICT 1 — models                                                 ║
+║  ┌─────────────────────────────────────────────┐                 ║
+║  │ "Linear Regression"       : LinearRegression()   │            ║
+║  │ "LassoCV"                 : LassoCV()            │            ║
+║  │ "RidgeCV"                 : RidgeCV()            │            ║
+║  │ "K-Neighbors Regressor"   : KNeighborsRegressor()│            ║
+║  │ "Decision Tree"           : DecisionTreeRegressor│            ║
+║  │ "Random Forest Regressor" : RandomForestRegressor│            ║
+║  │ "Gradient Boosting"       : GradientBoosting()   │            ║
+║  │ "CatBoosting Regressor"   : CatBoostRegressor()  │            ║
+║  │ "AdaBoost Regressor"      : AdaBoostRegressor()  │            ║
+║  │ "XGBRegressor"            : XGBRegressor()       │            ║
+║  └─────────────────────────────────────────────┘                 ║
+║  key = model name (string)                                       ║
+║  value = unfitted model object                                   ║
+║                                                                  ║
+║  DICT 2 — params                                                 ║
+║  ┌─────────────────────────────────────────────┐                 ║
+║  │ "Linear Regression"       : {}              │                 ║
+║  │ "LassoCV"                 : {}              │                 ║
+║  │ "RidgeCV"                 : {}              │                 ║
+║  │ "K-Neighbors Regressor"   : {n_neighbors,   │                 ║
+║  │                              weights}       │                 ║
+║  │ "Decision Tree"           : {criterion}     │                 ║
+║  │ "Random Forest Regressor" : {n_estimators}  │                 ║
+║  │ "Gradient Boosting"       : {learning_rate, │                 ║
+║  │                              subsample,     │                 ║
+║  │                              n_estimators}  │                 ║
+║  │ "CatBoosting Regressor"   : {depth,         │                 ║
+║  │                              learning_rate, │                 ║
+║  │                              iterations}    │                 ║
+║  │ "AdaBoost Regressor"      : {learning_rate, │                 ║
+║  │                              n_estimators}  │                 ║
+║  │ "XGBRegressor"            : {learning_rate, │                 ║
+║  │                              n_estimators}  │                 ║
+║  └─────────────────────────────────────────────┘                 ║
+║  key = model name (SAME as DICT 1 — must match)                  ║
+║  value = dict of hyperparameters to tune                         ║
+║                                                                  ║
+╠══════════════════════════════════════════════════════════════════╣
+║  dono dicts evaluate_model() mein pass hote hain                 ║
+║                                                                  ║
+║  evaluate_model(X_train, y_train, X_test, y_test,               ║
+║                 models=DICT1, params=DICT2)                      ║
+╚══════════════════════════════════════════════════════════════════╝
+                          │
+                          ▼
+╔══════════════════════════════════════════════════════════════════╗
+║                       utils.py                                  ║
+║                  evaluate_model()                                ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  DICT 3 — report = {}   ← khali, loop mein bharta hai           ║
+║                                                                  ║
+║  for name, model in models.items():                              ║
+║  ─────────────────────────────────                               ║
+║                                                                  ║
+║  iteration 1:                                                    ║
+║    name  = "Linear Regression"                                   ║
+║    model = LinearRegression()                                    ║
+║    param_grid = params["Linear Regression"] = {}                 ║
+║                                                                  ║
+║    GridSearchCV(model, param_grid={}, cv=3)                      ║
+║    gs.fit(X_train)    ← best params dhundho                     ║
+║    model.set_params(**gs.best_params_)                           ║
+║    model.fit(X_train) ← final train best params se              ║
+║    score = r2_score(y_test, model.predict(X_test))               ║
+║                                                                  ║
+║    report["Linear Regression"] = 0.85                           ║
+║                                                                  ║
+║  iteration 2:                                                    ║
+║    name  = "Random Forest Regressor"                             ║
+║    model = RandomForestRegressor()                               ║
+║    param_grid = {"n_estimators": [8,16,32,64,128,256]}          ║
+║                                                                  ║
+║    GridSearchCV tries all 6 values of n_estimators              ║
+║    best → n_estimators=128  (example)                           ║
+║    model.set_params(n_estimators=128)                            ║
+║    model.fit(X_train)                                            ║
+║    score = r2_score(...)                                         ║
+║                                                                  ║
+║    report["Random Forest Regressor"] = 0.88                     ║
+║                                                                  ║
+║  ... repeat for all 10 models                                    ║
+║                                                                  ║
+║  return report                                                   ║
+╚══════════════════════════════════════════════════════════════════╝
+                          │
+                          ▼
+╔══════════════════════════════════════════════════════════════════╗
+║                    model_trainer.py                             ║
+╠══════════════════════════════════════════════════════════════════╣
+║                                                                  ║
+║  DICT 3 — models_report (returned from evaluate_model)          ║
+║  ┌──────────────────────────────────────┐                        ║
+║  │ "Linear Regression"       : 0.85    │                        ║
+║  │ "LassoCV"                 : 0.82    │                        ║
+║  │ "RidgeCV"                 : 0.84    │                        ║
+║  │ "K-Neighbors Regressor"   : 0.71    │                        ║
+║  │ "Decision Tree"           : 0.76    │                        ║
+║  │ "Random Forest Regressor" : 0.88  ←│─ highest               ║
+║  │ "Gradient Boosting"       : 0.87    │                        ║
+║  │ "CatBoosting Regressor"   : 0.86    │                        ║
+║  │ "AdaBoost Regressor"      : 0.83    │                        ║
+║  │ "XGBRegressor"            : 0.85    │                        ║
+║  └──────────────────────────────────────┘                        ║
+║                                                                  ║
+║  best_model_name  = max(models_report, key=models_report.get)   ║
+║                  = "Random Forest Regressor"                     ║
+║                                                                  ║
+║  best_model_score = models_report["Random Forest Regressor"]    ║
+║                   = 0.88                                         ║
+║                                                                  ║
+║  best_model = models["Random Forest Regressor"]                 ║
+║             = fitted RandomForestRegressor object               ║
+║             ↑ DICT 1 se — isliye keys same honi chahiye         ║
+║                                                                  ║
+║  save_object("artifacts/model.pkl", best_model)                 ║
+╚══════════════════════════════════════════════════════════════════╝
 
-
-DICT 1 — models  (model_trainer.py mein)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-models = {
-    "Linear Regression" : LinearRegression(),   # key=name, value=unfitted object
-    "Random Forest"     : RandomForestRegressor(),
-    "CatBoosting"       : CatBoostRegressor(),
-    ...
-}
-
-        │
-        │  poora dict pass hota hai
-        ▼
-
-evaluate_model(... models=models)   ← utils.py
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-INSIDE evaluate_model()  (utils.py)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-report = {}   ← khali dict, bharta jayega
-
-for name, model in models.items():
-#    ^^^^  ^^^^^
-#    key   value    dono ek saath milte hain .items() se
-
-    model.fit(X_train, y_train)        # DICT 1 ka model train hota hai
-    y_test_pred = model.predict(X_test)
-    score = r2_score(y_test, y_test_pred)
-
-    report[name] = score               # DICT 2 mein daal do
-    # report["Linear Regression"] = 0.85
-    # report["Random Forest"]     = 0.88
-    # report["CatBoosting"]       = 0.87
-
-return report   ← DICT 2 return hota hai
-
-
-        │
-        │  report dict wapas aata hai
-        ▼
-
-DICT 2 — models_report  (model_trainer.py mein)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-models_report = evaluate_model(...)
-
-# models_report ab yeh hai:
-# {
-#     "Linear Regression" : 0.85,
-#     "Random Forest"     : 0.88,   ← highest
-#     "CatBoosting"       : 0.87
-# }
-
-best_model_name  = max(models_report, key=models_report.get)
-# → "Random Forest"
-
-best_model_score = models_report["Random Forest"]
-# → 0.88
-
-best_model = models["Random Forest"]
-# DICT 1 se fitted object nikala — string key same hai dono mein
-# ↑ IMP: isliye dono dicts mein keys SAME naam hone chahiye
+IMP RULE:
+DICT 1 keys == DICT 2 keys == DICT 3 keys
+sab mein "Random Forest Regressor" — ek bhi alag hua toh crash
 
 """

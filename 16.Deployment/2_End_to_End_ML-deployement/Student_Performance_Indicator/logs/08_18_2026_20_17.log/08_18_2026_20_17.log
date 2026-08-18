@@ -1,0 +1,13 @@
+[2026-08-18 20:17:25,653] 200 root - INFO - Entered Data Ingestion Method
+[2026-08-18 20:17:25,719] 203 root - INFO - Read the Dataset as DataFrame
+[2026-08-18 20:17:25,725] 219 root - INFO - Train Test Split Initiated
+[2026-08-18 20:17:25,762] 228 root - INFO - Ingestion of the Data is completed
+[2026-08-18 20:17:25,767] 275 root - INFO - Read Train and Test Data completed
+[2026-08-18 20:17:25,767] 277 root - INFO - Obtaining preprocessing object
+[2026-08-18 20:17:25,768] 236 root - INFO - Numerical Cols   : ['writing_score', 'reading_score']
+[2026-08-18 20:17:25,768] 237 root - INFO - Categorical Cols : ['gender', 'race_ethnicity', 'parental_level_of_education', 'lunch', 'test_preparation_course']
+[2026-08-18 20:17:25,773] 296 root - INFO - Applying preprocessor on Training and Test Data
+[2026-08-18 20:17:25,835] 326 root - INFO - Preprocessor pickle saved
+[2026-08-18 20:17:25,836] 62 root - INFO - Splitting train and test arrays into X, y
+[2026-08-18 20:17:40,866] 158 root - INFO - Best Model Found: LassoCV with R2: 0.8806939009070652
+[2026-08-18 20:17:40,868] 170 root - INFO - Final Test R2 Score: 0.8806939009070652

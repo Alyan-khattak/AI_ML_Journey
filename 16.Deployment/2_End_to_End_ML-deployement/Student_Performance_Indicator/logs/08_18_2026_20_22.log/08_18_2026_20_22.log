@@ -1,0 +1,17 @@
+[2026-08-18 20:22:50,306] 200 root - INFO - Entered Data Ingestion Method
+[2026-08-18 20:22:50,321] 203 root - INFO - Read the Dataset as DataFrame
+[2026-08-18 20:22:50,327] 219 root - INFO - Train Test Split Initiated
+[2026-08-18 20:22:50,336] 228 root - INFO - Ingestion of the Data is completed
+[2026-08-18 20:22:50,341] 275 root - INFO - Read Train and Test Data completed
+[2026-08-18 20:22:50,341] 277 root - INFO - Obtaining preprocessing object
+[2026-08-18 20:22:50,341] 236 root - INFO - Numerical Cols   : ['writing_score', 'reading_score']
+[2026-08-18 20:22:50,341] 237 root - INFO - Categorical Cols : ['gender', 'race_ethnicity', 'parental_level_of_education', 'lunch', 'test_preparation_course']
+[2026-08-18 20:22:50,344] 296 root - INFO - Applying preprocessor on Training and Test Data
+[2026-08-18 20:22:50,377] 326 root - INFO - Preprocessor pickle saved
+[2026-08-18 20:22:50,378] 62 root - INFO - Splitting train and test arrays into X, y
+[2026-08-18 20:22:52,713] 94 root - INFO - Linear Regression — best params: {}
+[2026-08-18 20:22:54,724] 94 root - INFO - LassoCV — best params: {}
+[2026-08-18 20:22:56,786] 94 root - INFO - RidgeCV — best params: {}
+[2026-08-18 20:22:58,651] 94 root - INFO - K-Neighbors Regressor — best params: {'n_neighbors': 9, 'weights': 'distance'}
+[2026-08-18 20:22:58,753] 94 root - INFO - Decision Tree — best params: {'criterion': 'squared_error'}
+[2026-08-18 20:22:59,676] 94 root - INFO - Random Forest Regressor — best params: {'n_estimators': 64}
