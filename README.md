@@ -21,6 +21,7 @@ Each folder represents a concept I studied and practiced.
 - [🔬 Feature Engineering & EDA](#-feature-engineering--eda)
 - [🤖 Machine Learning](#-machine-learning)
 - [🐳 Deploymeny](#-deployment)
+- [⚙️ MLOps](#%EF%B8%8F-mlops)
 
 ---
 
@@ -104,6 +105,17 @@ Each folder represents a concept I studied and practiced.
 
 
 ---
+
+## 8. ⚙️ MLOps
+
+- [MLOps](./17.MLOPS)
+  - [Network Security](./17.MLOPS/Network_Securiy)
+   
+
+> 🚧 **IMP** — Building production-grade MLOps pipeline and For Now this will be Our **Standard Folder Structure and approach** for Future Projects .
+
+> I will give a Prompt so that you can genearte this kind of project Struture too
+
 
 ## 🎯 Why This Repo?
 
