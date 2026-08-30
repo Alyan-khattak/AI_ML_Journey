@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>System Diagrams · NetworkSecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#080a0c;--card:#0f1520;--surface:#0d1117;
+      --border:rgba(0,255,65,0.08);--border-hi:rgba(0,255,65,0.18);
+      --green:#00FF41;--green-dim:rgba(0,255,65,0.08);
+      --text:#e2e8f0;--muted:#4a5568;--muted-2:#718096;
+      --mono:'Fira Code',monospace;--sans:'Fira Sans',sans-serif;
+    }
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100dvh}
+    body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+      background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.04) 2px,rgba(0,0,0,0.04) 4px)}
+
+    nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;
+      border-bottom:1px solid var(--border);background:rgba(8,10,12,0.9);
+      backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-icon{width:34px;height:34px;background:var(--green-dim);border:1px solid var(--border-hi);
+      border-radius:4px;display:flex;align-items:center;justify-content:center;
+      font-family:var(--mono);font-size:13px;color:var(--green)}
+    .logo-text{font-family:var(--mono);font-size:0.82rem;color:var(--text)}
+    .nav-back{font-family:var(--mono);font-size:11px;color:var(--muted-2);text-decoration:none;transition:color 300ms}
+    .nav-back:hover{color:var(--green)}
+
+    .page{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:48px}
+
+    .page-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--green);margin-bottom:10px}
+    .page-title{font-family:var(--mono);font-size:1.8rem;font-weight:600;letter-spacing:-0.03em;
+      color:#fff;margin-bottom:6px}
+    .page-sub{font-family:var(--mono);font-size:11px;color:var(--muted-2);margin-bottom:40px}
+
+    /* Sidebar nav */
+    .layout{display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:start}
+    .sidebar{position:sticky;top:80px;background:var(--card);border:1px solid var(--border);
+      border-radius:2px;padding:16px}
+    .sidebar-title{font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;
+      color:var(--muted);margin-bottom:12px}
+    .sidebar-link{display:block;font-family:var(--mono);font-size:10px;color:var(--muted-2);
+      text-decoration:none;padding:6px 8px;border-radius:1px;margin-bottom:2px;
+      transition:color 300ms,background 300ms;border-left:2px solid transparent}
+    .sidebar-link:hover{color:var(--green);background:var(--green-dim);border-left-color:var(--green)}
+    .sidebar-link.active{color:var(--green);border-left-color:var(--green);background:var(--green-dim)}
+
+    /* Diagram cards */
+    .diagrams{display:flex;flex-direction:column;gap:24px}
+    .diagram-card{background:var(--card);border:1px solid var(--border);border-radius:2px;overflow:hidden}
+    .diagram-header{padding:14px 20px;border-bottom:1px solid var(--border);
+      display:flex;align-items:center;gap:12px}
+    .diagram-num{font-family:var(--mono);font-size:9px;color:var(--green);
+      background:var(--green-dim);border:1px solid var(--border-hi);
+      padding:2px 8px;border-radius:1px;flex-shrink:0}
+    .diagram-name{font-family:var(--mono);font-size:12px;color:var(--text);font-weight:500}
+    .diagram-desc{font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:auto}
+    .diagram-body{padding:24px;overflow-x:auto}
+
+    /* Mermaid override for dark theme */
+    .mermaid{font-family:var(--mono)!important}
+    .mermaid svg{background:transparent!important;max-width:100%}
+
+    @media(max-width:900px){
+      nav,.page{padding-left:20px;padding-right:20px}
+      .layout{grid-template-columns:1fr}
+      .sidebar{position:static}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-icon">NS</div>
+    <span class="logo-text">network_security.py</span>
+  </a>
+  <a href="/" class="nav-back">← back</a>
+</nav>
+
+<div class="page">
+  <div class="page-eyebrow">// system · diagrams</div>
+  <h1 class="page-title">Architecture Diagrams</h1>
+  <p class="page-sub">13 Mermaid diagrams — component flows, data shapes, config chains, artifact paths, MLflow tracking</p>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-title">// jump to</div>
+      <a href="#d00" class="sidebar-link">00 · Complete System Architecture</a>
+      <a href="#d1"  class="sidebar-link">01 · Pipeline Overview</a>
+      <a href="#d2"  class="sidebar-link">02 · Data Ingestion</a>
+      <a href="#d3"  class="sidebar-link">03 · Data Validation</a>
+      <a href="#d4"  class="sidebar-link">04 · Data Transformation</a>
+      <a href="#d5"  class="sidebar-link">05 · Model Trainer</a>
+      <a href="#d6"  class="sidebar-link">06 · FastAPI Routes</a>
+      <a href="#d7"  class="sidebar-link">07 · Training Pipeline</a>
+      <a href="#d8"  class="sidebar-link">08 · NetworkModel</a>
+      <a href="#d9"  class="sidebar-link">09 · Data Shapes</a>
+      <a href="#d10" class="sidebar-link">10 · Config Tree</a>
+      <a href="#d11" class="sidebar-link">11 · Artifact Chain</a>
+      <a href="#d12" class="sidebar-link">12 · MLflow Sequence</a>
+      <a href="#d13" class="sidebar-link">13 · KS Drift Logic</a>
+    </div>
+
+    <!-- DIAGRAMS -->
+    <div class="diagrams">
+
+        <div class="diagram-card" id="d00">
+            <div class="diagram-header">
+                <span class="diagram-num">DIAGRAM 00</span>
+                <span class="diagram-name">Complete System Diagram</span>
+                <span class="diagram-desc">Comlete flow of system</span>
+            </div>
+            <div class="diagram-body">
+                <div class="mermaid">
+                        
+                            flowchart TD
+
+                            %% ═══════════════════════════════════════════════════
+                            %% STYLES
+                            %% ═══════════════════════════════════════════════════
+                            classDef fileNode    fill:#0f1520,stroke:#00FF41,stroke-width:1px,color:#00FF41,font-family:monospace
+                            classDef classNode   fill:#0a1a0a,stroke:#00FF41,stroke-width:2px,color:#e2e8f0,font-family:monospace
+                            classDef funcNode    fill:#111,stroke:#00AA30,stroke-width:1px,color:#aaa,font-family:monospace,font-size:11px
+                            classDef storageNode fill:#1a1a0a,stroke:#FFB800,stroke-width:1px,color:#FFB800,font-family:monospace
+                            classDef artifactNode fill:#0a0a1a,stroke:#4488FF,stroke-width:1px,color:#4488FF,font-family:monospace
+                            classDef dbNode      fill:#1a0a0a,stroke:#FF6644,stroke-width:2px,color:#FF6644,font-family:monospace
+                            classDef configNode  fill:#0f0f1a,stroke:#AA44FF,stroke-width:1px,color:#AA44FF,font-family:monospace
+                            classDef apiNode     fill:#0a1520,stroke:#00CCFF,stroke-width:2px,color:#00CCFF,font-family:monospace
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 0. EXTERNAL SOURCES
+                            %% ═══════════════════════════════════════════════════
+                            subgraph EXT["⬛ EXTERNAL SOURCES"]
+                                MONGO[("MongoDB Atlas\nDB: ALYAN\nCollection: NetworkData\n148k+ phishing records")]:::dbNode
+                                ENV["📄 .env file\nMONGO_ATLAS_URI\nMLFLOW credentials"]:::storageNode
+                            end
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 1. PUSH DATA — ETL Script
+                            %% ═══════════════════════════════════════════════════
+                            subgraph PUSH["📁 pushdata.py — ETL (Run Once)"]
+                                PD1["class NetworkDataExtract"]:::classNode
+                                PD2["csv_to_json_converter(filepath)\n→ pd.read_csv(phishingData.csv)\n→ data.T.to_json()\n→ list of dicts"]:::funcNode
+                                PD3["insert_data_to_mongodb(records, db, collection)\n→ MongoClient(URI, tlsCAFile)\n→ client[ALYAN][NetworkData]\n→ collection.insert_many(records)"]:::funcNode
+                                PD1 --> PD2 --> PD3
+                            end
+
+                            CSV_SRC["📄 Network_Data/phishingData.csv\n11055 rows × 31 cols"]:::storageNode
+                            CSV_SRC --> PD2
+                            PD3 --> MONGO
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 2. CONSTANTS & CONFIG
+                            %% ═══════════════════════════════════════════════════
+                            subgraph CONST["📁 constants/training_pipeline/__init__.py"]
+                                C1["TARGET_COLUMN = 'Result'\nPIPELINE_NAME = 'NetworkSecurity'\nARTIFACT_DIR = 'Artifacts'\nFILE_NAME = 'phishingData.csv'\nTRAIN_FILE_NAME = 'train.csv'\nTEST_FILE_NAME = 'test.csv'\nSCHEMA_FILE_PATH = 'data_schema/schema.yaml'"]:::configNode
+                                C2["DATA_INGESTION_DATABASE_NAME = 'ALYAN'\nDATA_INGESTION_COLLECTION_NAME = 'NetworkData'\nDATA_INGESTION_DIR_NAME = 'data_ingestion'\nDATA_INGESTION_FEATURE_STORE_DIR = 'feature_store'\nDATA_INGESTION_INGESTED_DIR = 'ingested'\nDATA_INGESTION_TRAIN_TEST_SPLIT_RATIO = 0.2"]:::configNode
+                                C3["DATA_VALIDATON_DIR_NAME = 'data_validation'\nDATA_VALIDATION_VALID_DIR = 'validated'\nDATA_VALIDATION_INVALID_DIR = 'invalid'\nDATA_VALIDATION_DRIFT_REPORT_DIR = 'drift_report'\nDATA_VALIDATION_DRIFT_REPORT_FILE_NAME = 'report.yaml'"]:::configNode
+                                C4["DATA_TRANSFORMATION_DIR_NAME = 'data_transformation'\nDATA_TRANSFORMATION_TRANSFORMED_DATA_DIR = 'transformed'\nDATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR = 'transformed_object'\nPREPROCESSING_OBJECT_FILE_NAME = 'preprocessing.pkl'\nDATA_TRANSFORMATION_IMPUTER_PARAMS = {\n  missing_values: NaN,\n  n_neighbors: 3,\n  weights: uniform\n}"]:::configNode
+                                C5["MODEL_TRAINER_DIR_NAME = 'model_trainer'\nMODEL_TRAINER_TRAIN_MODEL_DIR = 'trained_model'\nMODEL_TRAINER_TRAINED_MODEL_NAME = 'model.pkl'\nMODEL_TRAINER_EXPECTED_SCORE = 0.6\nMODEL_TRAINER_OVERFITTING_THRESHOLD = 0.05"]:::configNode
+                            end
+
+                            subgraph CE["📁 entity/config_entity.py"]
+                                CE0["class TrainingPipelineConfig\n__init__(timestamp=datetime.now())\n→ artifact_dir = Artifacts/timestamp"]:::classNode
+                                CE1["class DataIngestionConfig\n__init__(training_pipeline_config)\n→ data_ingestion_dir\n→ feature_store_file_path\n→ training_file_path\n→ testing_file_path\n→ train_test_split_ratio\n→ collection_name\n→ database_name"]:::classNode
+                                CE2["class DataValidationConfig\n__init__(training_pipeline_config)\n→ data_validation_dir\n→ valid_data_dir / invalid_data_dir\n→ valid_train_file_path\n→ valid_test_file_path\n→ invalid_train_file_path\n→ invalid_test_file_path\n→ drift_report_file_path"]:::classNode
+                                CE3["class DataTransformationConfig\n__init__(training_pipeline_config)\n→ data_transformation_dir\n→ transformed_train_file_path (.npy)\n→ transformed_test_file_path (.npy)\n→ transformed_object_file_path (.pkl)"]:::classNode
+                                CE4["class ModelTrainerConfig\n__init__(training_pipeline_config)\n→ model_trainer_dir\n→ trained_model_file_path\n→ expected_accuracy = 0.6\n→ overfitting_threshold = 0.05"]:::classNode
+                                CE0 --> CE1
+                                CE0 --> CE2
+                                CE0 --> CE3
+                                CE0 --> CE4
+                            end
+
+                            CONST --> CE
+
+                            subgraph AE["📁 entity/artifact_entity.py"]
+                                AE1["@dataclass DataIngestionArtifact\n→ train_file_path: str\n→ test_file_path: str"]:::artifactNode
+                                AE2["@dataclass DataValidationArtifact\n→ validation_status: bool\n→ valid_train_file_path: str\n→ valid_test_file_path: str\n→ invalid_train_file_path: str\n→ invalid_test_file_path: str\n→ drift_report_file_path: str"]:::artifactNode
+                                AE3["@dataclass DataTransformationArtifact\n→ transformed_object_file_path: str\n→ transformed_train_file_path: str\n→ transformed_test_file_path: str"]:::artifactNode
+                                AE4["@dataclass ClassificationMetricArtifact\n→ f1_score: float\n→ precision_score: float\n→ recall_score: float"]:::artifactNode
+                                AE5["@dataclass ModelTrainerArtifact\n→ trained_model_file_path: str\n→ train_metric_artifact: ClassificationMetricArtifact\n→ test_metric_artifact: ClassificationMetricArtifact"]:::artifactNode
+                            end
+
+                            subgraph UTILS["📁 utils/main_utils/utils.py"]
+                                U1["save_object(file_path, obj)\n→ os.makedirs()\n→ dill.dump(obj, file_obj)"]:::funcNode
+                                U2["load_object(file_path)\n→ dill.load(file_obj)\n→ return object"]:::funcNode
+                                U3["save_numpy_array_data(file_path, array)\n→ os.makedirs()\n→ np.save(file_obj, array)"]:::funcNode
+                                U4["load_numpy_array(file_path)\n→ np.load(file_obj)\n→ return ndarray"]:::funcNode
+                                U5["read_yaml_file(file_path)\n→ yaml.safe_load()\n→ return dict"]:::funcNode
+                                U6["write_yaml_file(file_path, content)\n→ yaml.dump(content, file)"]:::funcNode
+                                U7["evaluate_models(X_train, y_train, X_test, y_test, models, params)\n→ for each model: GridSearchCV(cv=5, scoring=f1)\n→ model.set_params(**best_params)\n→ model.fit(X_train)\n→ f1_score(y_test, y_pred)\n→ return report: dict"]:::funcNode
+                            end
+
+                            subgraph MLUTILS["📁 utils/ml_utils/"]
+                                ML1["model/estimator.py\nclass NetworkModel\n__init__(preprocessor, model)\npredict(x)\n→ x_transform = preprocessor.transform(x)\n→ y_hat = model.predict(x_transform)\n→ return y_hat"]:::classNode
+                                ML2["metric/classification_metric.py\nget_classification_score(y_true, y_pred)\n→ f1_score(y_true, y_pred)\n→ precision_score(y_true, y_pred)\n→ recall_score(y_true, y_pred)\n→ return ClassificationMetricArtifact"]:::funcNode
+                            end
+
+                            subgraph SCHEMA["📁 data_schema/schema.yaml"]
+                                SCH["columns: [31 columns]\n  having_IP_Address: int64\n  URL_Length: int64\n  ... (29 more)\n  Result: int64\nnumerical_columns: [31 names]"]:::storageNode
+                            end
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 3. DATA INGESTION
+                            %% ═══════════════════════════════════════════════════
+                            subgraph DI["📁 components/data_ingestion.py"]
+                                DI0["class DataIngestion\n__init__(data_ingestion_config: DataIngestionConfig)"]:::classNode
+                                DI1["export_collection_as_dataframe()\nINPUT: config.database_name, config.collection_name\n→ MongoClient(MONGO_DB_URI, tlsCAFile, tlsAllowInvalidCertificates)\n→ client[ALYAN][NetworkData]\n→ collection.find() → list of dicts\n→ pd.DataFrame(list) → 11055 × 32 df\n→ drop _id column → 11055 × 31\n→ replace 'na' → NaN\nOUTPUT: DataFrame (11055 × 31)"]:::funcNode
+                                DI2["export_data_into_feature_store(dataframe)\nINPUT: DataFrame (11055 × 31)\n→ feature_store_file_path from config\n→ os.makedirs(feature_store/)\n→ df.to_csv(phishingData.csv)\nOUTPUT: same DataFrame (passthrough)\nSTORES: Artifacts/timestamp/data_ingestion/feature_store/phishingData.csv"]:::funcNode
+                                DI3["split_data_as_train_test(dataframe)\nINPUT: DataFrame (11055 × 31)\n→ train_test_split(df, test_size=0.2, stratify=None)\n→ train = 8844 rows, test = 2211 rows\n→ os.makedirs(ingested/)\n→ train.to_csv(train.csv)\n→ test.to_csv(test.csv)\nSTORES: Artifacts/.../ingested/train.csv\n         Artifacts/.../ingested/test.csv"]:::funcNode
+                                DI4["initiate_data_ingestion()\n→ export_collection_as_dataframe()\n→ export_data_into_feature_store()\n→ split_data_as_train_test()\n→ return DataIngestionArtifact(\n    train_file_path,\n    test_file_path\n  )"]:::funcNode
+                                DI0 --> DI1 --> DI2 --> DI3 --> DI4
+                            end
+
+                            MONGO --> DI1
+                            CE1 --> DI0
+                            AE1 --> DI4
+
+                            DIA["🔵 DataIngestionArtifact\ntrain_file_path = Artifacts/.../ingested/train.csv\ntest_file_path  = Artifacts/.../ingested/test.csv"]:::artifactNode
+                            DI4 --> DIA
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 4. DATA VALIDATION
+                            %% ═══════════════════════════════════════════════════
+                            subgraph DV["📁 components/data_validation.py"]
+                                DV0["class DataValidation\n__init__(data_ingestion_artifact, data_validation_config)\n→ self.data_ingestion_artifact\n→ self.data_validation_config\n→ self.schema_config = read_yaml_file(SCHEMA_FILE_PATH)"]:::classNode
+                                DV1["@staticmethod read_data(file_path)\n→ pd.read_csv(file_path)\n→ return DataFrame"]:::funcNode
+                                DV2["validate_number_cols(dataframe)\nINPUT: DataFrame\n→ schema_config['columns'] → expected count = 31\n→ len(df.columns) == 31?\nOUTPUT: bool (True/False)"]:::funcNode
+                                DV3["check_numerical_col(dataframe)\nINPUT: DataFrame\n→ schema_config['numerical_columns']\n→ df.select_dtypes(['int64','float64'])\n→ all expected cols present?\nOUTPUT: bool"]:::funcNode
+                                DV4["detect_data_drift(base_df, current_df, threshold=0.05)\nINPUT: train_df, test_df\n→ for each column:\n   ks_2samp(train_col, test_col)\n   p_value >= 0.05 → no drift\n   p_value < 0.05  → drift!\n→ report = {col: {p_value, drift_status}}\n→ write_yaml_file(drift_report_file_path, report)\nOUTPUT: bool (True=no drift)"]:::funcNode
+                                DV5["initiate_data_validation()\n→ read_data(train_path) → train_df (8844 × 31)\n→ read_data(test_path)  → test_df  (2211 × 31)\n→ validate_number_cols(train_df)\n→ validate_number_cols(test_df)\n→ check_numerical_col(train_df)\n→ check_numerical_col(test_df)\n→ detect_data_drift(train_df, test_df)\n→ save valid train.csv + test.csv\n→ return DataValidationArtifact"]:::funcNode
+                                DV0 --> DV1
+                                DV0 --> DV2
+                                DV0 --> DV3
+                                DV0 --> DV4
+                                DV1 & DV2 & DV3 & DV4 --> DV5
+                            end
+
+                            DIA --> DV0
+                            CE2 --> DV0
+                            SCHEMA --> DV0
+                            U5 --> DV0
+                            U6 --> DV4
+
+                            DVA["🔵 DataValidationArtifact\nvalidation_status = True\nvalid_train_file_path = Artifacts/.../validated/train.csv\nvalid_test_file_path  = Artifacts/.../validated/test.csv\ninvalid_train_file_path = Artifacts/.../invalid/train.csv\ninvalid_test_file_path  = Artifacts/.../invalid/test.csv\ndrift_report_file_path  = Artifacts/.../drift_report/report.yaml"]:::artifactNode
+                            DV5 --> DVA
+
+                            DRIFT_STORE["💛 Artifacts/.../data_validation/\n├── validated/train.csv (8844 rows)\n├── validated/test.csv  (2211 rows)\n├── invalid/train.csv\n├── invalid/test.csv\n└── drift_report/report.yaml\n    {col: {p_value: 0.43, drift_status: false}}"]:::storageNode
+                            DV5 --> DRIFT_STORE
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 5. DATA TRANSFORMATION
+                            %% ═══════════════════════════════════════════════════
+                            subgraph DT["📁 components/data_transformation.py"]
+                                DT0["class DataTransformation\n__init__(data_validation_artifact, data_transformation_config)\n→ self.data_validation_artifact\n→ self.data_transformation_config"]:::classNode
+                                DT1["@staticmethod read_data(file_path)\n→ pd.read_csv()\n→ return DataFrame"]:::funcNode
+                                DT2["get_data_transformer_object()\n→ KNNImputer(**DATA_TRANSFORMATION_IMPUTER_PARAMS)\n   missing_values=NaN, n_neighbors=3, weights='uniform'\n→ Pipeline(steps=[('imputer', imputer)])\nOUTPUT: fitted Pipeline object"]:::funcNode
+                                DT3["initiate_data_transformation()\nINPUT: valid_train.csv (8844 × 31)\n        valid_test.csv  (2211 × 31)\n\nSTEP 1: read_data(valid_train_path) → train_df\n         read_data(valid_test_path)  → test_df\n\nSTEP 2: X/y split\n  X_train = train_df.drop('Result') → (8844 × 30)\n  y_train = train_df['Result']\n  y_train.replace(-1, 0)  ← -1→0 binary conversion\n  X_test  = test_df.drop('Result')  → (2211 × 30)\n  y_test  = test_df['Result'].replace(-1, 0)\n\nSTEP 3: preprocessor = get_data_transformer_object()\n\nSTEP 4: X_train_t = preprocessor.fit_transform(X_train)\n         X_test_t  = preprocessor.transform(X_test)\n         (fit only on train — no leakage)\n\nSTEP 5: train_arr = np.c_[X_train_t, y_train] → (8844 × 31)\n         test_arr  = np.c_[X_test_t,  y_test]  → (2211 × 31)\n\nSTEP 6: save_numpy_array_data(train_file_path, train_arr)\n         save_numpy_array_data(test_file_path,  test_arr)\n         save_object(object_file_path, preprocessor)\n\nOUTPUT: DataTransformationArtifact"]:::funcNode
+                                DT0 --> DT1
+                                DT0 --> DT2
+                                DT1 & DT2 --> DT3
+                            end
+
+                            DVA --> DT0
+                            CE3 --> DT0
+                            U1 --> DT3
+                            U3 --> DT3
+
+                            DTA["🔵 DataTransformationArtifact\ntransformed_object_file_path = Artifacts/.../transformed_object/preprocessing.pkl\ntransformed_train_file_path  = Artifacts/.../transformed/train.npy\ntransformed_test_file_path   = Artifacts/.../transformed/test.npy"]:::artifactNode
+                            DT3 --> DTA
+
+                            TRANS_STORE["💛 Artifacts/.../data_transformation/\n├── transformed/\n│   ├── train.npy (8844 × 31 numpy array)\n│   └── test.npy  (2211 × 31 numpy array)\n└── transformed_object/\n    └── preprocessing.pkl (fitted KNNImputer Pipeline)"]:::storageNode
+                            DT3 --> TRANS_STORE
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 6. MODEL TRAINER
+                            %% ═══════════════════════════════════════════════════
+                            subgraph MT["📁 components/model_trainer.py"]
+                                MT0["class ModelTrainer\n__init__(model_trainer_config, data_transformation_artifact)\n→ self.model_trainer_config\n→ self.data_transformation_artifact"]:::classNode
+                                MT1["track_mlflow(best_model, classificationmetric)\n→ mlflow.start_run()\n→ mlflow.log_metric('f1_score', ...)\n→ mlflow.log_metric('precision_score', ...)\n→ mlflow.log_metric('recall_score', ...)\n→ mlflow.sklearn.log_model(best_model, 'model')\n→ DagsHub remote tracking"]:::funcNode
+                                MT2["train_model(X_train, y_train, X_test, y_test)\n\nMODELS:\n  RandomForestClassifier(verbose=0)\n  DecisionTreeClassifier()\n  GradientBoostingClassifier(verbose=0)\n  LogisticRegression(verbose=0)\n  AdaBoostClassifier()\n\nPARAMS (GridSearchCV grids):\n  RF: n_estimators=[8,16,32,128,256]\n  DT: criterion=[gini,entropy,log_loss]\n  GB: learning_rate,subsample,n_estimators\n  LR: {} (no params)\n  AB: learning_rate,n_estimators\n\n→ evaluate_models() → report dict\n→ best_model = max(report, key=f1)\n→ if best_f1 < 0.6 → raise Exception\n\n→ y_train_pred = best_model.predict(X_train)\n→ train_metric  = get_classification_score(y_train, y_train_pred)\n→ track_mlflow(best_model, train_metric)\n\n→ y_test_pred  = best_model.predict(X_test)\n→ test_metric   = get_classification_score(y_test, y_test_pred)\n→ track_mlflow(best_model, test_metric)\n\n→ |train_f1 - test_f1| > 0.05? → log WARNING\n\n→ preprocessor = load_object(preprocessing.pkl)\n→ network_model = NetworkModel(preprocessor, best_model)\n→ save_object(trained_model_file_path, network_model)\n→ save_object('final_model/model.pkl', best_model)\n→ save_object('final_model/preprocessor.pkl', preprocessor)\n\n→ return ModelTrainerArtifact"]:::funcNode
+                                MT3["initiate_model_trainer()\n→ train_arr = load_numpy_array(train.npy)\n→ test_arr  = load_numpy_array(test.npy)\n→ X_train = train_arr[:, :-1] (8844 × 30)\n→ y_train = train_arr[:, -1]  (8844,)\n→ X_test  = test_arr[:, :-1]  (2211 × 30)\n→ y_test  = test_arr[:, -1]   (2211,)\n→ return train_model(X_train, y_train, X_test, y_test)"]:::funcNode
+                                MT0 --> MT1
+                                MT0 --> MT2
+                                MT0 --> MT3
+                                MT3 --> MT2
+                                MT2 --> MT1
+                            end
+
+                            DTA --> MT0
+                            CE4 --> MT0
+                            U2 --> MT3
+                            U4 --> MT3
+                            U7 --> MT2
+                            ML1 --> MT2
+                            ML2 --> MT2
+                            U1 --> MT2
+
+                            MLFLOW["☁️ MLflow / DagsHub\nExperiment: NetworkSecurity\nRuns: train_metric + test_metric\nMetrics: f1, precision, recall\nModel artifacts logged"]:::dbNode
+                            MT1 --> MLFLOW
+
+                            MTA["🔵 ModelTrainerArtifact\ntrained_model_file_path = Artifacts/.../model_trainer/trained_model/model.pkl\ntrain_metric = ClassificationMetricArtifact(f1=0.9916, precision=0.9887, recall=0.9945)\ntest_metric  = ClassificationMetricArtifact(f1=0.9716, precision=0.9589, recall=0.9846)"]:::artifactNode
+                            MT2 --> MTA
+
+                            MODEL_STORE["💛 Artifacts/.../model_trainer/trained_model/model.pkl\n  (NetworkModel: preprocessor + RandomForest)\n\nfinal_model/\n  ├── model.pkl        (best_model only)\n  └── preprocessor.pkl (fitted KNNImputer)"]:::storageNode
+                            MT2 --> MODEL_STORE
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 7. TRAINING PIPELINE ORCHESTRATOR
+                            %% ═══════════════════════════════════════════════════
+                            subgraph TP["📁 pipeline/training_pipeline.py"]
+                                TP0["class TrainingPipeline\n__init__()\n→ self.training_pipeline_config = TrainingPipelineConfig()"]:::classNode
+                                TP1["start_data_ingestion()\n→ DataIngestionConfig(training_pipeline_config)\n→ DataIngestion(config)\n→ .initiate_data_ingestion()\n→ return DataIngestionArtifact"]:::funcNode
+                                TP2["start_data_validation(data_ingestion_artifact)\n→ DataValidationConfig(training_pipeline_config)\n→ DataValidation(artifact, config)\n→ .initiate_data_validation()\n→ return DataValidationArtifact"]:::funcNode
+                                TP3["start_data_transformation(data_validation_artifact)\n→ DataTransformationConfig(training_pipeline_config)\n→ DataTransformation(artifact, config)\n→ .initiate_data_transformation()\n→ return DataTransformationArtifact"]:::funcNode
+                                TP4["start_model_trainer(data_transformation_artifact)\n→ ModelTrainerConfig(training_pipeline_config)\n→ ModelTrainer(config, artifact)\n→ .initiate_model_trainer()\n→ return ModelTrainerArtifact"]:::funcNode
+                                TP5["run_pipeline()\n→ start_data_ingestion()\n→ start_data_validation()\n→ start_data_transformation()\n→ start_model_trainer()\n→ return ModelTrainerArtifact"]:::funcNode
+                                TP0 --> TP5
+                                TP5 --> TP1 --> TP2 --> TP3 --> TP4
+                            end
+
+                            MTA --> TP4
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 8. FASTAPI APP
+                            %% ═══════════════════════════════════════════════════
+                            subgraph API["📁 app.py — FastAPI Backend"]
+                                API0["app = FastAPI(title='Network Security MLOps')\nCORSMiddleware(allow_origins=['*'])\ntemplates = Jinja2Templates('./templates')"]:::apiNode
+                                API1["GET /\n→ TemplateResponse('index.html')\n→ Landing page"]:::funcNode
+                                API2["GET /train\n→ TrainingPipeline()\n→ .run_pipeline()\n→ Response('Training Successful')"]:::funcNode
+                                API3["GET /predict\n→ TemplateResponse('predict.html')\n→ CSV upload form"]:::funcNode
+                                API4["POST /predict\n→ UploadFile (CSV)\n→ pd.read_csv(file)\n→ load_object('final_model/preprocessor.pkl')\n→ load_object('final_model/model.pkl')\n→ NetworkModel(preprocessor, model)\n→ .predict(df) → y_pred\n→ df['predicted_column'] = y_pred\n→ df.to_csv('prediction_output/output.csv')\n→ df.to_html()\n→ TemplateResponse('table.html', table)"]:::funcNode
+                                API5["GET /predict/manual\n→ TemplateResponse('predict_manual.html')\n→ Manual input form"]:::funcNode
+                                API6["POST /predict/manual\nNetworkDataInput (Pydantic, 30 fields)\n→ data.model_dump() → dict\n→ pd.DataFrame([dict])\n→ load_object('final_model/preprocessor.pkl')\n→ load_object('final_model/model.pkl')\n→ NetworkModel.predict(df)[0]\n→ label = 'Phishing' if 1 else 'Legitimate'\n→ return {prediction, label, message}"]:::funcNode
+                                API0 --> API1 & API2 & API3 & API4 & API5 & API6
+                            end
+
+                            MODEL_STORE --> API4
+                            MODEL_STORE --> API6
+                            TP5 --> API2
+
+                            subgraph TEMPLATES["📁 templates/"]
+                                T1["index.html — landing page\nStats bento, pipeline steps\nQuick action buttons"]:::fileNode
+                                T2["predict.html — CSV upload form\nDragdrop zone, file confirmation\nValue legend: 1/-1/0"]:::fileNode
+                                T3["table.html — results\nSummary strip (phish/legit count)\nStyled prediction badges"]:::fileNode
+                                T4["predict_manual.html — manual form\n30 feature inputs (4 groups)\nFetch POST → inline result"]:::fileNode
+                            end
+
+                            API1 --> T1
+                            API3 --> T2
+                            API4 --> T3
+                            API5 --> T4
+
+                            %% ═══════════════════════════════════════════════════
+                            %% 9. ARTIFACTS DIRECTORY FINAL STATE
+                            %% ═══════════════════════════════════════════════════
+                            subgraph ARTS["💛 Artifacts/timestamp/ — Final State"]
+                                ART1["data_ingestion/\n├── feature_store/phishingData.csv\n└── ingested/\n    ├── train.csv (8844 rows)\n    └── test.csv  (2211 rows)"]:::storageNode
+                                ART2["data_validation/\n├── validated/\n│   ├── train.csv\n│   └── test.csv\n├── invalid/\n│   ├── train.csv\n│   └── test.csv\n└── drift_report/report.yaml"]:::storageNode
+                                ART3["data_transformation/\n├── transformed/\n│   ├── train.npy (8844 × 31)\n│   └── test.npy  (2211 × 31)\n└── transformed_object/\n    └── preprocessing.pkl"]:::storageNode
+                                ART4["model_trainer/\n└── trained_model/\n    └── model.pkl (NetworkModel)"]:::storageNode
+                            end
+
+                            ENV --> DI1
+                
+                </div>
+            </div>
+        </div>
+
+    
+
+      <div class="diagram-card" id="d1">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 01</span>
+          <span class="diagram-name">High-Level Pipeline Overview</span>
+          <span class="diagram-desc">all components + connections</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    MONGO[("🗄️ MongoDB Atlas\nDB: ALYAN\nCollection: NetworkData\n11055 records · 31 cols")]
+    ENV["📄 .env\nMONGO_ATLAS_URI\nMLFLOW credentials"]
+    CONST["📁 constants/training_pipeline\nTARGET_COLUMN · ARTIFACT_DIR\nSCHEMA_FILE_PATH · IMPUTER_PARAMS"]
+    CE["📁 entity/config_entity.py\nTrainingPipelineConfig\nDataIngestionConfig\nDataValidationConfig\nDataTransformationConfig\nModelTrainerConfig"]
+    AE["📁 entity/artifact_entity.py\nDataIngestionArtifact\nDataValidationArtifact\nDataTransformationArtifact\nModelTrainerArtifact"]
+    DI["📁 data_ingestion.py\nclass DataIngestion"]
+    DV["📁 data_validation.py\nclass DataValidation"]
+    DT["📁 data_transformation.py\nclass DataTransformation"]
+    MT["📁 model_trainer.py\nclass ModelTrainer"]
+    TP["📁 training_pipeline.py\nclass TrainingPipeline\nrun_pipeline()"]
+    API["📁 app.py — FastAPI\n6 routes · uvicorn:8000"]
+    MLFLOW["☁️ MLflow / DagsHub\nexperiment tracking"]
+    DISK["💾 Artifacts/timestamp/\nall pipeline outputs"]
+
+    CONST --> CE
+    CE --> DI & DV & DT & MT
+    AE --> DI & DV & DT & MT
+    MONGO --> DI
+    ENV --> DI
+    DI -->|DataIngestionArtifact| DV
+    DV -->|DataValidationArtifact| DT
+    DT -->|DataTransformationArtifact| MT
+    MT -->|ModelTrainerArtifact| MLFLOW
+    MT --> DISK
+    TP --> DI & DV & DT & MT
+    API -->|GET /train| TP
+    API -->|POST /predict| DISK
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d2">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 02</span>
+          <span class="diagram-name">Data Ingestion — Detailed</span>
+          <span class="diagram-desc">MongoDB → CSV → split</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    subgraph DI["class DataIngestion"]
+        INIT["__init__(data_ingestion_config)"]
+
+        subgraph M1["export_collection_as_dataframe()"]
+            M1A["MongoClient(URI, tlsCAFile=certifi.where())"]
+            M1B["client['ALYAN']['NetworkData']"]
+            M1C["collection.find() → cursor"]
+            M1D["pd.DataFrame(list(cursor)) → 11055×32"]
+            M1E["drop '_id' → 11055×31"]
+            M1F["replace 'na' → np.nan"]
+            M1A-->M1B-->M1C-->M1D-->M1E-->M1F
+        end
+
+        subgraph M2["export_data_into_feature_store(df)"]
+            M2A["os.makedirs(feature_store/)"]
+            M2B["df.to_csv(phishingData.csv)"]
+            M2C["return dataframe"]
+            M2A-->M2B-->M2C
+        end
+
+        subgraph M3["split_data_as_train_test(df)"]
+            M3A["train_test_split(df, test_size=0.2)"]
+            M3B["train=8844 · test=2211"]
+            M3C["train.to_csv + test.to_csv"]
+            M3A-->M3B-->M3C
+        end
+
+        subgraph M4["initiate_data_ingestion()"]
+            M4A["export_collection_as_dataframe()"]
+            M4B["export_data_into_feature_store()"]
+            M4C["split_data_as_train_test()"]
+            M4D["return DataIngestionArtifact"]
+            M4A-->M4B-->M4C-->M4D
+        end
+
+        INIT --> M1 --> M2 --> M3 --> M4
+    end
+
+    MONGO[("MongoDB Atlas")] --> M1A
+    M4D --> ART["DataIngestionArtifact\ntrain_file_path\ntest_file_path"]
+    ART --> NEXT["DataValidation"]
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d3">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 03</span>
+          <span class="diagram-name">Data Validation — Detailed</span>
+          <span class="diagram-desc">schema check + KS drift detection</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    subgraph DV["class DataValidation"]
+        INIT["__init__(artifact, config)\n→ schema_config = read_yaml_file(schema.yaml)"]
+
+        subgraph VNC["validate_number_cols(df)"]
+            VNC1["expected = len(schema['columns']) = 31"]
+            VNC2["actual = len(df.columns)"]
+            VNC3{"actual == 31?"}
+            VNC4["True ✅"] 
+            VNC5["False ❌"]
+            VNC1-->VNC2-->VNC3-->|Yes|VNC4
+            VNC3-->|No|VNC5
+        end
+
+        subgraph CNC["check_numerical_col(df)"]
+            CNC1["expected = schema['numerical_columns']"]
+            CNC2["actual = df.select_dtypes(['int64','float64'])"]
+            CNC3{"all present?"}
+            CNC4["True ✅"]
+            CNC5["False ❌"]
+            CNC1-->CNC2-->CNC3-->|Yes|CNC4
+            CNC3-->|No|CNC5
+        end
+
+        subgraph DDR["detect_data_drift(train_df, test_df, threshold=0.05)"]
+            DDR1["for each column:"]
+            DDR2["ks_2samp(train_col, test_col) → p_value"]
+            DDR3{"p_value >= 0.05?"}
+            DDR4["no drift · is_found=False ✅"]
+            DDR5["DRIFT · is_found=True · status=False ⚠️"]
+            DDR6["report[col] = {p_value, drift_status}"]
+            DDR7["write_yaml_file(drift_report.yaml, report)"]
+            DDR1-->DDR2-->DDR3-->|Yes|DDR4-->DDR6
+            DDR3-->|No|DDR5-->DDR6
+            DDR6-->DDR1
+            DDR6-->DDR7
+        end
+
+        subgraph IDV["initiate_data_validation()"]
+            IDV1["read_data(train) + read_data(test)"]
+            IDV2["validate_number_cols × 2"]
+            IDV3["check_numerical_col × 2"]
+            IDV4["detect_data_drift"]
+            IDV5["save validated CSVs"]
+            IDV6["return DataValidationArtifact"]
+            IDV1-->IDV2-->IDV3-->IDV4-->IDV5-->IDV6
+        end
+
+        INIT --> VNC & CNC & DDR --> IDV
+    end
+
+    IDV6 --> ART["DataValidationArtifact\nvalidation_status · valid_train\nvalid_test · drift_report_path"]
+    ART --> NEXT["DataTransformation"]
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d4">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 04</span>
+          <span class="diagram-name">Data Transformation — Detailed</span>
+          <span class="diagram-desc">KNNImputer → .npy → preprocessing.pkl</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    subgraph DT["class DataTransformation"]
+        INIT["__init__(data_validation_artifact, data_transformation_config)"]
+
+        subgraph GTO["get_data_transformer_object()"]
+            GTO1["KNNImputer(missing_values=NaN\n  n_neighbors=3\n  weights='uniform')"]
+            GTO2["Pipeline(steps=[('imputer', imputer)])"]
+            GTO1-->GTO2
+        end
+
+        subgraph IDT["initiate_data_transformation()"]
+            IDT1["read_data(valid_train.csv) → 8844×31\nread_data(valid_test.csv)  → 2211×31"]
+            IDT2["X_train = df.drop('Result') → 8844×30\ny_train = df['Result'].replace(-1,0)"]
+            IDT3["preprocessor = get_data_transformer_object()"]
+            IDT4["X_train_t = preprocessor.fit_transform(X_train)\nFIT ONLY ON TRAIN — no leakage!"]
+            IDT5["X_test_t = preprocessor.transform(X_test)\nTRANSFORM ONLY — no fit!"]
+            IDT6["train_arr = np.c_[X_train_t, y_train] → 8844×31\ntest_arr  = np.c_[X_test_t,  y_test]  → 2211×31"]
+            IDT7["save_numpy_array_data(train.npy, train_arr)\nsave_numpy_array_data(test.npy, test_arr)\nsave_object(preprocessing.pkl, preprocessor)"]
+            IDT8["return DataTransformationArtifact"]
+            IDT1-->IDT2-->IDT3-->IDT4-->IDT5-->IDT6-->IDT7-->IDT8
+        end
+
+        INIT --> GTO --> IDT
+    end
+
+    IDT8 --> ART["DataTransformationArtifact\ntransformed_object_file_path\ntransformed_train_file_path\ntransformed_test_file_path"]
+    ART --> NEXT["ModelTrainer"]
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d5">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 05</span>
+          <span class="diagram-name">Model Trainer — Detailed</span>
+          <span class="diagram-desc">GridSearchCV · MLflow · NetworkModel · overfit check</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    subgraph MT["class ModelTrainer"]
+        subgraph IMT["initiate_model_trainer()"]
+            IMT1["load_numpy_array(train.npy) → 8844×31\nload_numpy_array(test.npy)  → 2211×31"]
+            IMT2["X_train=arr[:,:-1] y_train=arr[:,-1]\nX_test=arr[:,:-1]  y_test=arr[:,-1]"]
+            IMT3["train_model(X_train,y_train,X_test,y_test)"]
+            IMT1-->IMT2-->IMT3
+        end
+
+        subgraph TRM["train_model()"]
+            TRM1["5 Models:\nRandomForest · DecisionTree\nGradientBoosting · LogisticRegression · AdaBoost"]
+            TRM2["evaluate_models()\n→ GridSearchCV(cv=5, scoring=f1)\n→ {model_name: test_f1}"]
+            TRM3{"best_f1 >= 0.6?"}
+            TRM4["raise Exception\nNo best model found"]
+            TRM5["best = RandomForest · f1=0.9716"]
+            TRM6["train_metric = get_classification_score(y_train, pred)\ntrack_mlflow(model, train_metric)"]
+            TRM7["test_metric  = get_classification_score(y_test, pred)\ntrack_mlflow(model, test_metric)"]
+            TRM8{"abs(train_f1-test_f1) > 0.05?"}
+            TRM9["log WARNING: overfit\n0.02 < 0.05 ✅ pass"]
+            TRM10["NetworkModel(preprocessor, best_model)\nsave_object(model.pkl)\nsave_object(final_model/model.pkl)\nsave_object(final_model/preprocessor.pkl)"]
+            TRM11["return ModelTrainerArtifact"]
+            TRM1-->TRM2-->TRM3-->|No|TRM4
+            TRM3-->|Yes|TRM5-->TRM6-->TRM7-->TRM8
+            TRM8-->|Yes|TRM9-->TRM10
+            TRM8-->|No|TRM10-->TRM11
+        end
+
+        IMT --> TRM
+    end
+
+    TRM11 --> ART["ModelTrainerArtifact\ntrained_model_file_path\ntrain_metric (f1=0.9916)\ntest_metric  (f1=0.9716)"]
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d6">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 06</span>
+          <span class="diagram-name">FastAPI — All Routes</span>
+          <span class="diagram-desc">6 routes · templates · prediction flow</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    APP["app = FastAPI\nCORSMiddleware(allow_origins=['*'])\nJinja2Templates('./templates')"]
+
+    R1["GET /\n→ index.html"]
+    R2["GET /train\n→ TrainingPipeline().run_pipeline()\n→ Response('Training Successful')"]
+    R3["GET /predict\n→ predict.html (CSV upload form)"]
+    R4["POST /predict\nUploadFile CSV\n→ pd.read_csv()\n→ NetworkModel.predict(df)\n→ df['predicted_column'] = y_pred\n→ table.html"]
+    R5["GET /predict/manual\n→ predict_manual.html"]
+    R6["POST /predict/manual\nNetworkDataInput Pydantic 30 int fields\n→ model_dump() → DataFrame(1×30)\n→ NetworkModel.predict()[0]\n→ {prediction,label,message} JSON"]
+
+    APP --> R1 & R2 & R3 & R4 & R5 & R6
+
+    R4 --> LOAD["load_object(final_model/preprocessor.pkl)\nload_object(final_model/model.pkl)\nNetworkModel(preprocessor, model)"]
+    R6 --> LOAD
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d7">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 07</span>
+          <span class="diagram-name">Training Pipeline Orchestrator</span>
+          <span class="diagram-desc">run_pipeline() chain</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    subgraph TP["class TrainingPipeline"]
+        INIT["__init__()\n→ TrainingPipelineConfig()\n→ artifact_dir = Artifacts/timestamp"]
+        RUN["run_pipeline()"]
+        S1["start_data_ingestion()\n→ DataIngestionConfig\n→ DataIngestion.initiate_data_ingestion()\n→ return DataIngestionArtifact"]
+        S2["start_data_validation(artifact)\n→ DataValidationConfig\n→ DataValidation.initiate_data_validation()\n→ return DataValidationArtifact"]
+        S3["start_data_transformation(artifact)\n→ DataTransformationConfig\n→ DataTransformation.initiate_data_transformation()\n→ return DataTransformationArtifact"]
+        S4["start_model_trainer(artifact)\n→ ModelTrainerConfig\n→ ModelTrainer.initiate_model_trainer()\n→ return ModelTrainerArtifact"]
+        INIT --> RUN
+        RUN --> S1
+        S1 -->|DataIngestionArtifact| S2
+        S2 -->|DataValidationArtifact| S3
+        S3 -->|DataTransformationArtifact| S4
+    end
+    API["FastAPI GET /train"] --> INIT
+    MAIN["main.py"] --> INIT
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d8">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 08</span>
+          <span class="diagram-name">NetworkModel + Utils</span>
+          <span class="diagram-desc">estimator · metrics · utility functions</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart LR
+    subgraph NM["NetworkModel (estimator.py)"]
+        NM1["__init__(preprocessor, model)"]
+        NM2["predict(x)\n→ preprocessor.transform(x)\n→ model.predict(x_t)\n→ return y_hat"]
+        NM1-->NM2
+    end
+
+    subgraph CM["classification_metric.py"]
+        CM1["get_classification_score(y_true, y_pred)\n→ f1_score()\n→ precision_score()\n→ recall_score()\n→ ClassificationMetricArtifact"]
+    end
+
+    subgraph UT["utils/main_utils/utils.py"]
+        UT1["save_object(file_path, obj)\n→ dill.dump(obj, file)"]
+        UT2["load_object(file_path)\n→ dill.load(file)"]
+        UT3["save_numpy_array_data(path, arr)\n→ np.save()"]
+        UT4["load_numpy_array(path)\n→ np.load()"]
+        UT5["read_yaml_file(path)\n→ yaml.safe_load()"]
+        UT6["write_yaml_file(path, content)\n→ yaml.dump()"]
+        UT7["evaluate_models(X_tr,y_tr,X_te,y_te,models,params)\n→ GridSearchCV per model\n→ {name: f1}"]
+    end
+
+    NM2 --> API_SERVE["FastAPI /predict routes"]
+    CM1 --> MT["ModelTrainer"]
+    UT1 & UT2 --> ALL["All Components"]
+    UT3 & UT4 --> DT_MT["DataTransformation\nModelTrainer"]
+    UT5 & UT6 --> DV["DataValidation"]
+    UT7 --> MT
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d9">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 09</span>
+          <span class="diagram-name">Data Shape Through Pipeline</span>
+          <span class="diagram-desc">shape at each stage</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart LR
+    D0["MongoDB\n11055 documents\n{feature: val, _id: ObjectId}"]
+    D1["DataFrame\n11055×32 → drop _id\n11055×31 with NaN"]
+    D2["Split\ntrain.csv 8844×31\ntest.csv  2211×31"]
+    D3["Validated\ntrain 8844×31\ntest  2211×31\nschema ✓ drift ✓"]
+    D4["X/y Split\nX_train 8844×30\ny_train 8844 (0/1)\nX_test  2211×30\ny_test  2211 (0/1)"]
+    D5["KNNImputer\nX_train_t 8844×30\nX_test_t  2211×30\nnp.c_ stack\ntrain.npy 8844×31\ntest.npy  2211×31"]
+    D6["Model Input\nX_train[:,:-1] 8844×30\ny_train[:,-1]  8844"]
+    D7["Prediction\nN×30 DataFrame\n→ transform\n→ predict\n→ [0,1,0,1...]"]
+
+    D0-->|collection.find\npd.DataFrame|D1
+    D1-->|train_test_split\n0.2|D2
+    D2-->|schema check\nKS test|D3
+    D3-->|drop Result\nreplace -1→0|D4
+    D4-->|fit_transform\nnp.c_|D5
+    D5-->|load_numpy_array\nslice|D6
+    D6-->|GridSearchCV\nbest model|D7
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d10">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 10</span>
+          <span class="diagram-name">Config Entity Dependency Tree</span>
+          <span class="diagram-desc">all 5 config classes + injection</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    CONST["constants/__init__.py\nAll raw values"] --> TP
+
+    TP["TrainingPipelineConfig\ntimestamp → artifact_dir"]
+
+    TP -->|inject| DIC["DataIngestionConfig\nfeature_store_path\ntrain/test_file_path\ncollection='NetworkData'\ndatabase='ALYAN'\nsplit_ratio=0.2"]
+
+    TP -->|inject| DVC["DataValidationConfig\nvalid_train_file_path\nvalid_test_file_path\ninvalid_train_file_path\ndrift_report_file_path"]
+
+    TP -->|inject| DTC["DataTransformationConfig\ntransformed_train_file_path .npy\ntransformed_test_file_path  .npy\ntransformed_object_path .pkl"]
+
+    TP -->|inject| MTC["ModelTrainerConfig\ntrained_model_file_path\nexpected_accuracy=0.6\noverfitting_threshold=0.05"]
+
+    DIC -->|used by| DI["class DataIngestion"]
+    DVC -->|used by| DV["class DataValidation"]
+    DTC -->|used by| DT["class DataTransformation"]
+    MTC -->|used by| MT["class ModelTrainer"]
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d11">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 11</span>
+          <span class="diagram-name">Artifact Entity Chain</span>
+          <span class="diagram-desc">typed return objects passed between components</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart LR
+    DI["DataIngestion\n.initiate_data_ingestion()"]
+    A1["DataIngestionArtifact\ntrain_file_path: str\ntest_file_path: str"]
+    DV["DataValidation\n.initiate_data_validation()"]
+    A2["DataValidationArtifact\nvalidation_status: bool\nvalid_train_file_path: str\nvalid_test_file_path: str\ninvalid_train_file_path: str\ndrift_report_file_path: str"]
+    DT["DataTransformation\n.initiate_data_transformation()"]
+    A3["DataTransformationArtifact\ntransformed_object_file_path: str\ntransformed_train_file_path: str\ntransformed_test_file_path: str"]
+    MT["ModelTrainer\n.initiate_model_trainer()"]
+    A4["ClassificationMetricArtifact\nf1_score: float\nprecision_score: float\nrecall_score: float"]
+    A5["ModelTrainerArtifact\ntrained_model_file_path: str\ntrain_metric: ClassificationMetricArtifact\ntest_metric: ClassificationMetricArtifact"]
+
+    DI-->|returns|A1-->|input to|DV
+    DV-->|returns|A2-->|input to|DT
+    DT-->|returns|A3-->|input to|MT
+    A4-->|nested in|A5
+    MT-->|returns|A5
+    A5-->|logged to|MLFLOW["MLflow / DagsHub"]
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d12">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 12</span>
+          <span class="diagram-name">MLflow Tracking Sequence</span>
+          <span class="diagram-desc">train + test metrics → DagsHub</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+sequenceDiagram
+    participant MT as ModelTrainer
+    participant DAG as dagshub.init()
+    participant MLF as mlflow
+    participant REPO as DagsHub Repo
+
+    MT->>DAG: init(repo_owner, repo_name, mlflow=True)
+    DAG-->>MT: tracking URI set
+
+    Note over MT: Train metrics
+    MT->>MLF: start_run()
+    MT->>MLF: log_metric("f1_score", 0.9916)
+    MT->>MLF: log_metric("precision_score", 0.9887)
+    MT->>MLF: log_metric("recall_score", 0.9945)
+    MT->>MLF: sklearn.log_model(best_model, "model")
+    MLF->>REPO: sync
+    MT->>MLF: end run
+
+    Note over MT: Test metrics
+    MT->>MLF: start_run()
+    MT->>MLF: log_metric("f1_score", 0.9716)
+    MT->>MLF: log_metric("precision_score", 0.9589)
+    MT->>MLF: log_metric("recall_score", 0.9846)
+    MLF->>REPO: sync
+    MT->>MLF: end run
+
+    REPO-->>MT: 3 runs visible in Experiments tab
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-card" id="d13">
+        <div class="diagram-header">
+          <span class="diagram-num">DIAGRAM 13</span>
+          <span class="diagram-name">KS Drift Detection Logic</span>
+          <span class="diagram-desc">Kolmogorov-Smirnov test per column</span>
+        </div>
+        <div class="diagram-body">
+          <div class="mermaid">
+flowchart TD
+    START["detect_data_drift(train_df, test_df, threshold=0.05)"]
+    INIT["report = {}\nstatus = True"]
+    LOOP["for each column in base_df.columns (31 cols):"]
+    KS["ks_2samp(train_col, test_col)\n→ statistic + p_value"]
+    CHECK{"p_value >= 0.05?"}
+    ND["is_found = False\nSame distribution ✅"]
+    DR["is_found = True\nstatus = False ⚠️\nDrift detected!"]
+    REP["report[col] = {p_value, drift_status}"]
+    MORE{"more columns?"}
+    SAVE["write_yaml_file(drift_report.yaml, report)"]
+    RET["return status\nTrue = no drift → pipeline continues\nFalse = drift → logged with warning"]
+
+    START-->INIT-->LOOP-->KS-->CHECK
+    CHECK-->|Yes|ND-->REP
+    CHECK-->|No|DR-->REP
+    REP-->MORE-->|Yes|LOOP
+    MORE-->|No|SAVE-->RET
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end diagrams -->
+  </div><!-- end layout -->
+</div><!-- end page -->
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'dark',
+    themeVariables: {
+      darkMode: true,
+      background: '#0f1520',
+      primaryColor: '#0a150a',
+      primaryTextColor: '#e2e8f0',
+      primaryBorderColor: '#00FF41',
+      lineColor: '#00FF41',
+      secondaryColor: '#0d1117',
+      tertiaryColor: '#0f1520',
+      edgeLabelBackground: '#0f1520',
+      clusterBkg: '#0a0a0a',
+      titleColor: '#00FF41',
+      nodeTextColor: '#e2e8f0',
+      fontFamily: 'Fira Code, monospace',
+    },
+    flowchart: { curve: 'basis', htmlLabels: true },
+    sequence: {
+      actorFontFamily: 'Fira Code, monospace',
+      noteFontFamily: 'Fira Code, monospace',
+      messageFontFamily: 'Fira Code, monospace',
+    }
+  });
+
+  // Sidebar active link on scroll
+  const cards = document.querySelectorAll('.diagram-card');
+  const links = document.querySelectorAll('.sidebar-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  cards.forEach(c => observer.observe(c));
+</script>
+</body>
+</html>

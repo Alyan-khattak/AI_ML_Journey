@@ -3,4 +3,4 @@ creditcard.csv
 env/
 
 #Ignoring my .Vs Folder
-.vscode/
+.vscode/*.egg-info/

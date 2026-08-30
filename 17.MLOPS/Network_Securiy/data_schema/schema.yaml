@@ -1,0 +1,86 @@
+# ═══════════════════════════════════════════════════════════════════
+# data_schema/schema.yaml
+# ═══════════════════════════════════════════════════════════════════
+# Dataset ka expected schema define karta hai
+# DataValidation yeh file padhta hai aur incoming data se compare karta hai
+#
+# WHY SCHEMA?
+# MongoDB se data pull hota hai → koi guarantee nahi ki sab columns hain
+# Production mein data corrupt ho sakta hai → extra/missing columns
+# Schema = contract — "data exactly aisa hona chahiye"
+#
+# DataValidation checks:
+# 1. validate_number_of_columns() → schema mein kitne columns → data mein kitne
+# 2. detect_dataset_drift()       → train vs test distribution same hai?
+###==============================================================
+
+columns:
+  # IMP: yeh 31 columns expected hain (30 features + 1 target)
+  # DataIngestion ne _id drop kiya tha → 31 cols
+  # agar koi column missing → validation fail → pipeline rok do
+  - having_IP_Address: int64
+  - URL_Length: int64
+  - Shortining_Service: int64
+  - having_At_Symbol: int64
+  - double_slash_redirecting: int64
+  - Prefix_Suffix: int64
+  - having_Sub_Domain: int64
+  - SSLfinal_State: int64
+  - Domain_registeration_length: int64
+  - Favicon: int64
+  - port: int64
+  - HTTPS_token: int64
+  - Request_URL: int64
+  - URL_of_Anchor: int64
+  - Links_in_tags: int64
+  - SFH: int64
+  - Submitting_to_email: int64
+  - Abnormal_URL: int64
+  - Redirect: int64
+  - on_mouseover: int64
+  - RightClick: int64
+  - popUpWidnow: int64
+  - Iframe: int64
+  - age_of_domain: int64
+  - DNSRecord: int64
+  - web_traffic: int64
+  - Page_Rank: int64
+  - Google_Index: int64
+  - Links_pointing_to_page: int64
+  - Statistical_report: int64
+  - Result: int64   # ← TARGET COLUMN (1=phishing, -1=legitimate)
+
+numerical_columns:
+  # IMP: sab columns numerical hain is dataset mein
+  # DataTransformation mein KNNImputer lagega sirf numerical pe
+  - having_IP_Address
+  - URL_Length
+  - Shortining_Service
+  - having_At_Symbol
+  - double_slash_redirecting
+  - Prefix_Suffix
+  - having_Sub_Domain
+  - SSLfinal_State
+  - Domain_registeration_length
+  - Favicon
+  - port
+  - HTTPS_token
+  - Request_URL
+  - URL_of_Anchor
+  - Links_in_tags
+  - SFH
+  - Submitting_to_email
+  - Abnormal_URL
+  - Redirect
+  - on_mouseover
+  - RightClick
+  - popUpWidnow
+  - Iframe
+  - age_of_domain
+  - DNSRecord
+  - web_traffic
+  - Page_Rank
+  - Google_Index
+  - Links_pointing_to_page
+  - Statistical_report
+  - Result

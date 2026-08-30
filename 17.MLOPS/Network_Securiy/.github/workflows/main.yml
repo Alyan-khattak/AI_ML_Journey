@@ -1,0 +1,189 @@
+# ═══════════════════════════════════════════════════════════════════
+# .github/workflows/main.yml
+# ═══════════════════════════════════════════════════════════════════
+# CI/CD Pipeline — AWS ECR + EC2 (Krish Naik MLOps style)
+#
+# FLOW:
+# git push → GitHub Actions trigger
+#         → Docker build
+#         → Push to AWS ECR
+#         → EC2 self-hosted runner pe pull + run
+#
+# SECRETS (GitHub → Settings → Secrets → Actions):
+# AWS_ACCESS_KEY_ID     ← AWS IAM user ka access key
+# AWS_SECRET_ACCESS_KEY ← AWS IAM user ka secret key
+# AWS_REGION            ← e.g. ap-south-1 (Mumbai)
+# AWS_ECR_LOGIN_URI     ← e.g. 123456789.dkr.ecr.ap-south-1.amazonaws.com
+# ECR_REPOSITORY_NAME   ← e.g. networksecurity-mlops
+# MONGO_ATLAS_URI       ← MongoDB connection string
+# ═══════════════════════════════════════════════════════════════════
+
+name: NetworkSecurity MLOps — CI/CD AWS
+
+# IMP: main branch pe push hone pe trigger hoga
+# pull_request bhi include karo taaki PR check ho
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# permissions: read content of repo
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+
+  # ══════════════════════════════════════════════════════
+  # JOB 1: Integration — test + lint + build check
+  # ══════════════════════════════════════════════════════
+  integration:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    # ubuntu-latest = GitHub hosted runner (free)
+
+    steps:
+      # Step 1: Repo checkout karo
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        # repo ka code runner pe clone karta hai
+
+      # Step 2: Python setup
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      # Step 3: Dependencies install karo
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      # Step 4: Lint check (optional but good practice)
+      - name: Lint Check
+        run: |
+          pip install flake8
+          # E501 = line too long (ignore karo — comments hain)
+          # F401 = unused import (ignore karo — __init__.py mein hain)
+          flake8 networksecurity/ --count --select=E9,F63,F7,F82 \
+            --show-source --statistics
+        # sirf critical errors check karo — warnings ignore
+
+  # ══════════════════════════════════════════════════════
+  # JOB 2: Build + Push to AWS ECR
+  # ══════════════════════════════════════════════════════
+  build-and-push-ecr:
+    name: Build Docker Image + Push to ECR
+    needs: integration
+    # IMP: integration job pass hone ke baad hi chalega
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 1: AWS credentials configure karo
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ secrets.AWS_REGION }}
+        # GitHub Secrets se values inject hongi
+        # Settings → Secrets → Actions mein set karo
+
+      # Step 2: ECR login karo
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        # ECR = AWS ka private Docker registry
+        # DockerHub jaisa — sirf AWS ke andar
+
+      # Step 3: Docker image build + tag + push
+      - name: Build, Tag, and Push Docker Image to ECR
+        id: build-image
+        env:
+          # ECR_REGISTRY = login step se milega automatically
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+          # IMAGE_TAG = git commit SHA — har push ka alag tag
+          # latest nahi — specific version track hoti hai
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # Docker image build karo
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+
+          # ECR pe push karo
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+          # latest tag bhi push karo
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+                     $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" \
+            >> $GITHUB_OUTPUT
+          # output save karo → next job use karega
+
+  # ══════════════════════════════════════════════════════
+  # JOB 3: EC2 pe Deploy
+  # ══════════════════════════════════════════════════════
+  deploy-to-ec2:
+    name: Deploy to EC2 Self-Hosted Runner
+    needs: build-and-push-ecr
+    # ECR push hone ke baad hi deploy hoga
+    runs-on: self-hosted
+    # IMP: self-hosted = tumhara EC2 instance
+    # EC2 pe GitHub Actions runner install karna padega
+    # Settings → Actions → Runners → New self-hosted runner
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 1: AWS credentials EC2 pe bhi chahiye
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ secrets.AWS_REGION }}
+
+      # Step 2: ECR login on EC2
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      # Step 3: Pull latest image + run
+      - name: Pull Docker Image + Run Container
+        env:
+          ECR_REGISTRY:   ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+          MONGO_ATLAS_URI: ${{ secrets.MONGO_ATLAS_URI }}
+        run: |
+          # purana container stop karo agar chal raha hai
+          docker stop networksecurity-app || true
+          docker rm   networksecurity-app || true
+          # || true → agar container nahi hai → error nahi
+
+          # latest image pull karo ECR se
+          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:latest
+
+          # naya container run karo
+          docker run -d \
+            --name networksecurity-app \
+            -p 8000:8000 \
+            -e MONGO_ATLAS_URI=$MONGO_ATLAS_URI \
+            $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          # -d = detached (background mein)
+          # -p 8000:8000 = port mapping
+          # -e = environment variable inject
+
+      # Step 4: Health check
+      - name: Health Check
+        run: |
+          sleep 10
+          curl --fail http://localhost:8000/ || exit 1
+          echo "Deployment successful!"

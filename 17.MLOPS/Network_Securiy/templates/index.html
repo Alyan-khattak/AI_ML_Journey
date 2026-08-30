@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetworkSecurity MLOps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#080a0c; --surface:#0d1117; --card:#0f1520;
+      --border:rgba(0,255,65,0.08); --border-hi:rgba(0,255,65,0.18);
+      --green:#00FF41; --green-dim:rgba(0,255,65,0.08);
+      --red:#FF3333; --amber:#FFB800;
+      --text:#e2e8f0; --muted:#4a5568; --muted-2:#718096;
+      --mono:'Fira Code',monospace; --sans:'Fira Sans',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100dvh;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.04) 2px,rgba(0,0,0,0.04) 4px)}
+    .orb{position:fixed;width:700px;height:700px;top:-300px;left:-200px;background:radial-gradient(circle,rgba(0,255,65,0.07) 0%,transparent 65%);filter:blur(60px);pointer-events:none;z-index:0}
+    .page{position:relative;z-index:2}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(8,10,12,0.85);backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-icon{width:34px;height:34px;background:var(--green-dim);border:1px solid var(--border-hi);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--green)}
+    .logo-text{font-family:var(--mono);font-size:0.82rem;font-weight:500;color:var(--text)}
+    .nav-pill{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--green);background:var(--green-dim);border:1px solid var(--border-hi);border-radius:2px;padding:5px 12px}
+    .pulse{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,255,65,0.7);animation:blink 1.8s ease infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+    .hero{padding:90px 48px 70px;max-width:1100px;margin:0 auto}
+    .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:10px;margin-bottom:24px;animation:fadeUp 600ms ease both}
+    .eyebrow::before{content:'';width:24px;height:1px;background:var(--green)}
+    h1{font-family:var(--mono);font-size:clamp(2.4rem,6vw,4.8rem);font-weight:600;line-height:1.05;letter-spacing:-0.03em;color:#fff;margin-bottom:20px;animation:fadeUp 600ms ease 80ms both}
+    h1 .accent{color:var(--green)} h1 .dim{color:var(--muted-2);font-weight:300}
+    .hero-sub{font-size:0.95rem;color:var(--muted-2);line-height:1.7;max-width:500px;margin-bottom:44px;animation:fadeUp 600ms ease 150ms both}
+    .cta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;animation:fadeUp 600ms ease 220ms both}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#000;font-family:var(--mono);font-size:0.8rem;font-weight:600;padding:11px 20px;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:box-shadow 400ms,transform 400ms;box-shadow:0 0 20px rgba(0,255,65,0.25)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(0,255,65,0.45)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--muted-2);font-family:var(--mono);font-size:0.8rem;padding:11px 18px;border:1px solid var(--border-hi);border-radius:2px;text-decoration:none;transition:color 300ms,border-color 300ms}
+    .btn-ghost:hover{color:var(--green);border-color:var(--green)}
+    .terminal-wrap{margin-top:60px;max-width:580px;animation:fadeUp 600ms ease 300ms both}
+    .t-bar{background:#1a2030;border:1px solid var(--border-hi);border-bottom:none;border-radius:4px 4px 0 0;padding:9px 14px;display:flex;align-items:center;gap:7px}
+    .t-dot{width:9px;height:9px;border-radius:50%}
+    .t-r{background:#ff5f57} .t-y{background:#febc2e} .t-g{background:#28c840}
+    .t-title{font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:4px}
+    .t-body{background:#0a0e14;border:1px solid var(--border-hi);border-radius:0 0 4px 4px;padding:20px;font-family:var(--mono);font-size:12px;line-height:1.85}
+    .t-p{color:var(--green)} .t-c{color:var(--text)} .t-m{color:var(--muted-2)} .t-ok{color:var(--green);font-weight:500}
+    .cursor{display:inline-block;width:8px;height:14px;background:var(--green);vertical-align:middle;animation:blink 1s step-end infinite}
+    .stats{padding:0 48px 80px;max-width:1100px;margin:0 auto}
+    .stats-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:8px}
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:2px;padding:24px 20px;transition:border-color 400ms,transform 400ms}
+    .stat-card:hover{border-color:rgba(0,255,65,0.25);transform:translateY(-2px)}
+    .s1{grid-column:span 3} .s2{grid-column:span 3} .s3{grid-column:span 3} .s4{grid-column:span 3} .s5{grid-column:span 8} .s6{grid-column:span 4}
+    .stat-label{font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+    .stat-value{font-family:var(--mono);font-size:2.2rem;font-weight:500;color:#fff;letter-spacing:-0.04em;line-height:1}
+    .stat-unit{font-size:0.85rem;color:var(--muted);margin-left:2px}
+    .stat-tag{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-family:var(--mono);font-size:9px;color:var(--green);background:var(--green-dim);border:1px solid var(--border-hi);border-radius:1px;padding:2px 7px}
+    .pipe-title{font-family:var(--mono);font-size:0.8rem;color:var(--green);margin-bottom:18px}
+    .pipe-steps{display:flex;flex-direction:column;gap:9px}
+    .pipe-step{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;color:var(--muted-2);padding:6px 0;border-bottom:1px solid var(--border)}
+    .pipe-step:last-child{border-bottom:none}
+    .step-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+    .done{background:var(--green);box-shadow:0 0 6px rgba(0,255,65,0.6)}
+    .active{background:var(--amber);box-shadow:0 0 6px rgba(255,184,0,0.6);animation:blink 1.5s ease infinite}
+    .step-right{margin-left:auto;font-size:9px;color:var(--muted)}
+    .actions-title{font-family:var(--mono);font-size:0.8rem;color:var(--green);margin-bottom:16px}
+    .action-btn{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(0,255,65,0.04);border:1px solid var(--border);border-radius:2px;text-decoration:none;color:var(--text);font-family:var(--mono);font-size:11px;margin-bottom:8px;transition:border-color 300ms,background 300ms,color 300ms}
+    .action-btn:last-child{margin-bottom:0}
+    .action-btn:hover{border-color:var(--green);background:rgba(0,255,65,0.08);color:var(--green)}
+    .action-arrow{color:var(--muted);font-size:12px}
+    footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+    .footer-text{font-family:var(--mono);font-size:10px;color:var(--muted)}
+    .footer-link{font-family:var(--mono);font-size:10px;color:var(--muted);text-decoration:none;transition:color 300ms}
+    .footer-link:hover{color:var(--green)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:768px){nav,.hero,.stats,footer{padding-left:20px;padding-right:20px}.stats-grid{grid-template-columns:1fr 1fr}.s1,.s2,.s3,.s4{grid-column:span 1}.s5,.s6{grid-column:span 2}.terminal-wrap{display:none}}
+  </style>
+</head>
+<body>
+  <div class="orb"></div>
+  <div class="page">
+    <nav>
+      <a href="/" class="logo">
+        <div class="logo-icon">NS</div>
+        <span class="logo-text">network_security.py</span>
+      </a>
+      <div class="nav-pill"><span class="pulse"></span>pipeline · online · F1=0.97</div>
+    </nav>
+
+    <section class="hero">
+      <div class="eyebrow">MLOps · Network Security · Phishing Detection</div>
+      <h1>Detect <span class="accent">phishing</span><br><span class="dim">before it reaches</span><br><span class="dim">your network</span></h1>
+      <p class="hero-sub">End-to-end MLOps pipeline — MongoDB ingestion, KS drift detection, KNNImputer transformation, GridSearchCV tuning, MLflow tracking. Deploy once, retrain on demand.</p>
+      <div class="cta-row">
+        <a href="/predict" class="btn-primary">$ predict --file</a>
+        <a href="/predict/manual" class="btn-ghost">manual input</a>
+        <a href="/train" class="btn-ghost">retrain</a>
+      </div>
+      <div class="terminal-wrap">
+        <div class="t-bar">
+          <span class="t-dot t-r"></span><span class="t-dot t-y"></span><span class="t-dot t-g"></span>
+          <span class="t-title">training_pipeline.py</span>
+        </div>
+        <div class="t-body">
+          <div><span class="t-p">$</span> <span class="t-c">python main.py</span></div>
+          <div class="t-m">Initializing MLflow → DagsHub...</div>
+          <div class="t-m">DataIngestion: MongoDB → 11055 rows pulled</div>
+          <div class="t-m">DataValidation: schema ✓ drift_report saved</div>
+          <div class="t-m">DataTransformation: KNNImputer fitted</div>
+          <div class="t-m">ModelTrainer: GridSearchCV 5-fold...</div>
+          <div><span class="t-ok">✓ Best: RandomForest</span> <span class="t-m">| Train F1: 0.9916 | Test F1: 0.9716</span></div>
+          <div><span class="t-ok">✓ Overfitting check passed</span> <span class="t-m">| diff: 0.02 &lt; 0.05</span></div>
+          <div><span class="t-ok">✓ model.pkl saved</span> <span class="t-m">→ final_model/</span></div>
+          <br><div><span class="t-p">$</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats">
+      <div class="stats-grid">
+        <div class="stat-card s1"><div class="stat-label">Train F1</div><div class="stat-value">0.99<span class="stat-unit">/1</span></div><div class="stat-tag">RandomForest</div></div>
+        <div class="stat-card s2"><div class="stat-label">Test F1</div><div class="stat-value">0.97<span class="stat-unit">/1</span></div><div class="stat-tag">no overfit ✓</div></div>
+        <div class="stat-card s3"><div class="stat-label">Recall</div><div class="stat-value">0.98<span class="stat-unit">/1</span></div><div class="stat-tag">98% caught</div></div>
+        <div class="stat-card s4"><div class="stat-label">Dataset</div><div class="stat-value">11k<span class="stat-unit">rows</span></div><div class="stat-tag">MongoDB Atlas</div></div>
+        <div class="stat-card s5">
+          <div class="pipe-title">// pipeline.run()</div>
+          <div class="pipe-steps">
+            <div class="pipe-step"><span class="step-dot done"></span>DataIngestion → MongoDB.find() → feature_store/phishingData.csv<span class="step-right">✓</span></div>
+            <div class="pipe-step"><span class="step-dot done"></span>DataValidation → schema check + KS drift detection<span class="step-right">✓</span></div>
+            <div class="pipe-step"><span class="step-dot done"></span>DataTransformation → KNNImputer(n_neighbors=3) → .npy arrays<span class="step-right">✓</span></div>
+            <div class="pipe-step"><span class="step-dot done"></span>ModelTrainer → GridSearchCV 5-fold → best model → MLflow log<span class="step-right">✓</span></div>
+            <div class="pipe-step"><span class="step-dot active"></span>FastAPI serving → /predict CSV + /predict/manual</div>
+          </div>
+        </div>
+        <div class="stat-card s6">
+          <div class="actions-title">// quick actions</div>
+
+          <a href="/predict" class="action-btn">$ predict --csv <span class="action-arrow">→</span></a>
+
+          <a href="/predict/manual" class="action-btn">$ predict --manual <span class="action-arrow">→</span></a>
+          
+          <a href="/train" class="action-btn">$ pipeline.run() <span class="action-arrow">→</span></a>
+
+
+          <a href="/diagrams" class="action-btn">
+            $ view diagrams
+            <span class="action-arrow">→</span>
+          </a>
+
+          <a href="/pipeline" class="action-btn">
+            $ view Detailed Pipeline 
+            <span class="action-arrow">→</span>
+          </a>
+
+          <a href="/docs" class="action-btn">$ swagger /docs <span class="action-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span class="footer-text">NetworkSecurity MLOps · 2026</span>
+      <a href="https://github.com/Alyan-khattak" target="_blank" rel="noopener" class="footer-link">~/Alyan-khattak</a>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+# ═══════════════════════════════════════════════════════════════════
+# .github/workflows/render.yml
+# ═══════════════════════════════════════════════════════════════════
+# CI/CD Pipeline — Render Deploy
+#
+# Render automatically deploys on push — yeh workflow
+# sirf lint + test karta hai pehle, phir Render trigger karta hai
+#
+# SECRETS:
+# RENDER_DEPLOY_HOOK_URL ← Render dashboard se milega
+# MONGO_ATLAS_URI        ← MongoDB connection string
+# ═══════════════════════════════════════════════════════════════════
+
+name: NetworkSecurity MLOps — CI/CD Render
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  # ══════════════════════════════════════════════════════
+  # JOB 1: Integration Check
+  # ══════════════════════════════════════════════════════
+  integration:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint Check
+        run: |
+          pip install flake8
+          flake8 networksecurity/ --count \
+            --select=E9,F63,F7,F82 \
+            --show-source --statistics
+
+  # ══════════════════════════════════════════════════════
+  # JOB 2: Trigger Render Deploy
+  # ══════════════════════════════════════════════════════
+  deploy-render:
+    name: Deploy to Render
+    needs: integration
+    runs-on: ubuntu-latest
+    # sirf main branch pe — PR pe nahi
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Trigger Render Deploy Hook
+        run: |
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        # Render deploy hook = ek URL jo deploy trigger karta hai
+        # Render → Service → Settings → Deploy Hook → Copy URL
+        # GitHub Secrets mein RENDER_DEPLOY_HOOK_URL add karo
+
+      - name: Deploy Initiated
+        run: echo "Render deployment triggered successfully!"

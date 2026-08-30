@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prediction Results · NetworkSecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#080a0c;--card:#0f1520;--border:rgba(0,255,65,0.08);--border-hi:rgba(0,255,65,0.18);
+      --green:#00FF41;--green-dim:rgba(0,255,65,0.08);--red:#FF3333;--red-dim:rgba(255,51,51,0.1);
+      --text:#e2e8f0;--muted:#4a5568;--muted-2:#718096;
+      --mono:'Fira Code',monospace;--sans:'Fira Sans',sans-serif;
+    }
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100dvh}
+    body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.04) 2px,rgba(0,0,0,0.04) 4px)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);background:rgba(8,10,12,0.9);backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-icon{width:34px;height:34px;background:var(--green-dim);border:1px solid var(--border-hi);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--green)}
+    .logo-text{font-family:var(--mono);font-size:0.82rem;color:var(--text)}
+    .nav-back{font-family:var(--mono);font-size:11px;color:var(--muted-2);text-decoration:none;transition:color 300ms}
+    .nav-back:hover{color:var(--green)}
+    .content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:48px}
+    .page-header{margin-bottom:32px}
+    .page-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+    .page-title{font-family:var(--mono);font-size:1.6rem;font-weight:600;letter-spacing:-0.03em;color:#fff;margin-bottom:6px}
+    .page-sub{font-family:var(--mono);font-size:11px;color:var(--muted-2)}
+    /* summary strip */
+    .summary{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+    .sum-card{background:var(--card);border:1px solid var(--border);border-radius:2px;padding:12px 16px;font-family:var(--mono);font-size:11px}
+    .sum-label{color:var(--muted);margin-bottom:4px;font-size:9px;letter-spacing:0.1em;text-transform:uppercase}
+    .sum-val{color:#fff;font-size:1rem;font-weight:500}
+    .sum-val.green{color:var(--green)}
+    .sum-val.red{color:var(--red)}
+    /* table wrapper */
+    .table-shell{background:var(--card);border:1px solid var(--border);border-radius:2px;overflow:hidden}
+    .table-bar{padding:12px 18px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;color:var(--green);display:flex;align-items:center;justify-content:space-between}
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px}
+    thead tr{background:rgba(0,255,65,0.04);border-bottom:1px solid var(--border-hi)}
+    th{padding:10px 14px;text-align:left;color:var(--muted-2);font-weight:400;letter-spacing:0.08em;font-size:9px;text-transform:uppercase;white-space:nowrap}
+    td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text);white-space:nowrap}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:rgba(0,255,65,0.03)}
+    .pred-1{color:var(--red);font-weight:500}
+    .pred-0{color:var(--green);font-weight:500}
+    .badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:1px;font-size:9px;font-weight:500}
+    .badge-phish{background:var(--red-dim);border:1px solid rgba(255,51,51,0.25);color:var(--red)}
+    .badge-legit{background:var(--green-dim);border:1px solid rgba(0,255,65,0.2);color:var(--green)}
+    /* action row */
+    .action-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+    .btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--green);color:#000;font-family:var(--mono);font-size:0.78rem;font-weight:600;padding:10px 18px;border-radius:2px;text-decoration:none;border:none;cursor:pointer}
+    .btn-ghost{display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--muted-2);font-family:var(--mono);font-size:0.78rem;padding:10px 16px;border:1px solid var(--border-hi);border-radius:2px;text-decoration:none;transition:color 300ms,border-color 300ms}
+    .btn-ghost:hover{color:var(--green);border-color:var(--green)}
+    /* Jinja table override */
+    .tabel, table.table-striped{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px}
+    .tabel th, table.table-striped th{padding:10px 14px;text-align:left;color:var(--muted-2);font-weight:400;letter-spacing:0.08em;font-size:9px;text-transform:uppercase;background:rgba(0,255,65,0.04);border-bottom:1px solid var(--border-hi)}
+    .tabel td, table.table-striped td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text)}
+    .tabel tr:hover td, table.table-striped tr:hover td{background:rgba(0,255,65,0.03)}
+    @media(max-width:768px){nav,.content{padding-left:20px;padding-right:20px}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="logo">
+      <div class="logo-icon">NS</div>
+      <span class="logo-text">network_security.py</span>
+    </a>
+    <a href="/" class="nav-back">← back</a>
+  </nav>
+
+  <div class="content">
+    <div class="page-header">
+      <div class="page-eyebrow">// predict --csv</div>
+      <h1 class="page-title">Prediction Results</h1>
+      <p class="page-sub">NetworkModel.predict(df) → phishing=1, legitimate=0</p>
+    </div>
+
+    <!-- Summary strip auto-filled by JS -->
+    <div class="summary" id="summary"></div>
+
+    <div class="table-shell">
+      <div class="table-bar">
+        <span>// output.csv</span>
+        <a href="/prediction_output/output.csv" style="color:var(--muted-2);text-decoration:none;font-size:10px">↓ download</a>
+      </div>
+      <div class="table-wrap">
+        {{ table | safe }}
+      </div>
+    </div>
+
+    <div class="action-row">
+      <a href="/predict" class="btn-primary">$ new prediction</a>
+      <a href="/" class="btn-ghost">← home</a>
+    </div>
+  </div>
+
+  <script>
+    // Count phishing vs legitimate from predicted_column
+    const cells = document.querySelectorAll('td');
+    let phish = 0, legit = 0, total = 0;
+    cells.forEach(td => {
+      if (td.textContent.trim() === '1') { phish++; total++; td.classList.add('pred-1'); td.innerHTML = '<span class="badge badge-phish">⚠ Phishing</span>'; }
+      else if (td.textContent.trim() === '0') { legit++; total++; td.classList.add('pred-0'); td.innerHTML = '<span class="badge badge-legit">✓ Legitimate</span>'; }
+    });
+    // Inject summary
+    const s = document.getElementById('summary');
+    s.innerHTML = `
+      <div class="sum-card"><div class="sum-label">Total URLs</div><div class="sum-val">${total || '—'}</div></div>
+      <div class="sum-card"><div class="sum-label">Phishing</div><div class="sum-val red">${phish}</div></div>
+      <div class="sum-card"><div class="sum-label">Legitimate</div><div class="sum-val green">${legit}</div></div>
+      <div class="sum-card"><div class="sum-label">Threat Rate</div><div class="sum-val ${phish > 0 ? 'red' : 'green'}">${total ? ((phish/total)*100).toFixed(1)+'%' : '—'}</div></div>
+    `;
+  </script>
+</body>
+</html>

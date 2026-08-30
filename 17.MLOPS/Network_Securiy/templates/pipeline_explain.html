@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NetworkSecurity MLOps — System Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080a0c;--surface:#0d1117;--card:#0f1520;
+  --border:rgba(0,255,65,0.1);--border-hi:rgba(0,255,65,0.22);
+  --green:#00FF41;--green-dim:rgba(0,255,65,0.08);--green-mid:rgba(0,255,65,0.15);
+  --amber:#FFB800;--amber-dim:rgba(255,184,0,0.08);
+  --blue:#4488FF;--blue-dim:rgba(68,136,255,0.08);
+  --purple:#AA44FF;--purple-dim:rgba(170,68,255,0.08);
+  --red:#FF4444;--red-dim:rgba(255,68,68,0.08);
+  --cyan:#00CCFF;--cyan-dim:rgba(0,204,255,0.08);
+  --text:#e2e8f0;--muted:#4a5568;--muted-2:#718096;
+  --mono:'Fira Code',monospace;--sans:'Fira Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;padding:48px}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px)}
+
+.page{position:relative;z-index:1;max-width:1400px;margin:0 auto}
+
+/* HEADER */
+.diagram-header{margin-bottom:48px}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--green);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--green)}
+h1{font-family:var(--mono);font-size:2rem;font-weight:600;letter-spacing:-0.03em;color:#fff;margin-bottom:8px}
+.subtitle{font-size:0.9rem;color:var(--muted-2);line-height:1.6;max-width:600px}
+
+/* LEGEND */
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px;
+  padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:2px}
+.leg-item{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--muted-2)}
+.leg-dot{width:10px;height:10px;border-radius:1px}
+
+/* SECTION TITLES */
+.section-title{font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:12px;margin-top:48px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* PIPELINE FLOW */
+.pipeline-flow{display:flex;flex-direction:column;gap:0}
+
+/* COMPONENT BLOCK */
+.comp{border:1px solid var(--border);border-radius:3px;margin-bottom:0;position:relative}
+.comp-header{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 20px;border-bottom:1px solid var(--border);
+  cursor:pointer;user-select:none}
+.comp-header:hover{background:rgba(255,255,255,0.02)}
+.comp-badge{font-family:var(--mono);font-size:9px;font-weight:600;padding:3px 10px;border-radius:1px;letter-spacing:0.1em;text-transform:uppercase;flex-shrink:0}
+.comp-file{font-family:var(--mono);font-size:12px;color:var(--text)}
+.comp-desc{font-family:var(--mono);font-size:10px;color:var(--muted-2);margin-left:auto}
+.comp-toggle{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:12px;transition:transform 300ms}
+.comp.open .comp-toggle{transform:rotate(180deg)}
+.comp-body{display:none;padding:20px}
+.comp.open .comp-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+
+/* ARROW between components */
+.pipe-arrow{display:flex;flex-direction:column;align-items:center;padding:4px 0;position:relative}
+.pipe-arrow::before{content:'';width:1px;height:20px;background:var(--border-hi)}
+.pipe-arrow-head{font-family:var(--mono);font-size:10px;color:var(--green);margin:-2px 0}
+.pipe-arrow::after{content:'';width:1px;height:20px;background:var(--border-hi)}
+.pipe-artifact{font-family:var(--mono);font-size:9px;color:var(--blue);
+  background:var(--blue-dim);border:1px solid rgba(68,136,255,0.2);
+  padding:4px 12px;border-radius:1px;margin:0 auto;white-space:nowrap}
+
+/* DETAIL CARDS */
+.detail-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:2px;padding:14px}
+.dc-title{font-family:var(--mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted-2);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.dc-title::before{content:'//';color:var(--muted)}
+.dc-item{font-family:var(--mono);font-size:10px;color:var(--muted-2);
+  padding:4px 0;border-bottom:1px solid var(--border);line-height:1.5}
+.dc-item:last-child{border-bottom:none}
+.dc-item .label{color:var(--green);margin-right:6px}
+.dc-item .type{color:var(--amber);font-size:9px}
+.dc-item .val{color:var(--cyan)}
+.dc-item .arrow{color:var(--muted);margin:0 4px}
+.dc-item .store{color:var(--amber)}
+.dc-item .bug{color:var(--red);font-size:9px}
+
+/* FLOW STEP */
+.flow-step{display:flex;gap:8px;margin-bottom:6px}
+.step-num{font-family:var(--mono);font-size:9px;color:var(--green);
+  background:var(--green-dim);border:1px solid var(--border-hi);
+  padding:1px 5px;border-radius:1px;flex-shrink:0;height:fit-content;margin-top:1px}
+.step-txt{font-family:var(--mono);font-size:10px;color:var(--muted-2);line-height:1.6}
+
+/* FULL ARCHITECTURE SVG */
+.arch-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:2px;background:var(--card);padding:24px}
+
+/* TABS */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:0}
+.tab{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  padding:10px 18px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all 300ms}
+.tab.active{color:var(--green);border-bottom-color:var(--green)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+@media(max-width:900px){body{padding:20px}.comp-body{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="diagram-header">
+  <div class="eyebrow">NetworkSecurity MLOps · System Architecture · 2026</div>
+  <h1>Complete Pipeline Flow Diagram</h1>
+  <p class="subtitle">End-to-end MLOps system — MongoDB ingestion → validation → transformation → model training → FastAPI serving. Each component shows files, classes, functions, inputs, outputs, and artifact paths.</p>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div>Component / Class</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--blue)"></div>Artifact (typed return)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--amber)"></div>Storage / Disk path</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--purple)"></div>Config / Constants</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--cyan)"></div>Function / Method</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--red)"></div>External / DB</div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('pipeline')">Pipeline Flow</div>
+  <div class="tab" onclick="showTab('arch')">Architecture SVG</div>
+  <div class="tab" onclick="showTab('data')">Data Flow</div>
+  <div class="tab" onclick="showTab('artifacts')">Artifacts Tree</div>
+</div>
+
+<!-- TAB 1: PIPELINE FLOW -->
+<div class="tab-content active" id="tab-pipeline">
+
+<div class="section-title">// pipeline.run() — step by step</div>
+
+<!-- EXTERNAL SOURCES -->
+<div class="comp" style="border-color:rgba(255,68,68,0.3)">
+  <div class="comp-header" onclick="toggle(this)">
+    <span class="comp-badge" style="background:var(--red-dim);color:var(--red);border:1px solid rgba(255,68,68,0.2)">EXTERNAL</span>
+    <span class="comp-file">MongoDB Atlas + .env</span>
+    <span class="comp-desc">DB: ALYAN · Collection: NetworkData · 11055 phishing records</span>
+    <span class="comp-toggle">▼</span>
+  </div>
+  <div class="comp-body">
+    <div class="detail-card">
+      <div class="dc-title">MongoDB Atlas</div>
+      <div class="dc-item"><span class="label">cluster:</span>cluster0.jkbeamf.mongodb.net</div>
+      <div class="dc-item"><span class="label">database:</span>ALYAN</div>
+      <div class="dc-item"><span class="label">collection:</span>NetworkData</div>
+      <div class="dc-item"><span class="label">records:</span>11,055 phishing URL features</div>
+      <div class="dc-item"><span class="label">schema:</span>31 columns (30 features + Result)</div>
+      <div class="dc-item"><span class="label">values:</span>1=phishing, -1=legitimate, 0=neutral</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">.env file</div>
+      <div class="dc-item"><span class="label">MONGO_ATLAS_URI</span>= mongodb+srv://...</div>
+      <div class="dc-item"><span class="label">MLFLOW_TRACKING_USERNAME</span></div>
+      <div class="dc-item"><span class="label">MLFLOW_TRACKING_PASSWORD</span></div>
+      <div class="dc-item">load_dotenv() → os.getenv() se read hota hai</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">pushdata.py (ETL - run once)</div>
+      <div class="dc-item"><span class="label">class</span>NetworkDataExtract</div>
+      <div class="dc-item"><span class="label">fn</span>csv_to_json_converter(filepath)<br><span class="arrow">→</span>pd.read_csv → data.T.to_json() → list of dicts</div>
+      <div class="dc-item"><span class="label">fn</span>insert_data_to_mongodb(records, db, col)<br><span class="arrow">→</span>MongoClient → collection.insert_many()</div>
+      <div class="dc-item"><span class="store">SOURCE:</span>Network_Data/phishingData.csv</div>
+    </div>
+  </div>
+</div>
+
+<div class="pipe-arrow">
+  <div class="pipe-artifact">DataIngestionConfig(TrainingPipelineConfig) → paths inject</div>
+</div>
+
+<!-- DATA INGESTION -->
+<div class="comp" style="border-color:rgba(0,255,65,0.3)">
+  <div class="comp-header" onclick="toggle(this)">
+    <span class="comp-badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--border-hi)">STEP 1</span>
+    <span class="comp-file">components/data_ingestion.py</span>
+    <span class="comp-desc">MongoDB → CSV → stratified split → DataIngestionArtifact</span>
+    <span class="comp-toggle">▼</span>
+  </div>
+  <div class="comp-body">
+    <div class="detail-card">
+      <div class="dc-title">class DataIngestion</div>
+      <div class="dc-item"><span class="label">__init__</span>(data_ingestion_config: DataIngestionConfig)<br><span class="arrow">→</span>self.data_ingestion_config = config</div>
+      <div class="dc-item"><span class="label">INPUT:</span>DataIngestionConfig<br>
+        · database_name = "ALYAN"<br>
+        · collection_name = "NetworkData"<br>
+        · train_test_split_ratio = 0.2<br>
+        · feature_store_file_path<br>
+        · training_file_path<br>
+        · testing_file_path</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">methods</div>
+      <div class="dc-item"><span class="label">export_collection_as_dataframe()</span><br>
+        <div class="flow-step"><span class="step-num">1</span><span class="step-txt">MongoClient(URI, tlsCAFile=certifi.where())</span></div>
+        <div class="flow-step"><span class="step-num">2</span><span class="step-txt">client[ALYAN][NetworkData].find()</span></div>
+        <div class="flow-step"><span class="step-num">3</span><span class="step-txt">pd.DataFrame(list(cursor)) → 11055×32</span></div>
+        <div class="flow-step"><span class="step-num">4</span><span class="step-txt">drop _id col → 11055×31</span></div>
+        <div class="flow-step"><span class="step-num">5</span><span class="step-txt">replace "na" → np.nan</span></div>
+      </div>
+      <div class="dc-item"><span class="label">export_data_into_feature_store(df)</span><br>
+        <div class="flow-step"><span class="step-num">1</span><span class="step-txt">os.makedirs(feature_store/)</span></div>
+        <div class="flow-step"><span class="step-num">2</span><span class="step-txt">df.to_csv(phishingData.csv)</span></div>
+      </div>
+      <div class="dc-item"><span class="label">split_data_as_train_test(df)</span><br>
+        <div class="flow-step"><span class="step-num">1</span><span class="step-txt">train_test_split(df, test_size=0.2)</span></div>
+        <div class="flow-step"><span class="step-num">2</span><span class="step-txt">train=8844 rows, test=2211 rows</span></div>
+        <div class="flow-step"><span class="step-num">3</span><span class="step-txt">to_csv(train.csv), to_csv(test.csv)</span></div>
+      </div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">stores to disk</div>
+      <div class="dc-item"><span class="store">Artifacts/timestamp/data_ingestion/</span></div>
+      <div class="dc-item"><span class="store">feature_store/phishingData.csv</span><br>11055 × 31 · raw MongoDB backup</div>
+      <div class="dc-item"><span class="store">ingested/train.csv</span><br>8844 × 31 · 80% split</div>
+      <div class="dc-item"><span class="store">ingested/test.csv</span><br>2211 × 31 · 20% split</div>
+      <div class="dc-item"><span class="label">RETURNS:</span>DataIngestionArtifact<br>· train_file_path: str<br>· test_file_path: str</div>
+    </div>
+  </div>
+</div>
+
+<div class="pipe-arrow">
+  <div class="pipe-artifact">DataIngestionArtifact → train_file_path + test_file_path</div>
+</div>
+
+<!-- DATA VALIDATION -->
+<div class="comp" style="border-color:rgba(0,255,65,0.3)">
+  <div class="comp-header" onclick="toggle(this)">
+    <span class="comp-badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--border-hi)">STEP 2</span>
+    <span class="comp-file">components/data_validation.py</span>
+    <span class="comp-desc">schema check → KS drift detection → DataValidationArtifact</span>
+    <span class="comp-toggle">▼</span>
+  </div>
+  <div class="comp-body">
+    <div class="detail-card">
+      <div class="dc-title">class DataValidation</div>
+      <div class="dc-item"><span class="label">__init__</span>(data_ingestion_artifact, data_validation_config)<br>
+        · self.data_ingestion_artifact<br>
+        · self.data_validation_config<br>
+        · self.schema_config = read_yaml_file(SCHEMA_FILE_PATH)<br>
+        <span class="arrow">→</span>loads data_schema/schema.yaml<br>
+        <span class="arrow">→</span>{columns: [31], numerical_columns: [31]}</div>
+      <div class="dc-item"><span class="label">@staticmethod read_data(file_path)</span><br>
+        → pd.read_csv() → DataFrame</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">validation methods</div>
+      <div class="dc-item"><span class="label">validate_number_cols(df)</span><br>
+        schema['columns'] → expected = 31<br>
+        len(df.columns) == 31? → True/False</div>
+      <div class="dc-item"><span class="label">check_numerical_col(df)</span><br>
+        schema['numerical_columns'] → 31 cols<br>
+        df.select_dtypes(['int64','float64'])<br>
+        all cols present? → True/False</div>
+      <div class="dc-item"><span class="label">detect_data_drift(base_df, current_df)</span><br>
+        threshold = 0.05<br>
+        for each col: ks_2samp(train_col, test_col)<br>
+        p_value >= 0.05 → no drift (False)<br>
+        p_value &lt; 0.05 → DRIFT (True)<br>
+        report = {col: {p_value, drift_status}}<br>
+        write_yaml_file(drift_report_path, report)</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">stores to disk</div>
+      <div class="dc-item"><span class="store">Artifacts/timestamp/data_validation/</span></div>
+      <div class="dc-item"><span class="store">validated/train.csv</span> · 8844 rows · valid data</div>
+      <div class="dc-item"><span class="store">validated/test.csv</span> · 2211 rows · valid data</div>
+      <div class="dc-item"><span class="store">invalid/train.csv + test.csv</span><br>drift detected rows (if any)</div>
+      <div class="dc-item"><span class="store">drift_report/report.yaml</span><br>
+        having_IP_Address: {p_value: 0.43, drift_status: false}<br>
+        URL_Length: {p_value: 0.67, drift_status: false} ...</div>
+      <div class="dc-item"><span class="label">RETURNS:</span>DataValidationArtifact<br>
+        · validation_status: bool<br>
+        · valid_train_file_path: str<br>
+        · valid_test_file_path: str<br>
+        · invalid_train_file_path: str<br>
+        · invalid_test_file_path: str<br>
+        · drift_report_file_path: str</div>
+    </div>
+  </div>
+</div>
+
+<div class="pipe-arrow">
+  <div class="pipe-artifact">DataValidationArtifact → valid_train_file_path + valid_test_file_path</div>
+</div>
+
+<!-- DATA TRANSFORMATION -->
+<div class="comp" style="border-color:rgba(0,255,65,0.3)">
+  <div class="comp-header" onclick="toggle(this)">
+    <span class="comp-badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--border-hi)">STEP 3</span>
+    <span class="comp-file">components/data_transformation.py</span>
+    <span class="comp-desc">KNNImputer → numpy arrays → preprocessing.pkl → DataTransformationArtifact</span>
+    <span class="comp-toggle">▼</span>
+  </div>
+  <div class="comp-body">
+    <div class="detail-card">
+      <div class="dc-title">class DataTransformation</div>
+      <div class="dc-item"><span class="label">__init__</span>(data_validation_artifact, data_transformation_config)<br>
+        · self.data_validation_artifact<br>
+        · self.data_transformation_config</div>
+      <div class="dc-item"><span class="label">get_data_transformer_object()</span><br>
+        KNNImputer(**DATA_TRANSFORMATION_IMPUTER_PARAMS)<br>
+        · missing_values = NaN<br>
+        · n_neighbors = 3<br>
+        · weights = "uniform"<br>
+        Pipeline(steps=[("imputer", imputer)])<br>
+        → return Pipeline object</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">initiate_data_transformation()</div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">1</span><span class="step-txt">read_data(valid_train.csv) → train_df (8844×31)</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">2</span><span class="step-txt">X/y split: drop('Result') → X_train (8844×30)<br>y_train = train_df['Result'].replace(-1, 0)<br>← convert -1→0 for binary classification</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">3</span><span class="step-txt">preprocessor = get_data_transformer_object()</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">4</span><span class="step-txt">X_train_t = preprocessor.fit_transform(X_train)<br>X_test_t  = preprocessor.transform(X_test)<br>← fit ONLY on train (no leakage)</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">5</span><span class="step-txt">train_arr = np.c_[X_train_t, y_train] → (8844×31)<br>test_arr  = np.c_[X_test_t, y_test]   → (2211×31)</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">6</span><span class="step-txt">save_numpy_array_data(train.npy, train_arr)<br>save_numpy_array_data(test.npy,  test_arr)<br>save_object(preprocessing.pkl, preprocessor)</span></div></div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">stores to disk</div>
+      <div class="dc-item"><span class="store">Artifacts/timestamp/data_transformation/</span></div>
+      <div class="dc-item"><span class="store">transformed/train.npy</span><br>(8844×31) numpy binary · last col=label</div>
+      <div class="dc-item"><span class="store">transformed/test.npy</span><br>(2211×31) numpy binary · last col=label</div>
+      <div class="dc-item"><span class="store">transformed_object/preprocessing.pkl</span><br>fitted KNNImputer Pipeline<br>predict_pipeline load karega</div>
+      <div class="dc-item"><span class="label">RETURNS:</span>DataTransformationArtifact<br>
+        · transformed_object_file_path<br>
+        · transformed_train_file_path<br>
+        · transformed_test_file_path</div>
+    </div>
+  </div>
+</div>
+
+<div class="pipe-arrow">
+  <div class="pipe-artifact">DataTransformationArtifact → train.npy + test.npy + preprocessing.pkl</div>
+</div>
+
+<!-- MODEL TRAINER -->
+<div class="comp" style="border-color:rgba(0,255,65,0.3)">
+  <div class="comp-header" onclick="toggle(this)">
+    <span class="comp-badge" style="background:var(--green-dim);color:var(--green);border:1px solid var(--border-hi)">STEP 4</span>
+    <span class="comp-file">components/model_trainer.py</span>
+    <span class="comp-desc">GridSearchCV → best model → MLflow → NetworkModel.pkl → ModelTrainerArtifact</span>
+    <span class="comp-toggle">▼</span>
+  </div>
+  <div class="comp-body" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="detail-card">
+      <div class="dc-title">class ModelTrainer</div>
+      <div class="dc-item"><span class="label">__init__</span>(model_trainer_config, data_transformation_artifact)</div>
+      <div class="dc-item"><span class="label">MODELS:</span><br>
+        RandomForestClassifier(verbose=0)<br>
+        DecisionTreeClassifier()<br>
+        GradientBoostingClassifier(verbose=0)<br>
+        LogisticRegression(verbose=0)<br>
+        AdaBoostClassifier()</div>
+      <div class="dc-item"><span class="label">PARAMS (GridSearchCV):</span><br>
+        RF: n_estimators=[8,16,32,128,256]<br>
+        DT: criterion=[gini,entropy,log_loss]<br>
+        GB: learning_rate,subsample,n_estimators<br>
+        LR: {} (no grid)<br>
+        AB: learning_rate,n_estimators</div>
+      <div class="dc-item"><span class="label">GridSearchCV:</span>cv=5, scoring=f1, n_jobs=-1</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">initiate_model_trainer()</div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">1</span><span class="step-txt">load_numpy_array(train.npy) → train_arr</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">2</span><span class="step-txt">X_train=[:, :-1], y_train=[:, -1]<br>X_test=[:, :-1],  y_test=[:, -1]</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">3</span><span class="step-txt">evaluate_models() → report dict<br>→ GridSearchCV on all 5 models<br>→ {model_name: test_f1_score}</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">4</span><span class="step-txt">best_model = max(report, key=f1)<br>if f1 &lt; 0.6 → raise Exception</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">5</span><span class="step-txt">train_metric = get_classification_score(y_train, pred)<br>track_mlflow(best_model, train_metric)</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">6</span><span class="step-txt">test_metric = get_classification_score(y_test, pred)<br>track_mlflow(best_model, test_metric)</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">7</span><span class="step-txt">|train_f1 - test_f1| > 0.05? → log WARNING</span></div></div>
+      <div class="dc-item"><div class="flow-step"><span class="step-num">8</span><span class="step-txt">NetworkModel(preprocessor, best_model)<br>save_object(trained_model_file_path, nm)<br>save_object(final_model/model.pkl)<br>save_object(final_model/preprocessor.pkl)</span></div></div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">results + stores</div>
+      <div class="dc-item"><span class="label">BEST MODEL:</span>RandomForest (seed=42)</div>
+      <div class="dc-item"><span class="label">Train F1:</span><span class="val">0.9916</span></div>
+      <div class="dc-item"><span class="label">Test F1:</span><span class="val">0.9716</span></div>
+      <div class="dc-item"><span class="label">Precision:</span><span class="val">0.9589</span></div>
+      <div class="dc-item"><span class="label">Recall:</span><span class="val">0.9846</span></div>
+      <div class="dc-item"><span class="label">Overfit diff:</span><span class="val">0.02 &lt; 0.05 ✓</span></div>
+      <div class="dc-item"><span class="store">Artifacts/.../model_trainer/trained_model/model.pkl</span><br>(NetworkModel: preprocessor + RF)</div>
+      <div class="dc-item"><span class="store">final_model/model.pkl</span><br>(best_model only)</div>
+      <div class="dc-item"><span class="store">final_model/preprocessor.pkl</span><br>(fitted KNNImputer)</div>
+      <div class="dc-item"><span class="label">MLflow:</span>DagsHub remote<br>f1, precision, recall logged<br>model artifact logged</div>
+      <div class="dc-item"><span class="label">RETURNS:</span>ModelTrainerArtifact<br>· trained_model_file_path<br>· train_metric_artifact (ClassificationMetricArtifact)<br>· test_metric_artifact  (ClassificationMetricArtifact)</div>
+    </div>
+  </div>
+</div>
+
+<div class="pipe-arrow">
+  <div class="pipe-artifact">ModelTrainerArtifact → model.pkl + metrics (train + test)</div>
+</div>
+
+<!-- FASTAPI -->
+<div class="comp" style="border-color:rgba(0,204,255,0.3)">
+  <div class="comp-header" onclick="toggle(this)">
+    <span class="comp-badge" style="background:var(--cyan-dim);color:var(--cyan);border:1px solid rgba(0,204,255,0.2)">SERVING</span>
+    <span class="comp-file">app.py — FastAPI Backend</span>
+    <span class="comp-desc">6 routes · Jinja2 templates · NetworkModel.predict() · CORSMiddleware</span>
+    <span class="comp-toggle">▼</span>
+  </div>
+  <div class="comp-body">
+    <div class="detail-card">
+      <div class="dc-title">setup</div>
+      <div class="dc-item"><span class="label">app</span>= FastAPI(title="Network Security MLOps")</div>
+      <div class="dc-item"><span class="label">CORS</span>allow_origins=["*"] · allow_methods=["*"]</div>
+      <div class="dc-item"><span class="label">templates</span>= Jinja2Templates("./templates")</div>
+      <div class="dc-item"><span class="label">MongoDB</span>MongoClient(MONGO_ATLAS_URI, tlsCAFile)<br>client[ALYAN][NetworkData]</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">routes</div>
+      <div class="dc-item"><span class="label">GET /</span>→ TemplateResponse(index.html)</div>
+      <div class="dc-item"><span class="label">GET /train</span>→ TrainingPipeline().run_pipeline()<br>→ Response("Training Successful")</div>
+      <div class="dc-item"><span class="label">GET /predict</span>→ TemplateResponse(predict.html)</div>
+      <div class="dc-item"><span class="label">POST /predict</span>UploadFile (CSV)<br>→ pd.read_csv(file)<br>→ load_object(final_model/preprocessor.pkl)<br>→ load_object(final_model/model.pkl)<br>→ NetworkModel.predict(df) → y_pred<br>→ df["predicted_column"] = y_pred<br>→ df.to_csv(prediction_output/output.csv)<br>→ TemplateResponse(table.html, {table: html})</div>
+      <div class="dc-item"><span class="label">GET /predict/manual</span>→ TemplateResponse(predict_manual.html)</div>
+      <div class="dc-item"><span class="label">POST /predict/manual</span>NetworkDataInput (Pydantic, 30 int fields)<br>→ data.model_dump() → dict<br>→ pd.DataFrame([dict]) → 1×30<br>→ NetworkModel.predict(df)[0]<br>→ {prediction: 0/1, label: str, message: str}</div>
+    </div>
+    <div class="detail-card">
+      <div class="dc-title">templates/</div>
+      <div class="dc-item"><span class="label">index.html</span>Landing · stats bento · pipeline steps · quick actions</div>
+      <div class="dc-item"><span class="label">predict.html</span>CSV upload form · drag-drop · value legend</div>
+      <div class="dc-item"><span class="label">table.html</span>Batch results · phish/legit badges · summary strip</div>
+      <div class="dc-item"><span class="label">predict_manual.html</span>30 feature inputs (4 groups) · fetch POST · inline result</div>
+      <div class="dc-item"><span class="label">NetworkDataInput (Pydantic)</span>30 int fields: having_IP_Address, URL_Length, Shortining_Service ... Statistical_report</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end tab-pipeline -->
+
+<!-- TAB 2: ARCHITECTURE SVG -->
+<div class="tab-content" id="tab-arch">
+<div class="section-title">// high-level architecture</div>
+<div class="arch-wrap">
+<svg viewBox="0 0 1320 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="arch-title arch-desc" style="width:100%;min-width:900px">
+<title id="arch-title">NetworkSecurity MLOps Architecture</title>
+<desc id="arch-desc">System architecture showing MongoDB → Training Pipeline → FastAPI → Prediction flow with MLflow tracking</desc>
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#00FF41" opacity="0.6"/>
+  </marker>
+  <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#4488FF" opacity="0.6"/>
+  </marker>
+  <marker id="arr-amber" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#FFB800" opacity="0.6"/>
+  </marker>
+</defs>
+
+<!-- BG groups -->
+<rect x="20" y="20" width="260" height="780" rx="2" fill="rgba(255,68,68,0.04)" stroke="rgba(255,68,68,0.15)" stroke-width="1"/>
+<text x="150" y="44" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#FF4444" letter-spacing="2">// EXTERNAL</text>
+
+<rect x="300" y="20" width="720" height="780" rx="2" fill="rgba(0,255,65,0.02)" stroke="rgba(0,255,65,0.12)" stroke-width="1"/>
+<text x="660" y="44" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#00FF41" letter-spacing="2">// TRAINING PIPELINE</text>
+
+<rect x="1040" y="20" width="260" height="780" rx="2" fill="rgba(0,204,255,0.04)" stroke="rgba(0,204,255,0.15)" stroke-width="1"/>
+<text x="1170" y="44" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#00CCFF" letter-spacing="2">// SERVING</text>
+
+<!-- MongoDB -->
+<rect x="40" y="60" width="220" height="80" rx="2" fill="#100808" stroke="rgba(255,68,68,0.4)" stroke-width="1"/>
+<text x="150" y="85" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#FF4444" font-weight="500">MongoDB Atlas</text>
+<text x="150" y="102" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">DB: ALYAN</text>
+<text x="150" y="116" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">Collection: NetworkData</text>
+<text x="150" y="130" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">11,055 records · 31 cols</text>
+
+<!-- .env -->
+<rect x="40" y="160" width="220" height="60" rx="2" fill="#0a0a10" stroke="rgba(170,68,255,0.3)" stroke-width="1"/>
+<text x="150" y="182" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#AA44FF">.env</text>
+<text x="150" y="198" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">MONGO_ATLAS_URI</text>
+<text x="150" y="212" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">MLFLOW credentials</text>
+
+<!-- DataIngestion -->
+<rect x="320" y="60" width="200" height="120" rx="2" fill="#0a150a" stroke="rgba(0,255,65,0.3)" stroke-width="1.5"/>
+<text x="420" y="82" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#00FF41" letter-spacing="1">STEP 1</text>
+<text x="420" y="98" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#e2e8f0" font-weight="500">DataIngestion</text>
+<text x="420" y="114" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">MongoDB → CSV</text>
+<text x="420" y="128" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">80/20 stratified split</text>
+<text x="420" y="142" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">→ DataIngestionArtifact</text>
+<text x="420" y="158" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">train.csv + test.csv</text>
+<text x="420" y="172" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">8844 + 2211 rows</text>
+
+<!-- DataValidation -->
+<rect x="320" y="220" width="200" height="120" rx="2" fill="#0a150a" stroke="rgba(0,255,65,0.3)" stroke-width="1.5"/>
+<text x="420" y="242" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#00FF41" letter-spacing="1">STEP 2</text>
+<text x="420" y="258" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#e2e8f0" font-weight="500">DataValidation</text>
+<text x="420" y="274" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">schema check (31 cols)</text>
+<text x="420" y="288" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">KS drift detection</text>
+<text x="420" y="302" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">p_value threshold 0.05</text>
+<text x="420" y="316" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">→ DataValidationArtifact</text>
+<text x="420" y="330" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">drift_report.yaml</text>
+
+<!-- DataTransformation -->
+<rect x="320" y="380" width="200" height="120" rx="2" fill="#0a150a" stroke="rgba(0,255,65,0.3)" stroke-width="1.5"/>
+<text x="420" y="402" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#00FF41" letter-spacing="1">STEP 3</text>
+<text x="420" y="418" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#e2e8f0" font-weight="500">DataTransformation</text>
+<text x="420" y="434" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">KNNImputer (n=3, uniform)</text>
+<text x="420" y="448" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">fit on train only</text>
+<text x="420" y="462" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">-1→0 target convert</text>
+<text x="420" y="476" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">→ train.npy + test.npy</text>
+<text x="420" y="490" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">preprocessing.pkl saved</text>
+
+<!-- ModelTrainer -->
+<rect x="320" y="540" width="200" height="130" rx="2" fill="#0a150a" stroke="rgba(0,255,65,0.3)" stroke-width="1.5"/>
+<text x="420" y="562" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#00FF41" letter-spacing="1">STEP 4</text>
+<text x="420" y="578" text-anchor="middle" font-family="Fira Code,monospace" font-size="11" fill="#e2e8f0" font-weight="500">ModelTrainer</text>
+<text x="420" y="594" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">5 models · GridSearchCV(cv=5)</text>
+<text x="420" y="608" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">best: RandomForest</text>
+<text x="420" y="622" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">F1=0.97 · overfit 0.02&lt;0.05</text>
+<text x="420" y="636" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">NetworkModel(preprocessor,model)</text>
+<text x="420" y="650" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">→ ModelTrainerArtifact</text>
+<text x="420" y="664" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">model.pkl saved</text>
+
+<!-- Constants box -->
+<rect x="560" y="60" width="180" height="200" rx="2" fill="#0a0a18" stroke="rgba(170,68,255,0.25)" stroke-width="1"/>
+<text x="650" y="82" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#AA44FF" letter-spacing="1">CONSTANTS</text>
+<text x="650" y="100" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">TARGET_COLUMN = "Result"</text>
+<text x="650" y="116" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">ARTIFACT_DIR = "Artifacts"</text>
+<text x="650" y="132" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">SPLIT_RATIO = 0.2</text>
+<text x="650" y="148" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">SCHEMA_FILE_PATH</text>
+<text x="650" y="164" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">IMPUTER_PARAMS:</text>
+<text x="650" y="180" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">  n_neighbors=3</text>
+<text x="650" y="196" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">EXPECTED_SCORE=0.6</text>
+<text x="650" y="212" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">OVERFIT_THRESHOLD=0.05</text>
+<text x="650" y="228" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">config_entity.py injects ↓</text>
+<text x="650" y="244" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">all 5 config classes</text>
+
+<!-- Utils box -->
+<rect x="560" y="280" width="180" height="180" rx="2" fill="#0a100a" stroke="rgba(0,255,65,0.15)" stroke-width="1"/>
+<text x="650" y="302" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#00FF41" letter-spacing="1">UTILS</text>
+<text x="650" y="320" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">save_object()</text>
+<text x="650" y="336" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">load_object()</text>
+<text x="650" y="352" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">save_numpy_array_data()</text>
+<text x="650" y="368" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">load_numpy_array()</text>
+<text x="650" y="384" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">read_yaml_file()</text>
+<text x="650" y="400" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">write_yaml_file()</text>
+<text x="650" y="416" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">evaluate_models()</text>
+<text x="650" y="432" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">get_classification_score()</text>
+<text x="650" y="448" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">NetworkModel.predict()</text>
+
+<!-- Artifacts box -->
+<rect x="760" y="60" width="260" height="600" rx="2" fill="#0a0f05" stroke="rgba(255,184,0,0.2)" stroke-width="1"/>
+<text x="890" y="82" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#FFB800" letter-spacing="1">ARTIFACTS / DISK</text>
+<text x="890" y="104" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">Artifacts/timestamp/</text>
+
+<text x="790" y="130" font-family="Fira Code,monospace" font-size="9" fill="#00FF41">data_ingestion/</text>
+<text x="800" y="148" font-family="Fira Code,monospace" font-size="9" fill="#718096">feature_store/phishingData.csv</text>
+<text x="800" y="164" font-family="Fira Code,monospace" font-size="9" fill="#718096">ingested/train.csv (8844×31)</text>
+<text x="800" y="180" font-family="Fira Code,monospace" font-size="9" fill="#718096">ingested/test.csv  (2211×31)</text>
+<line x1="780" y1="192" x2="1000" y2="192" stroke="rgba(255,184,0,0.1)" stroke-width="1"/>
+
+<text x="790" y="212" font-family="Fira Code,monospace" font-size="9" fill="#00FF41">data_validation/</text>
+<text x="800" y="230" font-family="Fira Code,monospace" font-size="9" fill="#718096">validated/train.csv</text>
+<text x="800" y="246" font-family="Fira Code,monospace" font-size="9" fill="#718096">validated/test.csv</text>
+<text x="800" y="262" font-family="Fira Code,monospace" font-size="9" fill="#718096">invalid/train.csv</text>
+<text x="800" y="278" font-family="Fira Code,monospace" font-size="9" fill="#718096">drift_report/report.yaml</text>
+<line x1="780" y1="290" x2="1000" y2="290" stroke="rgba(255,184,0,0.1)" stroke-width="1"/>
+
+<text x="790" y="310" font-family="Fira Code,monospace" font-size="9" fill="#00FF41">data_transformation/</text>
+<text x="800" y="328" font-family="Fira Code,monospace" font-size="9" fill="#718096">transformed/train.npy (8844×31)</text>
+<text x="800" y="344" font-family="Fira Code,monospace" font-size="9" fill="#718096">transformed/test.npy  (2211×31)</text>
+<text x="800" y="360" font-family="Fira Code,monospace" font-size="9" fill="#718096">transformed_object/preprocessing.pkl</text>
+<line x1="780" y1="372" x2="1000" y2="372" stroke="rgba(255,184,0,0.1)" stroke-width="1"/>
+
+<text x="790" y="392" font-family="Fira Code,monospace" font-size="9" fill="#00FF41">model_trainer/</text>
+<text x="800" y="410" font-family="Fira Code,monospace" font-size="9" fill="#718096">trained_model/model.pkl</text>
+<text x="800" y="426" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">(NetworkModel wrapper)</text>
+<line x1="780" y1="440" x2="1000" y2="440" stroke="rgba(255,184,0,0.1)" stroke-width="1"/>
+
+<text x="790" y="460" font-family="Fira Code,monospace" font-size="9" fill="#FFB800">final_model/</text>
+<text x="800" y="478" font-family="Fira Code,monospace" font-size="9" fill="#718096">model.pkl</text>
+<text x="800" y="494" font-family="Fira Code,monospace" font-size="9" fill="#718096">preprocessor.pkl</text>
+<text x="800" y="510" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">← FastAPI loads from here</text>
+<line x1="780" y1="524" x2="1000" y2="524" stroke="rgba(255,184,0,0.1)" stroke-width="1"/>
+
+<text x="790" y="544" font-family="Fira Code,monospace" font-size="9" fill="#4488FF">mlflow.db (SQLite)</text>
+<text x="800" y="560" font-family="Fira Code,monospace" font-size="9" fill="#718096">experiment: NetworkSecurity</text>
+<text x="800" y="576" font-family="Fira Code,monospace" font-size="9" fill="#718096">metrics: f1, precision, recall</text>
+<text x="800" y="592" font-family="Fira Code,monospace" font-size="9" fill="#718096">→ DagsHub remote sync</text>
+<text x="800" y="608" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">prediction_output/output.csv</text>
+
+<!-- FastAPI -->
+<rect x="1060" y="60" width="220" height="200" rx="2" fill="#070f14" stroke="rgba(0,204,255,0.3)" stroke-width="1.5"/>
+<text x="1170" y="82" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#00CCFF" letter-spacing="1">FastAPI</text>
+<text x="1170" y="100" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">GET /</text>
+<text x="1170" y="116" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">GET /train</text>
+<text x="1170" y="132" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">GET /predict</text>
+<text x="1170" y="148" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">POST /predict (CSV)</text>
+<text x="1170" y="164" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">GET /predict/manual</text>
+<text x="1170" y="180" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">POST /predict/manual</text>
+<text x="1170" y="196" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">CORSMiddleware(*)</text>
+<text x="1170" y="212" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">Jinja2Templates</text>
+<text x="1170" y="228" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">NetworkDataInput(Pydantic)</text>
+<text x="1170" y="244" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#4a5568">uvicorn host=0.0.0.0:8000</text>
+
+<!-- DagsHub -->
+<rect x="1060" y="280" width="220" height="80" rx="2" fill="#070710" stroke="rgba(68,136,255,0.25)" stroke-width="1"/>
+<text x="1170" y="302" text-anchor="middle" font-family="Fira Code,monospace" font-size="10" fill="#4488FF" letter-spacing="1">DagsHub / MLflow</text>
+<text x="1170" y="320" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">remote experiment tracking</text>
+<text x="1170" y="336" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">f1 · precision · recall</text>
+<text x="1170" y="352" text-anchor="middle" font-family="Fira Code,monospace" font-size="9" fill="#718096">model artifacts</text>
+
+<!-- ARROWS -->
+<!-- MongoDB → DataIngestion -->
+<line x1="260" y1="100" x2="318" y2="100" stroke="#FF4444" stroke-width="1" opacity="0.5" marker-end="url(#arr)"/>
+<!-- .env → DataIngestion -->
+<line x1="260" y1="190" x2="290" y2="120" stroke="#AA44FF" stroke-width="1" opacity="0.4" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+<!-- Step1→Step2 -->
+<line x1="420" y1="180" x2="420" y2="218" stroke="#00FF41" stroke-width="1.5" opacity="0.5" marker-end="url(#arr)"/>
+<!-- Step2→Step3 -->
+<line x1="420" y1="340" x2="420" y2="378" stroke="#00FF41" stroke-width="1.5" opacity="0.5" marker-end="url(#arr)"/>
+<!-- Step3→Step4 -->
+<line x1="420" y1="500" x2="420" y2="538" stroke="#00FF41" stroke-width="1.5" opacity="0.5" marker-end="url(#arr)"/>
+<!-- Step4→FastAPI -->
+<line x1="520" y1="620" x2="1058" y2="200" stroke="#00FF41" stroke-width="1" opacity="0.3" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<!-- Step4→DagsHub -->
+<line x1="520" y1="640" x2="1058" y2="320" stroke="#4488FF" stroke-width="1" opacity="0.3" stroke-dasharray="5,4" marker-end="url(#arr-blue)"/>
+<!-- Components→Artifacts -->
+<line x1="520" y1="120" x2="758" y2="140" stroke="#FFB800" stroke-width="1" opacity="0.25" stroke-dasharray="4,3" marker-end="url(#arr-amber)"/>
+<line x1="520" y1="280" x2="758" y2="260" stroke="#FFB800" stroke-width="1" opacity="0.25" stroke-dasharray="4,3" marker-end="url(#arr-amber)"/>
+<line x1="520" y1="440" x2="758" y2="390" stroke="#FFB800" stroke-width="1" opacity="0.25" stroke-dasharray="4,3" marker-end="url(#arr-amber)"/>
+<line x1="520" y1="620" x2="758" y2="490" stroke="#FFB800" stroke-width="1" opacity="0.25" stroke-dasharray="4,3" marker-end="url(#arr-amber)"/>
+<!-- Artifacts→FastAPI -->
+<line x1="1020" y1="480" x2="1058" y2="160" stroke="#FFB800" stroke-width="1" opacity="0.25" stroke-dasharray="4,3" marker-end="url(#arr-amber)"/>
+</svg>
+</div>
+</div><!-- end tab-arch -->
+
+<!-- TAB 3: DATA FLOW -->
+<div class="tab-content" id="tab-data">
+<div class="section-title">// data shape at each stage</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+
+  <div class="detail-card">
+    <div class="dc-title">MongoDB → DataFrame</div>
+    <div class="dc-item"><span class="label">source:</span>collection.find() → cursor</div>
+    <div class="dc-item"><span class="label">convert:</span>list(cursor) → list of dicts<br>pd.DataFrame(list) → 11055×32</div>
+    <div class="dc-item"><span class="label">clean:</span>drop _id → 11055×31<br>replace "na" → np.nan</div>
+    <div class="dc-item"><span class="label">shape:</span><span class="val">(11055, 31)</span></div>
+    <div class="dc-item"><span class="label">dtypes:</span>int64 × 30 + int64 Result</div>
+    <div class="dc-item"><span class="label">values:</span>1, -1, 0 (phishing features)</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="dc-title">After Split</div>
+    <div class="dc-item"><span class="label">method:</span>train_test_split(df, test_size=0.2)</div>
+    <div class="dc-item"><span class="label">train:</span><span class="val">(8844, 31)</span> · 80%</div>
+    <div class="dc-item"><span class="label">test:</span><span class="val">(2211, 31)</span> · 20%</div>
+    <div class="dc-item"><span class="label">saved as:</span>train.csv + test.csv</div>
+    <div class="dc-item"><span class="label">format:</span>CSV with header</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="dc-title">After Validation</div>
+    <div class="dc-item"><span class="label">schema check:</span>31 cols expected ✓</div>
+    <div class="dc-item"><span class="label">numerical check:</span>31 numerical cols ✓</div>
+    <div class="dc-item"><span class="label">KS test:</span>p_value >= 0.05 → no drift ✓</div>
+    <div class="dc-item"><span class="label">valid_train:</span><span class="val">(8844, 31)</span></div>
+    <div class="dc-item"><span class="label">valid_test:</span><span class="val">(2211, 31)</span></div>
+    <div class="dc-item"><span class="label">drift_report:</span>YAML · 31 columns · all OK</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="dc-title">After X/y Split</div>
+    <div class="dc-item"><span class="label">X_train:</span><span class="val">(8844, 30)</span> · features</div>
+    <div class="dc-item"><span class="label">y_train:</span><span class="val">(8844,)</span> · target<br>-1→0 converted (binary)</div>
+    <div class="dc-item"><span class="label">X_test:</span><span class="val">(2211, 30)</span> · features</div>
+    <div class="dc-item"><span class="label">y_test:</span><span class="val">(2211,)</span> · target</div>
+    <div class="dc-item"><span class="label">target values:</span>0=legitimate, 1=phishing</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="dc-title">After KNNImputer</div>
+    <div class="dc-item"><span class="label">fit_transform:</span>X_train → <span class="val">(8844, 30)</span><br>missing NaN → k=3 neighbor avg</div>
+    <div class="dc-item"><span class="label">transform only:</span>X_test → <span class="val">(2211, 30)</span><br>train neighbors used (no leakage)</div>
+    <div class="dc-item"><span class="label">np.c_ stack:</span></div>
+    <div class="dc-item"><span class="label">train_arr:</span><span class="val">(8844, 31)</span> · last col = y</div>
+    <div class="dc-item"><span class="label">test_arr:</span><span class="val">(2211, 31)</span> · last col = y</div>
+    <div class="dc-item"><span class="label">saved as:</span>.npy binary (numpy format)</div>
+  </div>
+
+  <div class="detail-card">
+    <div class="dc-title">Model Training</div>
+    <div class="dc-item"><span class="label">X_train:</span>train_arr[:, :-1] <span class="val">(8844, 30)</span></div>
+    <div class="dc-item"><span class="label">y_train:</span>train_arr[:, -1]  <span class="val">(8844,)</span></div>
+    <div class="dc-item"><span class="label">GridSearchCV:</span>cv=5, scoring=f1</div>
+    <div class="dc-item"><span class="label">best model:</span>RandomForest</div>
+    <div class="dc-item"><span class="label">train F1:</span><span class="val">0.9916</span></div>
+    <div class="dc-item"><span class="label">test F1:</span><span class="val">0.9716</span></div>
+  </div>
+
+  <div class="detail-card">
+    <div class="dc-title">Prediction Input</div>
+    <div class="dc-item"><span class="label">CSV batch:</span>N × 30 DataFrame</div>
+    <div class="dc-item"><span class="label">manual:</span>1 × 30 DataFrame<br>from Pydantic model_dump()</div>
+    <div class="dc-item"><span class="label">NetworkModel.predict(X):</span></div>
+    <div class="dc-item"><span class="label">→ step 1:</span>preprocessor.transform(X)</div>
+    <div class="dc-item"><span class="label">→ step 2:</span>model.predict(X_transformed)</div>
+    <div class="dc-item"><span class="label">output:</span>[0, 1, 0, 1, ...] array<br>0=legitimate, 1=phishing</div>
+  </div>
+
+</div>
+</div><!-- end tab-data -->
+
+<!-- TAB 4: ARTIFACTS TREE -->
+<div class="tab-content" id="tab-artifacts">
+<div class="section-title">// complete artifacts directory tree</div>
+<div class="arch-wrap" style="font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--muted-2)">
+<span style="color:var(--amber)">Artifacts/</span><br>
+└── <span style="color:var(--amber)">08_27_2026_21_46_31/</span> <span style="color:var(--muted)">← TrainingPipelineConfig timestamp (har run alag)</span><br>
+    │<br>
+    ├── <span style="color:var(--green)">data_ingestion/</span> <span style="color:var(--muted)">← DataIngestionConfig.data_ingestion_dir</span><br>
+    │   ├── <span style="color:var(--green)">feature_store/</span><br>
+    │   │   └── <span style="color:var(--text)">phishingData.csv</span> <span style="color:var(--muted)">← raw MongoDB data backup (11055×31)</span><br>
+    │   └── <span style="color:var(--green)">ingested/</span><br>
+    │       ├── <span style="color:var(--text)">train.csv</span> <span style="color:var(--muted)">← DataIngestionArtifact.train_file_path (8844×31)</span><br>
+    │       └── <span style="color:var(--text)">test.csv</span>  <span style="color:var(--muted)">← DataIngestionArtifact.test_file_path  (2211×31)</span><br>
+    │<br>
+    ├── <span style="color:var(--green)">data_validation/</span> <span style="color:var(--muted)">← DataValidationConfig.data_validation_dir</span><br>
+    │   ├── <span style="color:var(--green)">validated/</span> <span style="color:var(--muted)">← DATA_VALIDATION_VALID_DIR</span><br>
+    │   │   ├── <span style="color:var(--text)">train.csv</span> <span style="color:var(--muted)">← DataValidationArtifact.valid_train_file_path</span><br>
+    │   │   └── <span style="color:var(--text)">test.csv</span>  <span style="color:var(--muted)">← DataValidationArtifact.valid_test_file_path</span><br>
+    │   ├── <span style="color:var(--red)">invalid/</span> <span style="color:var(--muted)">← DATA_VALIDATION_INVALID_DIR (drift detected rows)</span><br>
+    │   │   ├── <span style="color:var(--text)">train.csv</span><br>
+    │   │   └── <span style="color:var(--text)">test.csv</span><br>
+    │   └── <span style="color:var(--blue)">drift_report/</span><br>
+    │       └── <span style="color:var(--text)">report.yaml</span> <span style="color:var(--muted)">← KS test results</span><br>
+    │           <span style="color:var(--muted)">having_IP_Address: {p_value: 0.43, drift_status: false}</span><br>
+    │           <span style="color:var(--muted)">URL_Length: {p_value: 0.67, drift_status: false} ...</span><br>
+    │<br>
+    ├── <span style="color:var(--green)">data_transformation/</span> <span style="color:var(--muted)">← DataTransformationConfig.data_transformation_dir</span><br>
+    │   ├── <span style="color:var(--green)">transformed/</span> <span style="color:var(--muted)">← DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR</span><br>
+    │   │   ├── <span style="color:var(--text)">train.npy</span> <span style="color:var(--muted)">← DataTransformationArtifact.transformed_train_file_path</span><br>
+    │   │   │   <span style="color:var(--muted)">shape: (8844, 31) · numpy binary · last col=label</span><br>
+    │   │   └── <span style="color:var(--text)">test.npy</span>  <span style="color:var(--muted)">← DataTransformationArtifact.transformed_test_file_path</span><br>
+    │   │       <span style="color:var(--muted)">shape: (2211, 31) · numpy binary · last col=label</span><br>
+    │   └── <span style="color:var(--amber)">transformed_object/</span> <span style="color:var(--muted)">← DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR</span><br>
+    │       └── <span style="color:var(--text)">preprocessing.pkl</span> <span style="color:var(--muted)">← DataTransformationArtifact.transformed_object_file_path</span><br>
+    │           <span style="color:var(--muted)">fitted KNNImputer Pipeline · PredictPipeline load karega</span><br>
+    │<br>
+    └── <span style="color:var(--green)">model_trainer/</span> <span style="color:var(--muted)">← ModelTrainerConfig.model_trainer_dir</span><br>
+        └── <span style="color:var(--green)">trained_model/</span> <span style="color:var(--muted)">← MODEL_TRAINER_TRAIN_MODEL_DIR</span><br>
+            └── <span style="color:var(--text)">model.pkl</span> <span style="color:var(--muted)">← ModelTrainerArtifact.trained_model_file_path</span><br>
+                <span style="color:var(--muted)">NetworkModel(preprocessor=KNNImputer, model=RandomForest)</span><br>
+<br>
+<span style="color:var(--amber)">final_model/</span> <span style="color:var(--muted)">← FastAPI loads from here (not from timestamped Artifacts/)</span><br>
+├── <span style="color:var(--text)">model.pkl</span>        <span style="color:var(--muted)">← best_model only (RandomForest)</span><br>
+└── <span style="color:var(--text)">preprocessor.pkl</span> <span style="color:var(--muted)">← fitted KNNImputer Pipeline</span><br>
+<br>
+<span style="color:var(--blue)">mlflow.db</span> <span style="color:var(--muted)">← SQLite · local MLflow tracking</span><br>
+<span style="color:var(--blue)">mlruns/</span>   <span style="color:var(--muted)">← MLflow run artifacts (synced to DagsHub)</span><br>
+<br>
+<span style="color:var(--muted-2)">prediction_output/</span><br>
+└── <span style="color:var(--text)">output.csv</span> <span style="color:var(--muted)">← POST /predict result (with predicted_column added)</span><br>
+</div>
+</div><!-- end tab-artifacts -->
+
+</div><!-- end page -->
+
+<script>
+function toggle(header) {
+  const comp = header.parentElement;
+  comp.classList.toggle('open');
+}
+function showTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+// open all by default
+document.querySelectorAll('.comp').forEach(c => c.classList.add('open'));
+</script>
+</body>
+</html>

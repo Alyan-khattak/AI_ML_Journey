@@ -1,0 +1,2 @@
+this for contains test data that we will use to test the app
+we have created "/predict" endpoint in app.py to test that we use this data
