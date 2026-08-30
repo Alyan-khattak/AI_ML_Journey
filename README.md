@@ -98,8 +98,7 @@ Each folder represents a concept I studied and practiced.
   - [Docker](./16.Deployment/1_Docker)
   - [End-to-End-ML-Project](./16.Deployment/2_End_to_End_ML-deployement)
     - [Student_Performance_Indicator](./16.Deployment/2_End_to_End_ML-deployement/Student_Performance_Indicator/)
-    > # IMP
-      > First real end-to-end ML project. This defines the **standard folder structure and pipeline** used for all future ML projects.
+      > First real end-to-end ML project. This defines the **standard folder structure and pipeline** used for all small scale (No Mlops) future ML projects.
       >
        
 
@@ -110,6 +109,7 @@ Each folder represents a concept I studied and practiced.
 
 - [MLOps](./17.MLOPS)
   - [Network Security](./17.MLOPS/Network_Securiy)
+  - [Promt](./17.MLOPS/prompt.md)
    
 
 > 🚧 **IMP** — Building production-grade MLOps pipeline and For Now this will be Our **Standard Folder Structure and approach** for Future Projects .
