@@ -18,3 +18,4 @@ saved_models/
 *.env
 mlruns
 mlflow.db
+*NetworkSecurity.egg-info
