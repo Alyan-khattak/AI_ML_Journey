@@ -22,3 +22,5 @@ tqdm
 redis
 catboost
 dil
+tensorflow=2.15.0
+tensorboard
