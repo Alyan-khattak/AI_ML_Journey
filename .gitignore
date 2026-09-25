@@ -4,3 +4,4 @@ env/
 
 #Ignoring my .Vs Folder
 .vscode/*.egg-info/
+WELFake_Dataset.csv
